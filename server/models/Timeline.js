@@ -5,8 +5,8 @@ const timelineSchema = Schema({
   body :String,
   user :  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   type :{
-    type : Number,
-    enum : [1,2,3,4,5,6,7,8,9]
+    type : String,
+    enum : ["Logs","Tasks"]
   }
 },{timestamps:true})
 

@@ -13,9 +13,18 @@ const createTimeline = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-const getUserTimelines = async (req, res) => {
+const getUserLogsTimelines = async (req, res) => {
   try {
-    const timelines = await Timeline.find({ user: { $eq: req.params.userid } });
+    const timelines = await Timeline.find({ $and : [{user: { $eq: req.params.userid } },{ type : { $eq : "Logs"}}]});
+    console.log("succes");
+    res.json(timelines);
+  } catch (err) {
+    console.log(err);
+  }
+};
+const getUserTasksTimelines = async (req, res) => {
+  try {
+    const timelines = await Timeline.find({ $and : [{user: { $eq: req.params.userid } },{ type : { $eq : "Tasks"}}]});
     console.log("succes");
     res.json(timelines);
   } catch (err) {
@@ -24,5 +33,6 @@ const getUserTimelines = async (req, res) => {
 };
 module.exports = {
   createTimeline,
-  getUserTimelines,
+  getUserLogsTimelines,
+  getUserTasksTimelines,
 };

@@ -8,6 +8,8 @@ const taskSchema = new Schema({
   },
   priority: {
     type: String,
+    default : 'Low',
+    enum : ['Low', 'Medium', 'High'],
     required: true,
   },
   team: {
@@ -20,6 +22,12 @@ const taskSchema = new Schema({
   },
   due: {
     type: Date,
+    required: true,
+  },
+  status : {
+    type : String,
+    default : "UpComing",
+    enum : ["UpComing","OnGoing","Completed"],
     required: true,
   },
   progress: {
