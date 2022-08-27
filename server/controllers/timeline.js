@@ -16,19 +16,18 @@ const createTimeline = async (req, res) => {
 const getUserLogsTimelines = async (req, res) => {
   try {
     const timelines = await Timeline.find({ $and : [{user: { $eq: req.params.userid } },{ type : { $eq : "Logs"}}]});
-    console.log("succes");
-    res.json(timelines);
+    res.status(200).json(timelines);
   } catch (err) {
+    res.sendStatus(500).json(err);
     console.log(err);
   }
 };
 const getUserTasksTimelines = async (req, res) => {
   try {
     const timelines = await Timeline.find({ $and : [{user: { $eq: req.params.userid } },{ type : { $eq : "Tasks"}}]});
-    console.log("succes");
-    res.json(timelines);
+    res.status(200).json(timelines);
   } catch (err) {
-    console.log(err);
+    res.sendStatus(500).json(err);
   }
 };
 module.exports = {
