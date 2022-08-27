@@ -1,7 +1,7 @@
-const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
+const User = require("../models/Users");
 
 const getAllusers = async (req, res) => {
   try {

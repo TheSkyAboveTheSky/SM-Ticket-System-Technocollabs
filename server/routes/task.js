@@ -1,4 +1,4 @@
-const Router = require("express").Router();
+const {Router} = require("express");
 const taskRouter = Router();
 const {
   getAllTasks,
