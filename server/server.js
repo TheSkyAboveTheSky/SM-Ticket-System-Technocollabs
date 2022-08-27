@@ -16,6 +16,7 @@ app.use('/task',require('./routes/task'));
 app.use('/auth',require('./routes/auth'));
 app.use('/timeline',require('./routes/timeline'));
 app.use('/send-mail',require('./routes/mail'));
+app.use('/client',require('./routes/client'));
 
 app.listen(PORT , () => {
   console.log(`Listening on port ${PORT}\nTo Stop listening press Ctrl+C`);

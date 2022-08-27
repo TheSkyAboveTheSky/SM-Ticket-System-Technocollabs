@@ -11,6 +11,6 @@ taskRouter.get("/", getAllTasks);
 taskRouter.get("/:id", getTask);
 taskRouter.post("/", createTask);
 taskRouter.put("/:id", updateTask);
-taskRouter.delete("/:id", deleteTask);
+taskRouter.delete("/:id", deleteTask)
 
 module.exports = taskRouter;
