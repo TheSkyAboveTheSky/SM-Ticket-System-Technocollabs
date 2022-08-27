@@ -98,7 +98,7 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <a href="project-list.html">
+              <a href="/ongoing-Project">
                 <i className="fa fa-list-ol"></i>
                 <span>Project list</span>
               </a>
@@ -110,7 +110,7 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <a href="project-ticket.html">
+              <a href="/Ticket-List">
                 <i className="fa-solid fa-list-ul"></i>
                 <span>Ticket List</span>
               </a>
@@ -122,7 +122,7 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <a href="project-clients.html">
+              <a href="/Client-List">
                 <i className="fa fa-user"></i>
                 <span>Clients</span>
               </a>

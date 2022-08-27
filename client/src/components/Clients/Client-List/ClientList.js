@@ -1,8 +1,8 @@
-import React from "react";
-import Sidebar from "../../Sidebar/Sidebar";
-import Header from "../../Header/Header";
+import React from 'react';
+import Sidebar from '../../Sidebar/Sidebar';
+import Header from '../../Header/Header';
 
-function Taskboard() {
+function ClientList() {
   return (
     <div>
       <>
@@ -10,52 +10,52 @@ function Taskboard() {
           <Sidebar />
         </div>
         <div className="cont">
-          <Header title={"Taskboard"} />
+          <Header title={"Client List"} />
           <div>
             <ul className="nav nav-tabs page-header-tab ">
               <li className="nav-item">
                 <a
                   style={
-                    window.location.pathname === "/Taskboard"
+                    window.location.pathname === "/Client-List"
                       ? { borderTop: "3px solid red" }
                       : { color: "grey" }
                   }
                   className={
-                    window.location.pathname === "/Taskboard"
+                    window.location.pathname === "/client-List"
                       ? "nav-link active"
                       : "nav-link"
                   }
                   data-toggle="tab"
-                  href="/Taskboard"
+                  href="/Client-List"
                 >
-                  Taskboard
+                  Client List
                 </a>
               </li>
               <li className="nav-item">
                 <a
                   className={
-                    window.location.pathname === "/ass-Task"
+                    window.location.pathname === "/add-Client"
                       ? "nav-link active"
                       : "nav-link"
                   }
                   style={
-                    window.location.pathname === "/add-Task"
-                      ? { borderTop: "3px solid blue" }
+                    window.location.pathname === "/add-Client"
+                      ? { borderTop: "3px solid red" }
                       : { color: "grey" }
                   }
                   data-toggle="tab"
-                  href="/add-Task"
+                  href="/add-Client"
                 >
-                  Add Tasks
+                  Add Client
                 </a>
               </li>
             </ul>
           </div>
-          <h1>Taskboard</h1>
+          <h1>Client List</h1>
         </div>
       </>
     </div>
-  );
+  )
 }
 
-export default Taskboard;
+export default ClientList

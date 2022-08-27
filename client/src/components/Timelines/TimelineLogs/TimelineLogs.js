@@ -51,6 +51,7 @@ function TimelineLogs() {
               </li>
             </ul>
           </div>
+          <h1>Timeline Logs</h1>
         </div>
       </>
     </div>
