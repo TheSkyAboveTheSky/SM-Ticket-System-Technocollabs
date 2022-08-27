@@ -1,0 +1,10 @@
+@media (min-width: 768px) {
+  .cont {
+    margin-left: 4rem;
+  }
+}
+@media (min-width: 992px) {
+  .cont {
+    margin-left: 18rem;
+  }
+}

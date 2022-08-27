@@ -1,9 +1,19 @@
-import React from 'react'
-
+import React from "react";
+import Sidebar from "../Sidebar/Sidebar";
+import Header from '../Header/Header';
+import TimelineLogs from '../Timelines/TimelineLogs/TimelineLogs';
+import './Home.css';
 function Home() {
   return (
-    <div>Home</div>
-  )
+    <>
+      <div>
+        <Sidebar />
+      </div>
+      <div className="cont">
+        <Header  title={"Dashboard"}/>
+      </div>
+    </>
+  );
 }
 
-export default Home
+export default Home;

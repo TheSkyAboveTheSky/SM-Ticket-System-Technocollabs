@@ -20,8 +20,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/Taskboard" element={<Taskboard/>} />
         <Route path="/add-Task" element={<AddTask />} />
-        <Route path="/TimelineLogs" element={<TimelineLogs />} />
-        <Route path="/TimelineTasks" element={<TimelineTasks />} />
+        <Route path="/Timeline-Logs" element={<TimelineLogs />} />
+        <Route path="/Timeline-Task" element={<TimelineTasks />} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
