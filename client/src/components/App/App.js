@@ -18,6 +18,7 @@ import AddProject from "../Projects/Add-Projects/AddProject";
 import CompletedProject from "../Projects/Completed-Projects/CompletedProject";
 import UpComingProject from "../Projects/UpComing-Projects/UpComingProject";
 import OnGoingProject from "../Projects/OnGoing-Projects/OnGoingProject";
+import Test from '../Test/Test';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/completed-Project" element={<CompletedProject />} />
         <Route path="/ongoing-Project" element={<OnGoingProject />} />
         <Route path="/upcoming-Project" element={<UpComingProject />} />
+        <Route path="/test" element={<Test/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
