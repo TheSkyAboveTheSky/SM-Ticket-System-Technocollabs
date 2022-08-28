@@ -24,6 +24,10 @@ const taskSchema = new Schema({
     type: Date,
     required: true,
   },
+  start :{
+    type: Date,
+    required: true,
+  },
   status : {
     type : String,
     default : "UpComing",
