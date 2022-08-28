@@ -25,7 +25,7 @@ const getTicket = async (req, res) => {
 };
 const deleteTicket = async (req, res) => {
   try {
-    const Ticket = await task.findByIdAndDelete(req.params.id);
+    const ticket = await Ticket.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Ticket deleted successfully" });
   } catch (err) {
     console.log(err);
