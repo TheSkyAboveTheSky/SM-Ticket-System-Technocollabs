@@ -1,125 +1,416 @@
-<div className="section-body">
+<div className="section-body mt-3">
   <div className="container-fluid">
-    <div className="tab-content">
-    <div className="tab-pane fade" id="addnew" role="tabpanel">
-              <div className="row">
-                <div className="col-sm-12">
-                  <div className="card">
-                    <div className="card-header">
-                      <h3 className="card-title">Add Client</h3>
-                      <div className="card-options ">
-                        <a href="#" className="card-options-collapse" data-toggle="card-collapse"><i
-                            className="fe fe-chevron-up"></i></a>
-                        <a href="#" className="card-options-remove" data-toggle="card-remove"><i className="fe fe-x"></i></a>
-                      </div>
-                    </div>
-                    <form className="card-body">
-                      <div className="row clearfix">
-                        <div className="col-md-6 col-sm-12">
-                          <div className="form-group">
-                            <label>First Name</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-sm-12">
-                          <div className="form-group">
-                            <label>Last Name</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-3 col-sm-12">
-                          <div className="form-group">
-                            <label>Date of Birth</label>
-                            <input data-provide="datepicker" data-date-autoclose="true" className="form-control"
-                              placeholder="Date of Birth"/>
-                          </div>
-                        </div>
-                        <div className="col-md-3 col-sm-12">
-                          <label>Gender</label>
-                          <select className="form-control show-tick">
-                            <option value="">-- Gender --</option>
-                            <option value="10">Male</option>
-                            <option value="20">Female</option>
-                          </select>
-                        </div>
-                        <div className="col-md-3 col-sm-12">
-                          <div className="form-group">
-                            <label>Department</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-3 col-sm-12">
-                          <div className="form-group">
-                            <label>Position</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-4 col-sm-12">
-                          <div className="form-group">
-                            <label>Phone</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-4 col-sm-12">
-                          <div className="form-group">
-                            <label>Enter Your Email</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-4 col-sm-12">
-                          <div className="form-group">
-                            <label>Website URL</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-sm-12">
-                          <div className="form-group">
-                            <label>Facebook</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-sm-12">
-                          <div className="form-group">
-                            <label>Twitter</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-sm-12">
-                          <div className="form-group">
-                            <label>LinkedIN</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-sm-12">
-                          <div className="form-group">
-                            <label>Behance</label>
-                            <input type="text" className="form-control"/>
-                          </div>
-                        </div>
-                        <div className="col-sm-12">
-                          <div className="form-group mt-2 mb-3">
-                            <input type="file" className="dropify"/>
-                            <small id="fileHelp" className="form-text text-muted">This is some placeholder block-level help
-                              text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-                          </div>
-                        </div>
-                        <div className="col-sm-12">
-                          <div className="form-group mt-3">
-                            <label>Messages</label>
-                            <textarea rows="4" className="form-control no-resize"
-                              placeholder="Please type what you want..."></textarea>
-                          </div>
-                        </div>
-                        <div className="col-sm-12">
-                          <button type="submit" className="btn btn-primary">Submit</button>
-                          <button type="submit" className="btn btn-outline-secondary">Cancel</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+    <div className="row clearfix">
+      <div className="col-12">
+        <div className="card">
+          <div className="card-body">
+            <div className="row">
+              <div className="col-lg-2 col-md-4 col-sm-6">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="id"
+                  />
                 </div>
               </div>
+              <div className="col-lg-2 col-md-4 col-sm-6">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Priority"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-2 col-md-4 col-sm-6">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Department"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-2 col-md-4 col-sm-6">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Agent"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-2 col-md-4 col-sm-6">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    data-provide="datepicker"
+                    placeholder="Date"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-2 col-md-4 col-sm-6">
+                <a
+                  href="javascript:void(0);"
+                  className="btn btn-primary btn-block"
+                  title=""
+                >
+                  Search
+                </a>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-12">
+        <div className="card">
+          <div className="table-responsive">
+            <table className="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+              <thead>
+                <tr>
+                  <th colspan="5">Ticket Detail</th>
+                  <th colspan="3">Activity</th>
+                </tr>
+                <tr>
+                  <th className="w30">&nbsp;</th>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Priority</th>
+                  <th>Department</th>
+                  <th>Agent</th>
+                  <th>Date</th>
+                  <th>Activity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                        checked=""
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-5258</a>
+                  </td>
+                  <td>
+                    <span>It is a long established fact that a reader</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-default">lower</span>
+                  </td>
+                  <td>
+                    <span>Pre-Sales</span>
+                  </td>
+                  <td>
+                    <span>Archie Cantones</span>
+                  </td>
+                  <td>
+                    <span>6 hours ago</span>
+                  </td>
+                  <td>No reply yet</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-8793</a>
+                  </td>
+                  <td>
+                    <span>Measures your Current Assets / Current</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-danger">High</span>
+                  </td>
+                  <td>
+                    <span>Pre-Sales</span>
+                  </td>
+                  <td>
+                    <span>Rose Orcullo</span>
+                  </td>
+                  <td>
+                    <span>9 hours ago</span>
+                  </td>
+                  <td>2 reply</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-2500</a>
+                  </td>
+                  <td>
+                    <span>There are many variations of passages</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-info">Medium</span>
+                  </td>
+                  <td>
+                    <span>Pre-Sales</span>
+                  </td>
+                  <td>
+                    <span>Charize Cericoz</span>
+                  </td>
+                  <td>
+                    <span>10 hours ago</span>
+                  </td>
+                  <td>1 reply</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-9465</a>
+                  </td>
+                  <td>
+                    <span>Measures your Current Assets / Current</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-default">lower</span>
+                  </td>
+                  <td>
+                    <span>Payment</span>
+                  </td>
+                  <td>
+                    <span>Billie Ko</span>
+                  </td>
+                  <td>
+                    <span>23-01-2019</span>
+                  </td>
+                  <td>No reply yet</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-1515</a>
+                  </td>
+                  <td>
+                    <span>Contrary to popular belief, Lorem Ipsum</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-info">Medium</span>
+                  </td>
+                  <td>
+                    <span>Sales</span>
+                  </td>
+                  <td>
+                    <span>Hamza Macasindil</span>
+                  </td>
+                  <td>
+                    <span>22-01-2019</span>
+                  </td>
+                  <td>No reply yet</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-2589</a>
+                  </td>
+                  <td>
+                    <span>It uses a dictionary of over 200 Latin</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-info">Medium</span>
+                  </td>
+                  <td>
+                    <span>Technical</span>
+                  </td>
+                  <td>
+                    <span>Dyanne Aceron</span>
+                  </td>
+                  <td>
+                    <span>28-01-2019</span>
+                  </td>
+                  <td>5 reply</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-8793</a>
+                  </td>
+                  <td>
+                    <span>Measures your Current Assets / Current</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-danger">High</span>
+                  </td>
+                  <td>
+                    <span>Pre-Sales</span>
+                  </td>
+                  <td>
+                    <span>Rose Orcullo</span>
+                  </td>
+                  <td>
+                    <span>9 hours ago</span>
+                  </td>
+                  <td>2 reply</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-2500</a>
+                  </td>
+                  <td>
+                    <span>There are many variations of passages</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-info">Medium</span>
+                  </td>
+                  <td>
+                    <span>Pre-Sales</span>
+                  </td>
+                  <td>
+                    <span>Charize Cericoz</span>
+                  </td>
+                  <td>
+                    <span>10 hours ago</span>
+                  </td>
+                  <td>1 reply</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-9465</a>
+                  </td>
+                  <td>
+                    <span>Measures your Current Assets / Current</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-default">lower</span>
+                  </td>
+                  <td>
+                    <span>Payment</span>
+                  </td>
+                  <td>
+                    <span>Billie Ko</span>
+                  </td>
+                  <td>
+                    <span>23-01-2019</span>
+                  </td>
+                  <td>No reply yet</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        name="example-checkbox1"
+                        value="option1"
+                      />
+                      <span className="custom-control-label">&nbsp;</span>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="#">ASD-4569</a>
+                  </td>
+                  <td>
+                    <span>The standard chunk of Lorem Ipsum used</span>
+                  </td>
+                  <td>
+                    <span className="tag tag-danger">High</span>
+                  </td>
+                  <td>
+                    <span>Technical</span>
+                  </td>
+                  <td>
+                    <span>Dyanne Aceron</span>
+                  </td>
+                  <td>
+                    <span>02-02-2019</span>
+                  </td>
+                  <td>3 reply</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</div>;

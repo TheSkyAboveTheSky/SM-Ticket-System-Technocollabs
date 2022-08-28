@@ -6,8 +6,8 @@
 }
 @media (min-width: 992px) {
   .taskbg {
-    width : 60rem;
+    width : 40rem;
     height : 30rem;
-    margin-left: 15rem;
+    margin-left: 20rem;
   }
 }

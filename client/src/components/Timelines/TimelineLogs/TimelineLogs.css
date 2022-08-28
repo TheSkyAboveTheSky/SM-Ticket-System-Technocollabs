@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  .taskbg {
+    width : 60rem;
+    height : 40rem;
+  }
+}
+@media (min-width: 992px) {
+  .taskbg {
+    width : 40rem;
+    height : 30rem;
+    margin-left: 20rem;
+  }
+}

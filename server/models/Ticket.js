@@ -11,7 +11,7 @@ const ticketSchema = new Schema({
   details: String,
   userName: String,
   date: Date,
-  department: String,
+  departement: String,
   numberOfReplies: Number,
   Priority: {
     type : String,

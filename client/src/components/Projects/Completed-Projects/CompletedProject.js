@@ -186,7 +186,7 @@ function CompletedProject() {
                               </div>
                               <div className="progress progress-xs">
                                 <div
-                                  className="progress-bar bg-red"
+                                  className="progress-bar bg-yellow"
                                   role="progressbar"
                                   style={{ width: `${project.progress}%` }}
                                   aria-valuenow="36"
