@@ -1,9 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from 'react-router-dom';
 import "./Login.css";
 import login from '../../assets/images/login.svg';
+import Axios from '../Axios/Axios';
 
 function Login() {
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    try{
+      const response = await Axios.post('/auth/login',{email : email , password : password});
+      console.log(response.data);
+      localStorage.setItem('x-auth-token',response.data.token);
+      window.location.href = "/";
+    }catch(err){
+      console.log(err);
+      alert(err);
+    }
+  }
   return (
     <div className="vh-100" style={{ backgroundColor: "white" }}>
       <div className="container-fluid ">
@@ -16,7 +32,7 @@ function Login() {
             />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4">
-            <form>
+            <form onSubmit={loginHandler}>
               <div className="text-center mb-3">
                 <p>Sign in with:</p>
                 <button
@@ -51,6 +67,7 @@ function Login() {
                   type="email"
                   className="form-control"
                   placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <label>Email address</label>
               </div>
@@ -59,6 +76,7 @@ function Login() {
                   type="password"
                   className="form-control"
                   placeholder="Password"
+                  onChange = {(e) => setPassword(e.target.value)}
                 />
                 <label>Password</label>
               </div>

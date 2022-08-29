@@ -1,6 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 import register from '../../assets/images/register.webp';
+import Axios from '../Axios/Axios';
+
 function Registre() {
+  const [userName,setUserName] = useState("");
+  const [password,setPassword] = useState("");
+  const [email,setEmail] = useState("");
+
+  const createUser = async (e) => {
+    e.preventDefault();
+    try{
+      const response = await Axios.post('/user',{
+        email: email,
+        username: userName,
+        password: password,
+      })
+      window.location.href = "/login";
+    }catch(err){
+      alert(err);
+    }
+  }
   return (
     <div className="vh-600" style={{ backgroundColor: "white" }}>
       <div className="container-fluid ">
@@ -13,7 +32,7 @@ function Registre() {
             />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4">
-            <form>
+            <form onSubmit={createUser}>
               <div className="text-center mb-3">
                 <p>Sign Up:</p>
                 <button
@@ -58,6 +77,7 @@ function Registre() {
                   type="text"
                   className="form-control"
                   placeholder="Username"
+                  onChange={(e) => setUserName(e.target.value)}
                 />
                 <label>Username</label>
               </div>
@@ -67,6 +87,7 @@ function Registre() {
                   type="email"
                   className="form-control"
                   placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <label>Email address</label>
               </div>
@@ -76,6 +97,7 @@ function Registre() {
                   type="password"
                   className="form-control"
                   placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <label>Password</label>
               </div>

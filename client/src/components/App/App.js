@@ -4,8 +4,6 @@ import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
-import Sidebar from "../Sidebar/Sidebar";
-import Navbar from "../Navbar/Navbar";
 import Taskboard from "../Tasks/Taskboard/Taskboard";
 import AddTask from "../Tasks/addTask/AddTask";
 import TimelineTasks from "../Timelines/TimelineTasks/TimelineTasks";
@@ -18,30 +16,137 @@ import AddProject from "../Projects/Add-Projects/AddProject";
 import CompletedProject from "../Projects/Completed-Projects/CompletedProject";
 import UpComingProject from "../Projects/UpComing-Projects/UpComingProject";
 import OnGoingProject from "../Projects/OnGoing-Projects/OnGoingProject";
-import UnAuthorized from '../UnAuthorized/UnAuthorized';
-import Test from '../Test/Test';
+import UnAuthorized from "../UnAuthorized/UnAuthorized";
+import Test from "../Test/Test";
+import IsAuthentificated from "../../auth/IsAuthentificated";
+import NotAuthentificated from "../../auth/NotAuthentificated";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/Taskboard" element={<Taskboard />} />
-        <Route path="/add-Task" element={<AddTask />} />
-        <Route path="/Timeline-Logs" element={<TimelineLogs />} />
-        <Route path="/Timeline-Task" element={<TimelineTasks />} />
-        <Route path="/add-Client" element={<AddClient />} />
-        <Route path="/Client-List" element={<Clientlist />} />
-        <Route path="/add-Ticket" element={<AddTicket />} />
-        <Route path="/Ticket-List" element={<TicketList />} />
-        <Route path="/add-Project" element={<AddProject />} />
-        <Route path="/completed-Project" element={<CompletedProject />} />
-        <Route path="/ongoing-Project" element={<OnGoingProject />} />
-        <Route path="/upcoming-Project" element={<UpComingProject />} />
-        <Route path="/test" element={<Test/>} />
-        <Route path="/UnAuthorized" element={<UnAuthorized/>} />
+        <Route
+          path="/"
+          element={
+            <IsAuthentificated>
+              <Home />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <NotAuthentificated>
+              <Login />
+            </NotAuthentificated>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <NotAuthentificated>
+              <Register />
+            </NotAuthentificated>
+          }
+        />
+        <Route
+          path="/Taskboard"
+          element={
+            <IsAuthentificated>
+              <Taskboard />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/add-Task"
+          element={
+            <IsAuthentificated>
+              <AddTask />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/Timeline-Logs"
+          element={
+            <IsAuthentificated>
+              <TimelineLogs />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/Timeline-Task"
+          element={
+            <IsAuthentificated>
+              <TimelineTasks />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/add-Client"
+          element={
+            <IsAuthentificated>
+              <AddClient />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/Client-List"
+          element={
+            <IsAuthentificated>
+              <Clientlist />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/add-Ticket"
+          element={
+            <IsAuthentificated>
+              <AddTicket />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/Ticket-List"
+          element={
+            <IsAuthentificated>
+              <TicketList />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/add-Project"
+          element={
+            <IsAuthentificated>
+              <AddProject />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/completed-Project"
+          element={
+            <IsAuthentificated>
+              <CompletedProject />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/ongoing-Project"
+          element={
+            <IsAuthentificated>
+              <OnGoingProject />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/upcoming-Project"
+          element={
+            <IsAuthentificated>
+              <UpComingProject />
+            </IsAuthentificated>
+          }
+        />
+        <Route path="/test" element={<Test />} />
+        <Route path="/UnAuthorized" element={<UnAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
