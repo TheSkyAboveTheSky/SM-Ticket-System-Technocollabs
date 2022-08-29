@@ -1,7 +1,6 @@
 import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
-import user from "../../assets/images/user.png";
 
 function Test() {
   return (
@@ -52,454 +51,87 @@ function Test() {
               </li>
             </ul>
           </div>
-          <div className="section-body mt-3">
-            <div className="container-fluid">
-              <div className="row clearfix">
-                <div className="col-12">
-                  <div className="card">
-                    <div className="card-body">
-                      <div className="row">
-                        <div className="col-lg-2 col-md-4 col-sm-6">
-                          <div className="input-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="id"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-2 col-md-4 col-sm-6">
-                          <div className="input-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Priority"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-2 col-md-4 col-sm-6">
-                          <div className="input-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Department"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-2 col-md-4 col-sm-6">
-                          <div className="input-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Agent"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-2 col-md-4 col-sm-6">
-                          <div className="input-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              data-provide="datepicker"
-                              placeholder="Date"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-2 col-md-4 col-sm-6">
-                          <a
-                            href="javascript:void(0);"
-                            className="btn btn-primary btn-block"
-                            title=""
-                          >
-                            Search
-                          </a>
-                        </div>
+          <div className="vh-600" style={{ backgroundColor: "white" }}>
+            <div className="container-fluid ">
+              <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="col-md-9 col-lg-6 col-xl-5">
+                  <img src="" alt="login form" className="img-fluid" />
+                </div>
+                <div className="col-md-8 col-lg-6 col-xl-4">
+                  <form>
+                    <div className="text-center mb-3">
+                      <h3 classname="text-info">Sign Up</h3>
+                    </div>
+                    <div className="form-floating mb-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="FullName"
+                      />
+                      <label>Full Name</label>
+                    </div>
+
+                    <div className="form-floating mb-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Username"
+                      />
+                      <label>Username</label>
+                    </div>
+
+                    <div className="form-floating mb-3">
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Email"
+                      />
+                      <label>Email address</label>
+                    </div>
+
+                    <div className="form-floating mb-3">
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Password"
+                      />
+                      <label>Password</label>
+                    </div>
+
+                    <div className="form-floating mb-3">
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Repeat Password"
+                      />
+                      <label>Repeat Password</label>
+                    </div>
+
+                    <div className="col-md-12 d-flex justify-content-center">
+                      <div className="form-check mb-3 mb-md-0">
+                        <input className="form-check-input" type="checkbox" />
+                        <label className="form-check-label">
+                          {" "}
+                          I have Already Read and Agreed to the Terms{" "}
+                        </label>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="card">
-                    <div className="table-responsive">
-                      <table className="table table-hover table-striped table-vcenter mb-0 text-nowrap">
-                        <thead>
-                          <tr>
-                            <th colspan="5">Ticket Detail</th>
-                            <th colspan="3">Activity</th>
-                          </tr>
-                          <tr>
-                            <th className="w30">&nbsp;</th>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Priority</th>
-                            <th>Department</th>
-                            <th>Agent</th>
-                            <th>Date</th>
-                            <th>Activity</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                  checked=""
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-5258</a>
-                            </td>
-                            <td>
-                              <span>
-                                It is a long established fact that a reader
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-default">lower</span>
-                            </td>
-                            <td>
-                              <span>Pre-Sales</span>
-                            </td>
-                            <td>
-                              <span>Archie Cantones</span>
-                            </td>
-                            <td>
-                              <span>6 hours ago</span>
-                            </td>
-                            <td>No reply yet</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-8793</a>
-                            </td>
-                            <td>
-                              <span>
-                                Measures your Current Assets / Current
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-danger">High</span>
-                            </td>
-                            <td>
-                              <span>Pre-Sales</span>
-                            </td>
-                            <td>
-                              <span>Rose Orcullo</span>
-                            </td>
-                            <td>
-                              <span>9 hours ago</span>
-                            </td>
-                            <td>2 reply</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-2500</a>
-                            </td>
-                            <td>
-                              <span>There are many variations of passages</span>
-                            </td>
-                            <td>
-                              <span className="tag tag-info">Medium</span>
-                            </td>
-                            <td>
-                              <span>Pre-Sales</span>
-                            </td>
-                            <td>
-                              <span>Charize Cericoz</span>
-                            </td>
-                            <td>
-                              <span>10 hours ago</span>
-                            </td>
-                            <td>1 reply</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-9465</a>
-                            </td>
-                            <td>
-                              <span>
-                                Measures your Current Assets / Current
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-default">lower</span>
-                            </td>
-                            <td>
-                              <span>Payment</span>
-                            </td>
-                            <td>
-                              <span>Billie Ko</span>
-                            </td>
-                            <td>
-                              <span>23-01-2019</span>
-                            </td>
-                            <td>No reply yet</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-1515</a>
-                            </td>
-                            <td>
-                              <span>
-                                Contrary to popular belief, Lorem Ipsum
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-info">Medium</span>
-                            </td>
-                            <td>
-                              <span>Sales</span>
-                            </td>
-                            <td>
-                              <span>Hamza Macasindil</span>
-                            </td>
-                            <td>
-                              <span>22-01-2019</span>
-                            </td>
-                            <td>No reply yet</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-2589</a>
-                            </td>
-                            <td>
-                              <span>
-                                It uses a dictionary of over 200 Latin
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-info">Medium</span>
-                            </td>
-                            <td>
-                              <span>Technical</span>
-                            </td>
-                            <td>
-                              <span>Dyanne Aceron</span>
-                            </td>
-                            <td>
-                              <span>28-01-2019</span>
-                            </td>
-                            <td>5 reply</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-8793</a>
-                            </td>
-                            <td>
-                              <span>
-                                Measures your Current Assets / Current
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-danger">High</span>
-                            </td>
-                            <td>
-                              <span>Pre-Sales</span>
-                            </td>
-                            <td>
-                              <span>Rose Orcullo</span>
-                            </td>
-                            <td>
-                              <span>9 hours ago</span>
-                            </td>
-                            <td>2 reply</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-2500</a>
-                            </td>
-                            <td>
-                              <span>There are many variations of passages</span>
-                            </td>
-                            <td>
-                              <span className="tag tag-info">Medium</span>
-                            </td>
-                            <td>
-                              <span>Pre-Sales</span>
-                            </td>
-                            <td>
-                              <span>Charize Cericoz</span>
-                            </td>
-                            <td>
-                              <span>10 hours ago</span>
-                            </td>
-                            <td>1 reply</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-9465</a>
-                            </td>
-                            <td>
-                              <span>
-                                Measures your Current Assets / Current
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-default">lower</span>
-                            </td>
-                            <td>
-                              <span>Payment</span>
-                            </td>
-                            <td>
-                              <span>Billie Ko</span>
-                            </td>
-                            <td>
-                              <span>23-01-2019</span>
-                            </td>
-                            <td>No reply yet</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  name="example-checkbox1"
-                                  value="option1"
-                                />
-                                <span className="custom-control-label">
-                                  &nbsp;
-                                </span>
-                              </label>
-                            </td>
-                            <td>
-                              <a href="#">ASD-4569</a>
-                            </td>
-                            <td>
-                              <span>
-                                The standard chunk of Lorem Ipsum used
-                              </span>
-                            </td>
-                            <td>
-                              <span className="tag tag-danger">High</span>
-                            </td>
-                            <td>
-                              <span>Technical</span>
-                            </td>
-                            <td>
-                              <span>Dyanne Aceron</span>
-                            </td>
-                            <td>
-                              <span>02-02-2019</span>
-                            </td>
-                            <td>3 reply</td>
-                          </tr>
-                        </tbody>
-                      </table>
+
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-100 my-3"
+                    >
+                      Sign Up
+                    </button>
+                    <div className="text-center">
+                      <p>
+                        Already a member?{" "}
+                        <a href="/login" style={{ textDecoration: "none" }}>
+                          Login in
+                        </a>
+                      </p>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>

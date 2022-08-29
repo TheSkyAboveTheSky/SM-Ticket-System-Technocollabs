@@ -51,7 +51,126 @@ function AddClient() {
               </li>
             </ul>
           </div>
-          <h1>Add Client</h1>
+          <div className="vh-600" style={{ backgroundColor: "white" }}>
+            <div className="container-fluid ">
+              <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="col-md-9 col-lg-6 col-xl-5">
+                  <img src="" alt="login form" className="img-fluid" />
+                </div>
+                <div className="col-md-8 col-lg-6 col-xl-4">
+                  <form>
+                    <div className="text-center mb-3">
+                      <h3 classname="text-info">Add Clients</h3>
+                    </div>
+                    <div className="row g-3">
+                      <div className="col-md-6 form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="FullName"
+                        />
+                        <label>Full Name</label>
+                      </div>
+                      <div className="col-md-6 form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Country"
+                        />
+                        <label>Country</label>
+                      </div>
+                    </div>
+                    <div className="row g-3">
+                      <div className="col-md-6 form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Address"
+                        />
+                        <label>Address</label>
+                      </div>
+                      <div className="col-md-6 form-floating mb-3">
+                        <input
+                          type="email"
+                          className="form-control"
+                          placeholder="Email"
+                        />
+                        <label>Email</label>
+                      </div>
+                    </div>
+                    <div className="row g-3">
+                      <div className="col-md-6 form-floating mb-3">
+                        <input
+                          type="Number"
+                          className="form-control"
+                          placeholder="Projects"
+                          min="0"
+                          step="1"
+                        />
+                        <label>Project</label>
+                      </div>
+                      <div className="col-md-6 form-floating mb-3">
+                        <input
+                          type="Number"
+                          className="form-control"
+                          placeholder="Deal"
+                          min="0"
+                          step="1"
+                        />
+                        <label>Deal</label>
+                      </div>
+                    </div>
+                    <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Facebook"
+                        />
+                        <label>Facebook</label>
+                      </div>
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Instagram"
+                        />
+                        <label>Instagram</label>
+                      </div>
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Twitter"
+                        />
+                        <label>Twitter</label>
+                      </div>
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Slack"
+                        />
+                        <label>Slack</label>
+                      </div>
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Github"
+                        />
+                        <label>Github</label>
+                      </div>
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-100 my-3"
+                    >
+                      Create Client
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     </div>
