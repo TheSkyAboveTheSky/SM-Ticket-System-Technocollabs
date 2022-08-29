@@ -15,10 +15,20 @@ function Registre() {
         username: userName,
         password: password,
       })
-      window.location.href = "/login";
+      try{
+        const mail = await Axios.post('/send-mail',{
+          to : email,
+          subject : "Welcome to Our Application",
+          text : "Welcome to our application"
+        })
+      }catch(err){
+        console.error(err);
+      }
+/*       window.location.href = "/login"; */
     }catch(err){
       alert(err);
     }
+
   }
   return (
     <div className="vh-600" style={{ backgroundColor: "white" }}>

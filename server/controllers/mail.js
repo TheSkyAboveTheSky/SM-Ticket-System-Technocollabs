@@ -12,16 +12,16 @@ const sendMail = async (req,res) => {
   });
   const mailOptions = {
     from : process.env.GMAIL_USER,
-    to: require.body.to,
+    to: req.body.to,
     subject: req.body.subject,
-    text: req.body.body,
+    text: req.body.text,
   };
   transporter.sendMail(mailOptions, (error) => {
     if(error){
       return console.error(error);
     }
     console.log('Message sent successfully!');
-    res.sendStatus(200);
+    res.sendStatus(200).json({ message :"Message sent successfully!" });
   })
   return res.end();
 }
