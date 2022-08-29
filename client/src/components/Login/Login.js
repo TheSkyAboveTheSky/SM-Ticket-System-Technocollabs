@@ -1,35 +1,43 @@
-import React,{useState} from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
-import login from '../../assets/images/login.svg';
-import Axios from '../Axios/Axios';
+import login from "../../assets/images/login.svg";
+import Axios from "../Axios/Axios";
 
 function Login() {
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    try{
-      const response = await Axios.post('/auth/login',{email : email , password : password});
-      console.log(response.data);
-      localStorage.setItem('x-auth-token',response.data.token);
+    try {
+      const response = await Axios.post("/auth/login", {
+        email: email,
+        password: password,
+      });
+      localStorage.setItem("x-auth-token", response.data.token);
+      localStorage.setItem("user-id", response.data.user.id);
+      try {
+        const subResponse = await Axios.post("/timeline", {
+          user: response.data.user.id,
+          type: "Logs",
+          body: "You have been logged in successfully to your Account",
+        });
+      } catch (err) {
+        console.log(err);
+      }
       window.location.href = "/";
-    }catch(err){
+    } catch (err) {
       console.log(err);
       alert(err);
     }
-  }
+  };
   return (
     <div className="vh-100" style={{ backgroundColor: "white" }}>
       <div className="container-fluid ">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-9 col-lg-6 col-xl-5">
-            <img
-              src={login}
-              alt="login form"
-              className="img-fluid"
-            />
+            <img src={login} alt="login form" className="img-fluid" />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4">
             <form onSubmit={loginHandler}>
@@ -76,7 +84,7 @@ function Login() {
                   type="password"
                   className="form-control"
                   placeholder="Password"
-                  onChange = {(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <label>Password</label>
               </div>

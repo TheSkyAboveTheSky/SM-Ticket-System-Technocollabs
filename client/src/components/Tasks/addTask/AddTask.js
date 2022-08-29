@@ -1,35 +1,59 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import banner from "../../../assets/images/addTask.jpg";
-import Axios from '../../Axios/Axios';
+import Axios from "../../Axios/Axios";
 
 function AddTask() {
-  const [fullName,setFullName] = useState("");
-  const [description,setDescriptions] = useState("");
-  const [priority,setPriority] = useState("");
-  const [status,setStatus] = useState("");
-  const [team,setTeam] = useState("");
-  const [progress,setProgress] = useState(0);
-  const [startTime,setStartTime] = useState();
-  const [dueTime,setDueTime] = useState();
+  const [fullName, setFullName] = useState("");
+  const [description, setDescriptions] = useState("");
+  const [priority, setPriority] = useState("");
+  const [status, setStatus] = useState("");
+  const [team, setTeam] = useState("");
+  const [progress, setProgress] = useState(0);
+  const [startTime, setStartTime] = useState();
+  const [dueTime, setDueTime] = useState();
 
   const createTask = async (e) => {
-    try{
-      const response = await Axios.post('/task',{
-        name : fullName,
-        description : description,
-        priority : priority,
-        status : status,
-        team : team,
-        progress : progress,
-        start : startTime,
-        due : dueTime
-      })
-    }catch(err){
+    e.preventDefault();
+    try {
+      const response = await Axios.post("/task", {
+        name: fullName,
+        description: description,
+        priority: priority,
+        status: status,
+        team: team,
+        progress: progress,
+        start: startTime,
+        due: dueTime,
+      });
+      try {
+        const users = await Axios.get("/user");
+        const array = users.data;
+        array.forEach(async (user, index) => {
+          if (user.team === team) {
+            try {
+              const subResponse = await Axios.post("/timeline", {
+                user: user._id,
+                body: `You have been added as a member of the ${team} team to the Task: ${fullName}`,
+                type: "Tasks",
+              });
+            } catch (err) {
+              console.log(err);
+              alert(err);
+            }
+          }
+        });
+      } catch (err) {
+        console.error(err);
+        alert(err);
+      }
+    } catch (err) {
       console.error(err);
+      alert(err);
     }
-  }
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -88,7 +112,7 @@ function AddTask() {
                 <div className="col-md-8 col-lg-6 col-xl-4">
                   <form onSubmit={createTask}>
                     <div className="text-center mb-3">
-                      <h3 classname="text-info">Add Tasks</h3>
+                      <h3 className="text-info">Add Tasks</h3>
                     </div>
                     <div className="row g-3">
                       <div className="col-md-6 form-floating mb-3">
@@ -101,8 +125,11 @@ function AddTask() {
                         <label>Name</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select" onChange={(e) => setPriority(e.target.value)}>
-                          <option selected>Choose...</option>
+                        <select
+                          className="form-select"
+                          onChange={(e) => setPriority(e.target.value)}
+                        >
+                          <option defaultValue>choose...</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
                           <option value="High">High</option>
@@ -123,7 +150,7 @@ function AddTask() {
                       <input
                         className="form-control"
                         placeholder="Start Date"
-                        type="date" 
+                        type="date"
                         onChange={(e) => setStartTime(e.target.value)}
                       />
                       <label>Start Time</label>
@@ -132,14 +159,17 @@ function AddTask() {
                       <input
                         className="form-control"
                         placeholder="Due Date"
-                        type="date" 
+                        type="date"
                         onChange={(e) => setDueTime(e.target.value)}
                       />
                       <label>Due Time</label>
                     </div>
                     <div className="row g-3">
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select" onChange={(e) => setTeam(e.target.value)}>
+                        <select
+                          className="form-select"
+                          onChange={(e) => setTeam(e.target.value)}
+                        >
                           <option selected>Choose...</option>
                           <option value="Team One">Team One</option>
                           <option value="Team Two">Team Two</option>
@@ -148,7 +178,10 @@ function AddTask() {
                         <label>Team</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select" onChange={(e) => setStatus(e.target.value)}>
+                        <select
+                          className="form-select"
+                          onChange={(e) => setStatus(e.target.value)}
+                        >
                           <option selected>Choose...</option>
                           <option value="UpComing">UpComing</option>
                           <option value="OnGoing">OnGoing</option>

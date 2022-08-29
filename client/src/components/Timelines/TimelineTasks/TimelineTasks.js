@@ -1,20 +1,21 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import "./TimelineTasks.css";
-import Axios from '../../Axios/Axios';
-import banner from '../../../assets/images/TimelineTask.jpg'
+import Axios from "../../Axios/Axios";
+import banner from "../../../assets/images/TimelineTask.jpg";
 
 function TimelineTasks() {
-  const [timelines,setTimelines] =useState([]);
-  const [id,setId] = useState(window.localStorage.getItem('id'));
+  const [timelines, setTimelines] = useState([]);
+  const [id, setId] = useState(window.localStorage.getItem("user-id"));
   useEffect(() => {
     getTimelines();
-  },[])
+  }, []);
   const getTimelines = async () => {
-    const response = await Axios.get(`/timeline/${id}/logs`);
+    const response = await Axios.get(`/timeline/${id}/tasks`);
     setTimelines(response.data);
-  } 
+  };
+
   return (
     <div>
       <>
@@ -64,8 +65,8 @@ function TimelineTasks() {
             </ul>
           </div>
           <h1>Timeline Tasks</h1>
-          <div style={{ backgroundColor : 'white' }}>
-            <img src={banner} alt="Taskboard" className="taskbg"/>
+          <div style={{ backgroundColor: "white" }}>
+            <img src={banner} alt="Taskboard" className="taskbg" />
           </div>
           <div className="section-body">
             <div className="container-fluid">
@@ -87,26 +88,27 @@ function TimelineTasks() {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>01</td>
-                              <td>
-                                <h6 className="mb-0">
-                                  <span className="tag tag-blue px-4">
-                                    New Activity
-                                  </span>
-                                </h6>
-                                <span>
-                                  It is a long established fact that a reader
-                                  will be distracted...
-                                </span>
-                              </td>
-                              <td></td>
-                              <td>
-                                <div className="text-info">
-                                  Start: 3 Jun 2019
-                                </div>
-                              </td>
-                            </tr>
+                            {timelines.map((timeline, index) => {
+                              return (
+                                <tr>
+                                  <td>{++index}</td>
+                                  <td>
+                                    <h6 className="mb-0">
+                                      <span className="tag tag-blue px-4">
+                                        New Activity
+                                      </span>
+                                    </h6>
+                                    <span>{timeline.body}</span>
+                                  </td>
+                                  <td></td>
+                                  <td>
+                                    <div className="text-info">
+                                      {timeline.createdAt}
+                                    </div>
+                                  </td>
+                                </tr>
+                              );
+                            })}
                           </tbody>
                         </table>
                       </div>

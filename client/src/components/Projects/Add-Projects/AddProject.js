@@ -1,33 +1,56 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import register from "../../../assets/images/register.webp";
-import Axios from '../../Axios/Axios';
+import Axios from "../../Axios/Axios";
 
 function AddProject() {
-  const [title,setTitle] = useState("");
-  const [type,setType] = useState("");
-  const [description,setDescription] = useState("");
-  const [creator,setCreator] = useState("");
-  const [team,setTeam] = useState("");
-  const [status,setStatus] = useState("");
-  const [progress,setProgress] = useState("");
+  const [title, setTitle] = useState("");
+  const [type, setType] = useState("");
+  const [description, setDescription] = useState("");
+  const [creator, setCreator] = useState("");
+  const [team, setTeam] = useState("");
+  const [status, setStatus] = useState("");
+  const [progress, setProgress] = useState("");
 
-  const createProject = async () => {
-    try{
-      const response = await Axios.post('/project',{
-        title : title,
-        type : type,
-        description : description,
-        creator : creator,
-        team : team,
-        status : status,
-        progress : progress
-      })
-    }catch(err){
+  const createProject = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await Axios.post("/project", {
+        title: title,
+        type: type,
+        description: description,
+        creator: creator,
+        team: team,
+        status: status,
+        progress: progress,
+      });
+      try {
+        const users = await Axios.get("/user");
+        const array = users.data;
+        array.forEach(async (user, index) => {
+          if (user.team === team) {
+            try {
+              const subResponse = await Axios.post("/timeline", {
+                user: user._id,
+                body: `You have been added as a member of the ${team} team to the Project : ${title}`,
+                type: "Tasks",
+              });
+            } catch (err) {
+              console.log(err);
+              alert(err);
+            }
+          }
+        });
+      } catch (err) {
+        console.error(err);
+        alert(err);
+      }
+    } catch (err) {
       console.error(err);
     }
-  }
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -135,7 +158,10 @@ function AddProject() {
                         <label>Title</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select" onChange={ (e) => setType(e.target.value)}>
+                        <select
+                          className="form-select"
+                          onChange={(e) => setType(e.target.value)}
+                        >
                           <option selected>Choose...</option>
                           <option value="Angular">Angular</option>
                           <option value="React">React</option>
@@ -160,12 +186,20 @@ function AddProject() {
                       <label>Description</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input className="form-control" placeholder="Creator" type="text" onChange={(e) => setCreator(e.target.value)}/>
+                      <input
+                        className="form-control"
+                        placeholder="Creator"
+                        type="text"
+                        onChange={(e) => setCreator(e.target.value)}
+                      />
                       <label>Creator</label>
                     </div>
                     <div className="row g-3">
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select" onChange={(e) => setTeam(e.target.value)}>
+                        <select
+                          className="form-select"
+                          onChange={(e) => setTeam(e.target.value)}
+                        >
                           <option selected>Choose...</option>
                           <option value="Team One">Team One</option>
                           <option value="Team Two">Team Two</option>
@@ -174,7 +208,10 @@ function AddProject() {
                         <label>Team</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select" onChange={(e) => setStatus(e.target.value)}>
+                        <select
+                          className="form-select"
+                          onChange={(e) => setStatus(e.target.value)}
+                        >
                           <option selected>Choose...</option>
                           <option value="UpComing">UpComing</option>
                           <option value="OnGoing">OnGoing</option>
@@ -185,11 +222,11 @@ function AddProject() {
                     </div>
                     <div className="form-floating mb-3">
                       <input
-                      className="form-control"
-                      type="Number"
-                      step="1"
-                      min="0"
-                      onChange={(e) => setProgress(e.target.value)}
+                        className="form-control"
+                        type="Number"
+                        step="1"
+                        min="0"
+                        onChange={(e) => setProgress(e.target.value)}
                       />
                       <label>Progress</label>
                     </div>
