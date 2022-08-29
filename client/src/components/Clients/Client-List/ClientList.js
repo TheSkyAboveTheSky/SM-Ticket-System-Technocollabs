@@ -146,21 +146,84 @@ function ClientList() {
                                 <a className="__cf_email__">{client.email}</a>
                               </span>
                               <ul className="mt-3 list-unstyled d-flex justify-content-center">
-                                <li>
-                                  <a className="p-3" target="_blank" href="#">
-                                    <i className="fa fa-facebook"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a className="p-3" target="_blank" href="#">
-                                    <i className="fa fa-slack"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a className="p-3" target="_blank" href="#">
-                                    <i className="fa fa-linkedin"></i>
-                                  </a>
-                                </li>
+                                {client.facebook ? (
+                                  <li>
+                                    <a
+                                      className="p-3"
+                                      target="_blank"
+                                      href={client.facebook}
+                                    >
+                                      <i className="fa fa-facebook"></i>
+                                    </a>
+                                  </li>
+                                ) : (
+                                  ""
+                                )}
+                                {client.slack ? (
+                                  <li>
+                                    <a
+                                      className="p-3"
+                                      target="_blank"
+                                      href={client.slack}
+                                    >
+                                      <i className="fa fa-slack"></i>
+                                    </a>
+                                  </li>
+                                ) : (
+                                  ""
+                                )}
+                                {client.linkedin ? (
+                                  <li>
+                                    <a
+                                      className="p-3"
+                                      target="_blank"
+                                      href={client.linkedin}
+                                    >
+                                      <i className="fa fa-linkedin"></i>
+                                    </a>
+                                  </li>
+                                ) : (
+                                  ""
+                                )}
+                                {client.twitter ? (
+                                  <li>
+                                    <a
+                                      className="p-3"
+                                      target="_blank"
+                                      href={client.twitter}
+                                    >
+                                      <i className="fa fa-twitter"></i>
+                                    </a>
+                                  </li>
+                                ) : (
+                                  ""
+                                )}
+                                {client.instagram ? (
+                                  <li>
+                                    <a
+                                      className="p-3"
+                                      target="_blank"
+                                      href={client.instagram}
+                                    >
+                                      <i className="fa fa-instagram"></i>
+                                    </a>
+                                  </li>
+                                ) : (
+                                  ""
+                                )}
+                                {client.github ? (
+                                  <li>
+                                    <a
+                                      className="p-3"
+                                      target="_blank"
+                                      href={client.github}
+                                    >
+                                      <i className="fa fa-github"></i>
+                                    </a>
+                                  </li>
+                                ) : (
+                                  ""
+                                )}
                               </ul>
                               <button className="btn btn-default btn-sm">
                                 View Profile

@@ -1,8 +1,43 @@
-import React from "react";
+import React,{useState} from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
+import Axios from '../../Axios/Axios';
+import banner from '../../../assets/images/banner.jpg'
 
 function AddClient() {
+  const [fullName,setFullName] = useState("");
+  const [country,setCountry] = useState("");
+  const [address,setAddress] = useState("");
+  const [email,setEmail] = useState("");
+  const [project,setProject] = useState(0);
+  const [deal,setDeal] = useState(0);
+  const [facebook,setFacebook] = useState("");
+  const [instagram,setInstagram] = useState("");
+  const [twitter,setTwitter] = useState("");
+  const [slack,setSlack] = useState("");
+  const [github,setGithub] = useState("");
+  const [linkedIn,setLinkedIn] = useState("");
+
+  const createClient = async () => {
+    try{
+      const response = await Axios.post('/client',{
+        fullName : fullName,
+        country : country,
+        address : address,
+        email : email,
+        project : project,
+        deal : deal,
+        twitter : twitter,
+        slack : slack,
+        github : github,
+        linkedin : linkedIn,
+        instagram : instagram,
+        facebook : facebook,
+      })
+    }catch(err){
+      console.error(err);
+    }
+  }
   return (
     <div>
       <>
@@ -55,10 +90,10 @@ function AddClient() {
             <div className="container-fluid ">
               <div className="row d-flex justify-content-center align-items-center h-100">
                 <div className="col-md-9 col-lg-6 col-xl-5">
-                  <img src="" alt="login form" className="img-fluid" />
+                  <img src={banner} alt="login form" className="img-fluid" />
                 </div>
                 <div className="col-md-8 col-lg-6 col-xl-4">
-                  <form>
+                  <form onSubmit={createClient}>
                     <div className="text-center mb-3">
                       <h3 classname="text-info">Add Clients</h3>
                     </div>
@@ -68,6 +103,7 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="FullName"
+                          onChange={(e) => setFullName(e.target.value)}
                         />
                         <label>Full Name</label>
                       </div>
@@ -76,6 +112,7 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="Country"
+                          onChange={(e) => setCountry(e.target.value)}
                         />
                         <label>Country</label>
                       </div>
@@ -86,6 +123,7 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="Address"
+                          onChange={(e) => setAddress(e.target.value)}
                         />
                         <label>Address</label>
                       </div>
@@ -94,6 +132,7 @@ function AddClient() {
                           type="email"
                           className="form-control"
                           placeholder="Email"
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                         <label>Email</label>
                       </div>
@@ -106,6 +145,7 @@ function AddClient() {
                           placeholder="Projects"
                           min="0"
                           step="1"
+                          onChange={(e) => setProject(e.target.value)}
                         />
                         <label>Project</label>
                       </div>
@@ -116,6 +156,7 @@ function AddClient() {
                           placeholder="Deal"
                           min="0"
                           step="1"
+                          onChange={(e) => setDeal(e.target.value)}
                         />
                         <label>Deal</label>
                       </div>
@@ -125,6 +166,7 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="Facebook"
+                          onChange={(e) => setFacebook(e.target.value)}
                         />
                         <label>Facebook</label>
                       </div>
@@ -133,6 +175,7 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="Instagram"
+                          onChange={(e) => setInstagram(e.target.value)}
                         />
                         <label>Instagram</label>
                       </div>
@@ -141,6 +184,7 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="Twitter"
+                          onChange={(e) => setTwitter(e.target.value)}
                         />
                         <label>Twitter</label>
                       </div>
@@ -149,6 +193,7 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="Slack"
+                          onChange={(e) => setSlack(e.target.value)}
                         />
                         <label>Slack</label>
                       </div>
@@ -157,8 +202,18 @@ function AddClient() {
                           type="text"
                           className="form-control"
                           placeholder="Github"
+                          onChange={(e) => setGithub(e.target.value)}
                         />
                         <label>Github</label>
+                      </div>
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="LinkedIn"
+                          onChange={(e) => setLinkedIn(e.target.value)}
+                        />
+                        <label>LinkedIn</label>
                       </div>
                     <button
                       type="submit"

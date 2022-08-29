@@ -40,5 +40,8 @@ const clientSchema = new Schema({
   facebook : String,
   twitter : String,
   linkedin : String,
+  slack : String,
+  instagram : String,
+  github : String,
 })
 module.exports = mongoose.model('Client',clientSchema);
