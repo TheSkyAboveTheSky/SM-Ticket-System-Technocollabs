@@ -1,9 +1,36 @@
-import React from "react";
+import React,{useState} from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import banner from "../../../assets/images/addTask.jpg";
+import Axios from '../../Axios/Axios';
 
 function AddTask() {
+  const [fullName,setFullName] = useState("");
+  const [description,setDescriptions] = useState("");
+  const [priority,setPriority] = useState("");
+  const [status,setStatus] = useState("");
+  const [team,setTeam] = useState("");
+  const [progress,setProgress] = useState(0);
+  const [startTime,setStartTime] = useState();
+  const [dueTime,setDueTime] = useState();
+
+  const createTask = async (e) => {
+    try{
+      const response = await Axios.post('/task',{
+        name : fullName,
+        description : description,
+        priority : priority,
+        status : status,
+        team : team,
+        progress : progress,
+        start : startTime,
+        due : dueTime
+      })
+    }catch(err){
+      console.error(err);
+    }
+  }
+
   return (
     <div>
       <>
@@ -59,7 +86,7 @@ function AddTask() {
                   <img src={banner} alt="login form" className="img-fluid" />
                 </div>
                 <div className="col-md-8 col-lg-6 col-xl-4">
-                  <form>
+                  <form onSubmit={createTask}>
                     <div className="text-center mb-3">
                       <h3 classname="text-info">Add Tasks</h3>
                     </div>
@@ -68,12 +95,13 @@ function AddTask() {
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Title"
+                          placeholder="Name"
+                          onChange={(e) => setFullName(e.target.value)}
                         />
                         <label>Name</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select">
+                        <select className="form-select" onChange={(e) => setPriority(e.target.value)}>
                           <option selected>Choose...</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
@@ -87,6 +115,7 @@ function AddTask() {
                       <textarea
                         className="form-control"
                         placeholder="Description"
+                        onChange={(e) => setDescriptions(e.target.value)}
                       ></textarea>
                       <label>Description</label>
                     </div>
@@ -95,6 +124,7 @@ function AddTask() {
                         className="form-control"
                         placeholder="Start Date"
                         type="date" 
+                        onChange={(e) => setStartTime(e.target.value)}
                       />
                       <label>Start Time</label>
                     </div>
@@ -103,12 +133,13 @@ function AddTask() {
                         className="form-control"
                         placeholder="Due Date"
                         type="date" 
+                        onChange={(e) => setDueTime(e.target.value)}
                       />
                       <label>Due Time</label>
                     </div>
                     <div className="row g-3">
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select">
+                        <select className="form-select" onChange={(e) => setTeam(e.target.value)}>
                           <option selected>Choose...</option>
                           <option value="Team One">Team One</option>
                           <option value="Team Two">Team Two</option>
@@ -117,7 +148,7 @@ function AddTask() {
                         <label>Team</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select">
+                        <select className="form-select" onChange={(e) => setStatus(e.target.value)}>
                           <option selected>Choose...</option>
                           <option value="UpComing">UpComing</option>
                           <option value="OnGoing">OnGoing</option>
@@ -132,6 +163,7 @@ function AddTask() {
                         type="Number"
                         step="1"
                         min="0"
+                        onChange={(e) => setProgress(e.target.value)}
                       />
                       <label>Progress</label>
                     </div>
