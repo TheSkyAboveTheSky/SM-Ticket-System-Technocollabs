@@ -3,6 +3,11 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import register from "../../../assets/images/register.webp";
 import Axios from "../../Axios/Axios";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from "../../Notification/Notification";
 
 function AddProject() {
   const [title, setTitle] = useState("");
@@ -36,20 +41,25 @@ function AddProject() {
                 body: `You have been added as a member of the ${team} team to the Project : ${title}`,
                 type: "Tasks",
               });
+              await Notification("success", "Successufly adding the Project");
+              window.location.reload();
             } catch (err) {
               console.log(err);
-              alert(err);
+              Notification(
+                "error",
+                "Something went wrong when adding the project"
+              );
             }
           }
         });
       } catch (err) {
         console.error(err);
-        alert(err);
+        Notification("error", "Something went wrong when adding the project");
       }
     } catch (err) {
       console.error(err);
+      Notification("error", "Something went wrong when adding the project");
     }
-    window.location.reload();
   };
 
   return (
@@ -58,6 +68,7 @@ function AddProject() {
         <div>
           <Sidebar />
         </div>
+        <NotificationContainer />
         <div className="cont">
           <Header title={"Add Projects"} />
           <div>

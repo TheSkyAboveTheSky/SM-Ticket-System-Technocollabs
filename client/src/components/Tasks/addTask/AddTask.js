@@ -3,6 +3,11 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import banner from "../../../assets/images/addTask.jpg";
 import Axios from "../../Axios/Axios";
+import Notification from "../../Notification/Notification";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 function AddTask() {
   const [fullName, setFullName] = useState("");
@@ -38,21 +43,25 @@ function AddTask() {
                 body: `You have been added as a member of the ${team} team to the Task: ${fullName}`,
                 type: "Tasks",
               });
+              await Notification("success", "Successufly adding the task");
+              window.location.reload();
             } catch (err) {
               console.log(err);
-              alert(err);
+              Notification(
+                "error",
+                "Something went wrong when adding the task"
+              );
             }
           }
         });
       } catch (err) {
         console.error(err);
-        alert(err);
+        Notification("error", "Something went wrong when adding the task");
       }
     } catch (err) {
       console.error(err);
-      alert(err);
+      Notification("error", "Something went wrong when adding the task");
     }
-    window.location.reload();
   };
 
   return (
@@ -61,6 +70,7 @@ function AddTask() {
         <div>
           <Sidebar />
         </div>
+        <NotificationContainer />
         <div className="cont">
           <Header title={"Add Task"} />
           <div>

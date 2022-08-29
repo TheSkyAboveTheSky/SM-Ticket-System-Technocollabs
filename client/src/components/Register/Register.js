@@ -1,6 +1,11 @@
 import React,{useState} from "react";
 import register from '../../assets/images/register.webp';
 import Axios from '../Axios/Axios';
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from "../Notification/Notification";
 
 function Registre() {
   const [userName,setUserName] = useState("");
@@ -24,14 +29,17 @@ function Registre() {
       }catch(err){
         console.error(err);
       }
-/*       window.location.href = "/login"; */
+      await Notification("success","Welcome to our application successfully");
+      window.location.href = "/login";
     }catch(err){
-      alert(err);
+      console.log(err);
+      Notification("error","An error occurred while creating Your Account");
     }
 
   }
   return (
     <div className="vh-600" style={{ backgroundColor: "white" }}>
+      <NotificationContainer />
       <div className="container-fluid ">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-9 col-lg-6 col-xl-5">

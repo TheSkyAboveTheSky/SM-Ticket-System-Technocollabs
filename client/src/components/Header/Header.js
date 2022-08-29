@@ -24,7 +24,7 @@ function Header(props) {
                   <i className="fa fa-search"></i>
                 </span>
               </div>
-              <div className="notification d-flex">
+              <div className="d-flex">
                 <div className="dropdown d-flex">
                   <a
                     className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2"

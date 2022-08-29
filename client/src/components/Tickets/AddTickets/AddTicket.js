@@ -3,7 +3,12 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import Axios from "../../Axios/Axios";
 import banner from "../../../assets/images/banner.jpg";
-import { AxiosError } from "axios";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from '../../Notification/Notification';
+
 
 function AddTicket() {
   const [id, setID] = useState("");
@@ -29,8 +34,10 @@ function AddTicket() {
         date: date,
         Priority: priority,
       });
+      await Notification("success","Successufly adding the Ticket");
     } catch (err) {
       console.error(err);
+      Notification("error","Something went wrong while adding the ticket");
     }
   };
   return (
@@ -40,6 +47,7 @@ function AddTicket() {
           <Sidebar />
         </div>
         <div className="cont">
+          <NotificationContainer />
           <Header title={"Add Ticket"} />
           <div>
             <ul className="nav nav-tabs page-header-tab ">

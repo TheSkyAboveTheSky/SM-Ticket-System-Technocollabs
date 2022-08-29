@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import login from "../../assets/images/login.svg";
 import Axios from "../Axios/Axios";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from "../Notification/Notification";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -26,14 +31,19 @@ function Login() {
       } catch (err) {
         console.log(err);
       }
-      window.location.href = "/";
+      await Notification(
+        "success",
+        "You've logged in successfully to your Account"
+      );
+      window.location.href="/";
     } catch (err) {
       console.log(err);
-      alert(err);
+      Notification("error", "Something went wrong");
     }
   };
   return (
     <div className="vh-100" style={{ backgroundColor: "white" }}>
+      <NotificationContainer />
       <div className="container-fluid ">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-9 col-lg-6 col-xl-5">

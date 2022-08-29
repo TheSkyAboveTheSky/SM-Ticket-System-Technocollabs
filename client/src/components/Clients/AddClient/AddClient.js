@@ -3,6 +3,11 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import Axios from '../../Axios/Axios';
 import banner from '../../../assets/images/banner.jpg'
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from '../../Notification/Notification';
 
 function AddClient() {
   const [fullName,setFullName] = useState("");
@@ -34,8 +39,10 @@ function AddClient() {
         instagram : instagram,
         facebook : facebook,
       })
+      Notification('success',"Successufly creating The Client");
     }catch(err){
       console.error(err);
+      Notification('error',"Something went wrong");
     }
   }
   return (
@@ -45,6 +52,7 @@ function AddClient() {
           <Sidebar />
         </div>
         <div className="cont">
+          <NotificationContainer />
           <Header title={"Add Client"} />
           <div>
             <ul className="nav nav-tabs page-header-tab ">
