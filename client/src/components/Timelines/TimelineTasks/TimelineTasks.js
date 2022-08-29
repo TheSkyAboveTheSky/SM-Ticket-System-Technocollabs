@@ -4,6 +4,8 @@ import Header from "../../Header/Header";
 import "./TimelineTasks.css";
 import Axios from "../../Axios/Axios";
 import banner from "../../../assets/images/TimelineTask.jpg";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 
 function TimelineTasks() {
   const [timelines, setTimelines] = useState([]);
@@ -89,6 +91,8 @@ function TimelineTasks() {
                           </thead>
                           <tbody>
                             {timelines.map((timeline, index) => {
+                              TimeAgo.addDefaultLocale(en);
+                              const timeAgo = new TimeAgo("en-US");
                               return (
                                 <tr>
                                   <td>{++index}</td>
@@ -103,7 +107,9 @@ function TimelineTasks() {
                                   <td></td>
                                   <td>
                                     <div className="text-info">
-                                      {timeline.createdAt}
+                                      {timeAgo.format(
+                                        new Date(timeline.createdAt)
+                                      )}
                                     </div>
                                   </td>
                                 </tr>

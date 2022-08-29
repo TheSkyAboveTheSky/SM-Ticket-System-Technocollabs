@@ -107,6 +107,31 @@ function OnGoingProject() {
                 >
                   <div className="row">
                     {projects.map((project) => {
+                      let styleTag ;
+                      switch(project.type)
+                      {
+                        case "Angular" :
+                          styleTag = "tag tag-pink mb-3";
+                          break;
+                        case "Web Design" : 
+                          styleTag = "tag tag-blue mb-3";
+                          break;
+                        case "React" :
+                          styleTag = "tag tag-blue mb-3";
+                          break;
+                        case "IOS App" :
+                          styleTag = "tag tag-black mb-3";
+                          break;
+                        case "Android" :
+                          styleTag = "tag tag-orange mb-3";
+                          break;
+                        case "Mobile Development" :
+                          styleTag = "tag tag-pink mb-3";
+                          break;
+                        case "Wordpress" :
+                          styleTag = "tag tag-blue mb-3";
+                          break;
+                      }
                       return (
                         <div className="col-lg-6 col-md-12">
                           <div className="card">
@@ -131,7 +156,7 @@ function OnGoingProject() {
                               </div>
                             </div>
                             <div className="card-body">
-                              <span className="tag tag-blue mb-3">
+                              <span className={styleTag}>
                                 {project.type}
                               </span>
                               <p>

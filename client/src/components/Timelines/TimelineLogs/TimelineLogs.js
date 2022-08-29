@@ -4,6 +4,8 @@ import Header from "../../Header/Header";
 import "./TimelineLogs.css";
 import Axios from "../../Axios/Axios";
 import banner from "../../../assets/images/TimelineLogs.jpg";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 
 function TimelineLogs() {
   const [timelines, setTimelines] = useState([]);
@@ -88,7 +90,9 @@ function TimelineLogs() {
                             </tr>
                           </thead>
                           <tbody>
-                            {timelines.map((timeline,index) => {
+                            {timelines.map((timeline, index) => {
+                              TimeAgo.addDefaultLocale(en);
+                              const timeAgo = new TimeAgo("en-US");
                               return (
                                 <tr>
                                   <td>{++index}</td>
@@ -98,14 +102,14 @@ function TimelineLogs() {
                                         New Activity
                                       </span>
                                     </h6>
-                                    <span>
-                                      {timeline.body}
-                                    </span>
+                                    <span>{timeline.body}</span>
                                   </td>
                                   <td></td>
                                   <td>
                                     <div className="text-info">
-                                      {timeline.createdAt}
+                                      {timeAgo.format(
+                                        new Date(timeline.createdAt)
+                                      )}
                                     </div>
                                   </td>
                                 </tr>
