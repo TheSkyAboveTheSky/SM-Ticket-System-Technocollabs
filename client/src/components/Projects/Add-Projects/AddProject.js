@@ -1,9 +1,34 @@
-import React from "react";
+import React,{useState} from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import register from "../../../assets/images/register.webp";
+import Axios from '../../Axios/Axios';
 
 function AddProject() {
+  const [title,setTitle] = useState("");
+  const [type,setType] = useState("");
+  const [description,setDescription] = useState("");
+  const [creator,setCreator] = useState("");
+  const [team,setTeam] = useState("");
+  const [status,setStatus] = useState("");
+  const [progress,setProgress] = useState("");
+
+  const createProject = async () => {
+    try{
+      const response = await Axios.post('/project',{
+        title : title,
+        type : type,
+        description : description,
+        creator : creator,
+        team : team,
+        status : status,
+        progress : progress
+      })
+    }catch(err){
+      console.error(err);
+    }
+  }
+
   return (
     <div>
       <>
@@ -95,7 +120,7 @@ function AddProject() {
                   <img src={register} alt="login form" className="img-fluid" />
                 </div>
                 <div className="col-md-8 col-lg-6 col-xl-4">
-                  <form>
+                  <form onSubmit={createProject}>
                     <div className="text-center mb-3">
                       <h3 classname="text-info">Add Projects</h3>
                     </div>
@@ -105,11 +130,12 @@ function AddProject() {
                           type="text"
                           className="form-control"
                           placeholder="Title"
+                          onChange={(e) => setTitle(e.target.value)}
                         />
                         <label>Title</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select">
+                        <select className="form-select" onChange={ (e) => setType(e.target.value)}>
                           <option selected>Choose...</option>
                           <option value="Angular">Angular</option>
                           <option value="React">React</option>
@@ -129,16 +155,17 @@ function AddProject() {
                       <textarea
                         className="form-control"
                         placeholder="Description"
+                        onChange={(e) => setDescription(e.target.value)}
                       ></textarea>
                       <label>Description</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input className="form-control" placeholder="Creator" type="text"/>
+                      <input className="form-control" placeholder="Creator" type="text" onChange={(e) => setCreator(e.target.value)}/>
                       <label>Creator</label>
                     </div>
                     <div className="row g-3">
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select">
+                        <select className="form-select" onChange={(e) => setTeam(e.target.value)}>
                           <option selected>Choose...</option>
                           <option value="Team One">Team One</option>
                           <option value="Team Two">Team Two</option>
@@ -147,7 +174,7 @@ function AddProject() {
                         <label>Team</label>
                       </div>
                       <div className="col-md-6 form-floating mb-3">
-                        <select className="form-select">
+                        <select className="form-select" onChange={(e) => setStatus(e.target.value)}>
                           <option selected>Choose...</option>
                           <option value="UpComing">UpComing</option>
                           <option value="OnGoing">OnGoing</option>
@@ -162,6 +189,7 @@ function AddProject() {
                       type="Number"
                       step="1"
                       min="0"
+                      onChange={(e) => setProgress(e.target.value)}
                       />
                       <label>Progress</label>
                     </div>
