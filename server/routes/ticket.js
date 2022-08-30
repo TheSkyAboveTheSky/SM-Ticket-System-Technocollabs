@@ -7,9 +7,11 @@ const {
   deleteTicket,
   createTicket,
 } = require("../controllers/ticket");
-ticketRouter.get("/", getAllTickets);
-ticketRouter.get("/:id", getTicket);
-ticketRouter.post("/", createTicket);
-ticketRouter.put("/:id", updateTicket);
-ticketRouter.delete("/:id", deleteTicket);
+const auth = require("../middlewares/auth");
+
+ticketRouter.get("/",auth, getAllTickets);
+ticketRouter.get("/:id",auth, getTicket);
+ticketRouter.post("/",auth, createTicket);
+ticketRouter.put("/:id",auth, updateTicket);
+ticketRouter.delete("/:id",auth, deleteTicket);
 module.exports = ticketRouter;

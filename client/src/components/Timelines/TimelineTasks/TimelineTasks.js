@@ -14,7 +14,7 @@ function TimelineTasks() {
     getTimelines();
   }, []);
   const getTimelines = async () => {
-    const response = await Axios.get(`/timeline/${id}/tasks`);
+    const response = await Axios.get(`/timeline/${id}/tasks`,{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     setTimelines(response.data);
   };
 

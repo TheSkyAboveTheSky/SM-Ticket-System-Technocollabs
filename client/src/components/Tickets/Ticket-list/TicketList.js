@@ -9,7 +9,7 @@ function TicketList() {
     getTickets();
   }, []);
   const getTickets = async () => {
-    const response = await Axios.get("/ticket");
+    const response = await Axios.get("/ticket",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     const ticketList = response.data;
     setTicketList(ticketList);
   };

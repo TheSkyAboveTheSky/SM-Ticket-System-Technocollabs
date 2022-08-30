@@ -10,13 +10,15 @@ const {
   getUpComingProjects,
   getCompletedProjects,
 } = require("../controllers/project");
-projectRouter.get("/", getAllProjects);
-projectRouter.get("/ongoing", getOnGoingProjects);
-projectRouter.get("/upcoming", getUpComingProjects);
-projectRouter.get("/completed", getCompletedProjects);
-projectRouter.get("/:id", getProject);
-projectRouter.post("/", createProject);
-projectRouter.put("/:id", updateProject);
-projectRouter.delete("/:id", deleteProject);
+const auth = require('../middlewares/auth');
+
+projectRouter.get("/",auth, getAllProjects);
+projectRouter.get("/ongoing",auth, getOnGoingProjects);
+projectRouter.get("/upcoming",auth, getUpComingProjects);
+projectRouter.get("/completed",auth, getCompletedProjects);
+projectRouter.get("/:id",auth, getProject);
+projectRouter.post("/",auth, createProject);
+projectRouter.put("/:id",auth, updateProject);
+projectRouter.delete("/:id",auth, deleteProject);
 
 module.exports = projectRouter;

@@ -10,7 +10,7 @@ function CompletedProject() {
     getProjects();
   }, []);
   const getProjects = async () => {
-    const response = await axios.get("/project/completed");
+    const response = await axios.get("/project/completed",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     setProjects(response.data);
   };
   return (

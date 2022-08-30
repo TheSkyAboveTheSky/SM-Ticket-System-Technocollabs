@@ -8,12 +8,13 @@ const {
   updateUser,
   createUser,
 } = require("../controllers/user");
+const auth = require('../middlewares/auth');
 
 userRouter.get("/", getAllusers);
-userRouter.get("/:id", getUser);
+userRouter.get("/:id",auth, getUser);
 userRouter.post("/", createUser);
-userRouter.delete("/:id", deleteUser);
-userRouter.put("/:id", updateUser);
-userRouter.get("/info/me", getMe);
+userRouter.delete("/:id",auth, deleteUser);
+userRouter.put("/:id",auth, updateUser);
+userRouter.get("/info/me",auth, getMe);
 
 module.exports = userRouter;

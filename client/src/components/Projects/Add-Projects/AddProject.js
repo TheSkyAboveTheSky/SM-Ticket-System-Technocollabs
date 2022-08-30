@@ -31,7 +31,7 @@ function AddProject() {
         progress: progress,
       });
       try {
-        const users = await Axios.get("/user");
+        const users = await Axios.get("/user",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
         const array = users.data;
         array.forEach(async (user, index) => {
           if (user.team === team) {

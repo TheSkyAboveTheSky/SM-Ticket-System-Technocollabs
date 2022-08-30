@@ -33,7 +33,7 @@ function AddTicket() {
         departement: departement,
         date: date,
         Priority: priority,
-      });
+      },{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
       await Notification("success","Successufly adding the Ticket");
     } catch (err) {
       console.error(err);

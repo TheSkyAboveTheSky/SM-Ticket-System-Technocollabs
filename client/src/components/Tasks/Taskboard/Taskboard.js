@@ -13,7 +13,7 @@ function Taskboard() {
     getTasks();
   }, []);
   const getTasks = async () => {
-    const response = await axios.get("/task");
+    const response = await axios.get("/task",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     setTasks(response.data);
   };
   return (

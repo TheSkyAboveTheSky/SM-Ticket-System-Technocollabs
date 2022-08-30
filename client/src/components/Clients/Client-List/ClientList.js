@@ -10,7 +10,7 @@ function ClientList() {
     getClients();
   }, []);
   const getClients = async () => {
-    const response = await axios.get("/client");
+    const response = await axios.get("/client",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     setClients(response.data);
   };
   return (

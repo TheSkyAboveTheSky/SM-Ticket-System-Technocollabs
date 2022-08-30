@@ -38,7 +38,7 @@ function AddClient() {
         linkedin : linkedIn,
         instagram : instagram,
         facebook : facebook,
-      })
+      },{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}})
       Notification('success',"Successufly creating The Client");
     }catch(err){
       console.error(err);

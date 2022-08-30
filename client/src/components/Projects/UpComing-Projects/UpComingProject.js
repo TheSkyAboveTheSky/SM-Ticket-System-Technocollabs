@@ -10,7 +10,7 @@ function UpComingProject() {
     getProjects();
   }, []);
   const getProjects = async () => {
-    const response = await axios.get("/project/upcoming");
+    const response = await axios.get("/project/upcoming",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     setProjects(response.data);
   };
   return (
