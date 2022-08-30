@@ -22,18 +22,30 @@ function AddTask() {
   const createTask = async (e) => {
     e.preventDefault();
     try {
-      const response = await Axios.post("/task", {
-        name: fullName,
-        description: description,
-        priority: priority,
-        status: status,
-        team: team,
-        progress: progress,
-        start: startTime,
-        due: dueTime,
-      });
+      const response = await Axios.post(
+        "/task",
+        {
+          name: fullName,
+          description: description,
+          priority: priority,
+          status: status,
+          team: team,
+          progress: progress,
+          start: startTime,
+          due: dueTime,
+        },
+        {
+          headers: {
+            "x-auth-token": window.localStorage.getItem("x-auth-token"),
+          },
+        }
+      );
       try {
-        const users = await Axios.get("/user",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+        const users = await Axios.get("/user", {
+          headers: {
+            "x-auth-token": window.localStorage.getItem("x-auth-token"),
+          },
+        });
         const array = users.data;
         array.forEach(async (user, index) => {
           if (user.team === team) {

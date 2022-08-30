@@ -20,6 +20,8 @@ import UnAuthorized from "../UnAuthorized/UnAuthorized";
 import Test from "../Test/Test";
 import IsAuthentificated from "../../auth/IsAuthentificated";
 import NotAuthentificated from "../../auth/NotAuthentificated";
+import Todo from "../Todo/Todo-List/Todo";
+import AddTodo from "../Todo/addTodo/AddTodo";
 
 function App() {
   return (
@@ -142,6 +144,22 @@ function App() {
           element={
             <IsAuthentificated>
               <UpComingProject />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/todo-list"
+          element={
+            <IsAuthentificated>
+              <Todo />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/add-Todo"
+          element={
+            <IsAuthentificated>
+              <AddTodo />
             </IsAuthentificated>
           }
         />

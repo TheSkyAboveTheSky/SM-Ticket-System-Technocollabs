@@ -21,26 +21,46 @@ function AddProject() {
   const createProject = async (e) => {
     e.preventDefault();
     try {
-      const response = await Axios.post("/project", {
-        title: title,
-        type: type,
-        description: description,
-        creator: creator,
-        team: team,
-        status: status,
-        progress: progress,
-      });
+      const response = await Axios.post(
+        "/project",
+        {
+          title: title,
+          type: type,
+          description: description,
+          creator: creator,
+          team: team,
+          status: status,
+          progress: progress,
+        },
+        {
+          headers: {
+            "x-auth-token": window.localStorage.getItem("x-auth-token"),
+          },
+        }
+      );
       try {
-        const users = await Axios.get("/user",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+        const users = await Axios.get("/user", {
+          headers: {
+            "x-auth-token": window.localStorage.getItem("x-auth-token"),
+          },
+        });
         const array = users.data;
         array.forEach(async (user, index) => {
           if (user.team === team) {
             try {
-              const subResponse = await Axios.post("/timeline", {
-                user: user._id,
-                body: `You have been added as a member of the ${team} team to the Project : ${title}`,
-                type: "Tasks",
-              });
+              const subResponse = await Axios.post(
+                "/timeline",
+                {
+                  user: user._id,
+                  body: `You have been added as a member of the ${team} team to the Project : ${title}`,
+                  type: "Tasks",
+                },
+                {
+                  headers: {
+                    "x-auth-token": window.localStorage.getItem("x-auth-token"),
+                  },
+                }
+              );
               await Notification("success", "Successufly adding the Project");
               window.location.reload();
             } catch (err) {
