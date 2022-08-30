@@ -20,6 +20,12 @@ const ticketSchema = new Schema({
   },
   Product: String,
   agent: String,
-  replyIdList: Array,
+  replyIdList: [{
+    type : mongoose.Schema.Types.ObjectId, ref : "Reply"
+  }],
+  progress : {
+    type :Number,
+    default : 0,
+  }
 });
 module.exports = mongoose.model("Ticket", ticketSchema);

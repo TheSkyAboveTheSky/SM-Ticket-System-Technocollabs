@@ -20,6 +20,7 @@ app.use("/client", require("./routes/client"));
 app.use("/project", require("./routes/project"));
 app.use("/ticket", require("./routes/ticket"));
 app.use('/todo',require('./routes/todo'));
+app.use('/reply',require("./routes/reply"));
 
 const server = app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}\nTo Stop listening press Ctrl+C`);

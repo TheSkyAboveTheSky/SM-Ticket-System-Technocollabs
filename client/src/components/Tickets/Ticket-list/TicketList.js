@@ -178,7 +178,7 @@ function TicketList() {
                                   </label>
                                 </td>
                                 <td>
-                                  <a href="#" className="tag tag-blue">
+                                  <a href={`/Ticket-details/${ticket._id}`} className="tag tag-blue">
                                     {ticket.id}
                                   </a>
                                 </td>

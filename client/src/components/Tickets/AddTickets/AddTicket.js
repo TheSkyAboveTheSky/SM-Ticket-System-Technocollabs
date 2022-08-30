@@ -20,6 +20,7 @@ function AddTicket() {
   const [date, setDate] = useState();
   const [priority, setPriority] = useState("");
   const [departement, setDepartement] = useState("");
+  const [progress,setProgress] = useState(0);
 
   const createTicket = async () => {
     try {
@@ -33,6 +34,7 @@ function AddTicket() {
         departement: departement,
         date: date,
         Priority: priority,
+        progress : progress,
       },{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
       await Notification("success","Successufly adding the Ticket");
     } catch (err) {
@@ -189,6 +191,17 @@ function AddTicket() {
                         <option value="High">High</option>
                       </select>
                       <label>Priority</label>
+                    </div>
+                    <div className="form-floating mb-3">
+                      <input
+                        className="form-control"
+                        type="Number"
+                        step="1"
+                        min="0"
+                        max="100"
+                        onChange={(e) => setProgress(e.target.value)}
+                      />
+                      <label>Progress</label>
                     </div>
                     <button
                       type="submit"

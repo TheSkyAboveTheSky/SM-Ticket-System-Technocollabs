@@ -22,6 +22,7 @@ import IsAuthentificated from "../../auth/IsAuthentificated";
 import NotAuthentificated from "../../auth/NotAuthentificated";
 import Todo from "../Todo/Todo-List/Todo";
 import AddTodo from "../Todo/addTodo/AddTodo";
+import TicketDetails from "../Tickets/Ticket-details/TicketDetails";
 
 function App() {
   return (
@@ -160,6 +161,14 @@ function App() {
           element={
             <IsAuthentificated>
               <AddTodo />
+            </IsAuthentificated>
+          }
+        />
+        <Route
+          path="/Ticket-details/:id"
+          element={
+            <IsAuthentificated>
+              <TicketDetails />
             </IsAuthentificated>
           }
         />
