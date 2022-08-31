@@ -47,7 +47,7 @@ function Taskboard() {
               <li className="nav-item">
                 <a
                   className={
-                    window.location.pathname === "/ass-Task"
+                    window.location.pathname === "/add-Task"
                       ? "nav-link active"
                       : "nav-link"
                   }

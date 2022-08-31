@@ -2,63 +2,138 @@ import React from "react";
 import "./Sidebar.css";
 import "../../assets/css/main.min.css";
 import user from "../../assets/images/user.png";
+import { NavLink } from "react-router-dom";
+
 function Sidebar() {
   return (
     <>
       <div id="header_top" className="header_top">
         <div className="container">
           <div className="hleft">
-            <a className="header-brand" href="index.html">
+            <a
+              style={
+                window.location.pathname === "/Client-List"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/Client-List"
+                  ? "header-brand active"
+                  : "header-brand"
+              }
+              href="/"
+            >
               <i className="fa fa-soccer-ball-o brand-logo"></i>
             </a>
-            <div className="dropdown">
-              <a href="javascript:void(0)" className="nav-link user_btn">
-                <img
-                  className="avatar"
-                  src={user}
-                  alt=""
-                  data-toggle="tooltip"
-                  data-placement="right"
-                  title="User Menu"
-                />
-              </a>
-              <a href="page-search.html" className="nav-link icon xs-hide">
-                <i className="fa fa-search"></i>
-              </a>
-              <a
-                href="app-calendar.html"
-                className="nav-link icon app_inbox xs-hide"
-              >
-                <i className="fa fa-calendar"></i>
-              </a>
-              <a href="app-contact.html" className="nav-link icon xs-hide">
-                <i className="fa fa-id-card-o"></i>
-              </a>
-              <a href="app-chat.html" className="nav-link icon xs-hide">
-                <i className="fa fa-comments-o"></i>
-              </a>
-              <a
-                href="app-filemanager.html"
-                className="nav-link icon app_file xs-hide"
-              >
-                <i className="fa fa-folder-o"></i>
-              </a>
-              <a
-                href="javascript:void(0)"
-                className="nav-link icon theme_btn xs-hide"
-              >
-                <i
-                  className="fa fa-paint-brush"
-                  data-toggle="tooltip"
-                  data-placement="right"
-                  title="Themes"
-                ></i>
-              </a>
-            </div>
+            <a
+              href="/"
+              style={
+                window.location.pathname === "/"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/"
+                  ? "nav-link icon xs-hide active"
+                  : "nav-link icon xs-hide"
+              }
+            >
+              <img className="avatar" src={user} alt="" />
+            </a>
+            <a
+              href="/Client-List"
+              style={
+                window.location.pathname === "/Client-List"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/Client-List"
+                  ? "nav-link icon xs-hide active"
+                  : "nav-link icon xs-hide"
+              }
+            >
+              <i className="fa fa-users"></i>
+            </a>
+            <a
+              href="/ongoing-Project"
+              style={
+                window.location.pathname === "/ongoing-Project"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/ongoing-Project"
+                  ? "nav-link icon xs-hide active"
+                  : "nav-link icon xs-hide"
+              }
+            >
+              <i className="fa-solid fa-folder-closed"></i>
+            </a>
+            <a
+              href="/Taskboard"
+              style={
+                window.location.pathname === "/Taskboard"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/Taskboard"
+                  ? "nav-link icon xs-hide active"
+                  : "nav-link icon xs-hide"
+              }
+            >
+              <i className="fa fa-thumbtack"></i>
+            </a>
+            <a
+              href="/Ticket-List"
+              style={
+                window.location.pathname === "/Ticket-List"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/Ticket-List"
+                  ? "nav-link icon xs-hide active"
+                  : "nav-link icon xs-hide"
+              }
+            >
+              <i className="fa fa-ticket"></i>
+            </a>
+            <a
+              href="/Timeline-Task"
+              style={
+                window.location.pathname === "/Timeline-Task"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/Timeline-Task"
+                  ? "nav-link icon xs-hide active"
+                  : "nav-link icon xs-hide"
+              }
+            >
+              <i className="fa-solid fa-timeline"></i>
+            </a>
+            <a
+              href="/todo-list"
+              style={
+                window.location.pathname === "/todo-list"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+              className={
+                window.location.pathname === "/todo-list"
+                  ? "nav-link icon xs-hide active"
+                  : "nav-link icon xs-hide"
+              }
+            >
+              <i className="fa-solid fa-bars"></i>
+            </a>
           </div>
           <div className="hright">
             <div className="dropdown">
-              <a href="javascript:void(0)" className="nav-link icon settingbar">
+              <a className="nav-link icon settingbar">
                 <i
                   className="fa fa-gear fa-spin"
                   data-toggle="tooltip"
@@ -66,121 +141,244 @@ function Sidebar() {
                   title="Settings"
                 ></i>
               </a>
-              <a
-                href="javascript:void(0)"
-                className="nav-link icon menu_toggle"
-              >
+              <a className="nav-link icon menu_toggle">
                 <i className="fa  fa-align-left"></i>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div id="left-sidebar" className="sidebar ">
+      <div id="left-sidebar" classname="sidebar">
         <h5 className="brand-name">
-          Soccer{" "}
-          <a href="javascript:void(0)" className="menu_option float-right">
-            <i
-              className="icon-grid font-16"
-              data-toggle="tooltip"
-              data-placement="left"
-              title="Grid & List Toggle"
-            ></i>
+          SM{" "}
+          <a href="/" className="menu_option float-right">
           </a>
         </h5>
         <nav id="left-sidebar-nav" className="sidebar-nav">
           <ul className="metismenu">
             <li className="g_heading">Project</li>
             <li className="active">
-              <a href="index.html">
+              <a
+                href="/"
+                style={
+                  window.location.pathname === "/"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
                 <i className="fa fa-dashboard"></i>
                 <span>Dashboard</span>
               </a>
             </li>
-            <li>
-              <a href="/ongoing-Project">
-                <i className="fa fa-list-ol"></i>
-                <span>Project list</span>
+            <li className="active">
+              <a
+                href="/Timeline-Task"
+                style={
+                  window.location.pathname === "/Timeline-Task" ||
+                  window.location.pathname === "/Timeline-Logs"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/Timeline-Task" ||
+                  window.location.pathname === "/Timeline-Logs"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-timeline"></i>
+                <span>Timeline</span>
               </a>
             </li>
-            <li>
-              <a href="/Taskboard">
-                <i className="fa fa-calendar-check-o"></i>
+            <li className="active">
+              <a
+                href="/ongoing-Project"
+                style={
+                  window.location.pathname === "/ongoing-Project" ||
+                  window.location.pathname === "/upcoming-Project" ||
+                  window.location.pathname === "/completed-Project"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/ongoing-Project" ||
+                  window.location.pathname === "/upcoming-Project" ||
+                  window.location.pathname === "/completed-Project"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-folder-closed"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+            <li className="active">
+              <a
+                href="/add-Project"
+                style={
+                  window.location.pathname === "/add-Project"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/add-Project"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-circle-plus"></i>
+                <span>Add Projects</span>
+              </a>
+            </li>
+            <li className="g_heading">Taskboard</li>
+            <li className="active">
+              <a
+                href="/Taskboard"
+                style={
+                  window.location.pathname === "/Taskboard"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/Taskboard"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-thumbtack"></i>
                 <span>Taskboard</span>
               </a>
             </li>
-            <li>
-              <a href="/Ticket-List">
-                <i className="fa-solid fa-list-ul"></i>
-                <span>Ticket List</span>
+            <li className="active">
+              <a
+                href="/add-Task"
+                style={
+                  window.location.pathname === "/add-Task"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/add-Task"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-circle-plus"></i>
+                <span>Add Tasks</span>
               </a>
             </li>
-            <li>
-              <a href="project-ticket-details.html">
+            <li className="active">
+              <a
+                href="/todo-list"
+                style={
+                  window.location.pathname === "/todo-list"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/todo-list"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-list-check"></i>
+                <span>Todos List</span>
+              </a>
+            </li>
+            <li className="active">
+              <a
+                href="/add-Todo"
+                style={
+                  window.location.pathname === "/add-Todo"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/add-Todo"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-circle-plus"></i>
+                <span>Add Todos</span>
+              </a>
+            </li>
+            <li className="g_heading">Tickets</li>
+            <li className="active">
+              <a
+                href="/Ticket-List"
+                style={
+                  window.location.pathname === "/Ticket-List"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/Ticket-List"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
                 <i className="fa fa-ticket"></i>
-                <span>Ticket Details</span>
+                <span>Tickets</span>
               </a>
             </li>
-            <li>
-              <a href="/Client-List">
-                <i className="fa fa-user"></i>
+            <li className="active">
+              <a
+                href="/add-Ticket"
+                style={
+                  window.location.pathname === "/add-Ticket"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/add-Ticket"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-circle-plus"></i>
+                <span>Add Tickets</span>
+              </a>
+            </li>
+            <li className="active">
+              <a
+                href="/Client-List"
+                style={
+                  window.location.pathname === "/Client-List"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/Client-List"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-users"></i>
                 <span>Clients</span>
               </a>
             </li>
-            <li>
-              <a href="/Timeline-Task">
-                <i className="fa-solid fa-clock"></i>
-                <span>Timelines</span>
-              </a>
-            </li>
-            <li className="g_heading">App</li>
-            <li>
-              <a href="app-calendar.html">
-                <i className="fa fa-calendar"></i>
-                <span>Calendar</span>
-              </a>
-            </li>
-            <li>
-              <a href="app-chat.html">
-                <i className="fa fa-comments"></i>
-                <span>Chat</span>
-              </a>
-            </li>
-            <li>
-              <a href="app-contact.html">
-                <i className="fa fa-address-book"></i>
-                <span>Contact</span>
-              </a>
-            </li>
-            <li>
-              <a href="app-filemanager.html">
-                <i className="fa fa-folder"></i>
-                <span>FileManager</span>
-              </a>
-            </li>
-            <li>
-              <a href="app-setting.html">
-                <i className="fa fa-gear"></i>
-                <span>Setting</span>
-              </a>
-            </li>
-            <li>
-              <a href="page-gallery.html">
-                <i className="fa fa-photo"></i>
-                <span>Gallery</span>
-              </a>
-            </li>
-            <li className="g_heading">Support</li>
-            <li>
-              <a href="javascript:void(0)">
-                <i className="fa fa-support"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <i className="fa fa-tag"></i>
-                <span>ContactUs</span>
+            <li className="active">
+              <a
+                href="/add-Client"
+                style={
+                  window.location.pathname === "/add-Client"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+                className={
+                  window.location.pathname === "/add-Client"
+                    ? "header-brand active"
+                    : "header-brand"
+                }
+              >
+                <i className="fa fa-circle-plus"></i>
+                <span>Add Clients</span>
               </a>
             </li>
           </ul>
