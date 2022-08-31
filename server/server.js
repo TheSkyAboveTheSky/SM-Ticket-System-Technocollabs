@@ -21,14 +21,17 @@ app.use("/project", require("./routes/project"));
 app.use("/ticket", require("./routes/ticket"));
 app.use('/todo',require('./routes/todo'));
 app.use('/reply',require("./routes/reply"));
+app.use('/chat',require('./routes/chat'));
+app.use('/message',require('./routes/message'));
 
 const server = app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}\nTo Stop listening press Ctrl+C`);
 });
 
-const io = require("socket.io")(server, {
+/* const io = require("socket.io")(server, {
   pingTimeout: 60000,
 });
+
 io.on("connectioj", (socket) => {
   console.log(`Connected to socket.io`);
   socket.on("setup", (userData) => {
@@ -54,4 +57,7 @@ io.on("connectioj", (socket) => {
     console.log("USER DISCONNECTED");
     socket.leave(userData._id);
   });
+
+
 });
+ */
