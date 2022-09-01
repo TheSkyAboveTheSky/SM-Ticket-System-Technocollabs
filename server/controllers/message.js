@@ -20,7 +20,7 @@ const sendMessage = async (req,res) => {
     return res.status(404).json({ message: "Invalid data passed into request" });
   }
   let newMessage = {
-    sender : req.user._id,
+    sender : req.user,
     text : text,
     chatId : chatId
   }
@@ -30,7 +30,7 @@ const sendMessage = async (req,res) => {
     message = await message.populate("chatId");
     message = await User.populate(message,{
       path: 'chat.users',
-      select: "name team email",
+      select: "username team email",
     });
     await Chat.findByIdAndUpdate(req.body.chatId,{latestMessage : message});
     res.status(200).json(message);

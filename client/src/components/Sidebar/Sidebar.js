@@ -148,7 +148,7 @@ function Sidebar() {
           </div>
         </div>
       </div>
-      <div id="left-sidebar" classname="sidebar">
+      <div id="left-sidebar" className="sidebar">
         <h5 className="brand-name">
           SM{" "}
           <a href="/" className="menu_option float-right">

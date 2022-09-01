@@ -100,7 +100,7 @@ function AddTicket() {
                 <div className="col-md-8 col-lg-6 col-xl-4">
                   <form onSubmit={createTicket}>
                     <div className="text-center mb-3">
-                      <h3 classname="text-info">Add Tickets</h3>
+                      <h3 className="text-info">Add Tickets</h3>
                     </div>
                     <div className="row g-3">
                       <div className="col-md-6 form-floating mb-3">

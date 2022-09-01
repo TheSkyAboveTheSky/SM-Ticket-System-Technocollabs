@@ -135,7 +135,7 @@ function AddTodo() {
                 <div className="col-md-8 col-lg-6 col-xl-4">
                   <form onSubmit={createTodo}>
                     <div className="text-center mb-3">
-                      <h3 classname="text-info">Todos</h3>
+                      <h3 className="text-info">Todos</h3>
                     </div>
 
                     <div className="form-floating mb-3">

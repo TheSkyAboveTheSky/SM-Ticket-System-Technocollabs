@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import Header from "../Header/Header";
-import Axios from "../Axios/Axios";
-import user from "../../assets/images/user.png";
+import Axios from "../../Axios/Axios";
+import Sidebar from "../../Sidebar/Sidebar";
+import Header from "../../Header/Header";
+import avatar from "../../../assets/images/user.png";
+import ChatDisc from "../ChatDisc/ChatDisc";
+import { ChatState } from "../../../Context/ChatProvider";
 
-function Test() {
-  const [chats, setChats] = useState([]);
-  const [loggedUser , setLoggedUser] = useState('');
+function Chat() {
+  const { selectedChat, setSelectedChat, user, chats, setChats , id , setId} = ChatState();
   useEffect(() => {
-    getChats();
-    setLoggedUser(window.localStorage.getItem('user-id'));
-  }, []);
-  const getChats = async () => {
-    try {
-      const response = await Axios.get("/chat", {
-        headers: {
-          "x-auth-token": window.localStorage.getItem("x-auth-token"),
-        },
-      });
-      console.log(response.data);
-      setChats(response.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  }, [chats]);
   return (
     <div>
       <>
@@ -81,35 +67,39 @@ function Test() {
                       role="tabpanel"
                       aria-labelledby="users-tab"
                     >
-                      <ul
-                        className="right_chat list-unstyled list"
-                        style={{ textDecoration: "none" }}
-                      >
-                        {chats.map((chat, index) => {
-                          let chatName;
-                          if (!chat.isGroupChat) {
-                            if (
-                              chat.users[0]._id ===
-                              window.localStorage.getItem("user-id")
-                            ) {
-                              chatName = chat.users[1].username;
-                            } else {
-                              chatName = chat.users[0].username;
+                      {chats && (
+                        <ul
+                          className="right_chat list-unstyled list"
+                          style={{ textDecoration: "none" }}
+                        >
+                          {chats.map((chat, index) => {
+                            let chatName;
+                            if (!chat.isGroupChat) {
+                              if (
+                                chat.users[0]._id ===
+                                window.localStorage.getItem("user-id")
+                              ) {
+                                chatName = chat.users[1].username;
+                              } else {
+                                chatName = chat.users[0].username;
+                              }
                             }
-                          }
-                          let sender;
-                          if (chat.latestMessage.sender._id === loggedUser)
-                          {
-                            sender = "You"
-                          }else{
-                            sender = chat.latestMessage.sender.username;
-                          }
+                            let sender;
+                            if (chat.latestMessage.sender._id === user) {
+                              sender = "You";
+                            } else {
+                              sender = chat.latestMessage.sender.username;
+                            }
                             return (
-                              <li className="online">
+                              <li
+                                className="online"
+                                style={{ cursor: "pointer" }}
+                                onClick={() => {setSelectedChat(chat)}}
+                              >
                                 <div className="media">
                                   <img
                                     className="media-object"
-                                    src={user}
+                                    src={avatar}
                                     alt=""
                                   />
                                   <div className="media-body">
@@ -124,12 +114,13 @@ function Test() {
                                 </div>
                               </li>
                             );
-                        })}
-                      </ul>
+                          })}
+                        </ul>
+                      )}
                     </div>
                   </div>
                 </div>
-                
+                <ChatDisc />
               </div>
             </div>
           </div>
@@ -139,4 +130,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Chat;

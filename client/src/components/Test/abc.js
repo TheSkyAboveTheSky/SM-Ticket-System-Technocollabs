@@ -1,280 +1,376 @@
-<div className="section-body mt-3">
-<div className="container-fluid">
-  <div className="row clearfix">
-    <div className="col-lg-4 col-md-12">
-      <div className="card c_grid c_yellow">
-        <div className="card-body text-center">
-          <div className="circle">
-            <img className="rounded-circle" src="../assets/images/sm/avatar1.jpg" alt=""/>
-          </div>
-          <h6 className="mt-3 mb-0">Michelle Green</h6>
-          <span><a href="https://nsdbytes.com/cdn-cgi/l/email-protection" className="__cf_email__"
-              data-cfemail="8be1eaf8e4e5a6fbe4f9ffeef9cbe2e5ede4a5e8e4e6">[email&#160;protected]</a></span>
-          <ul className="mt-3 list-unstyled d-flex justify-content-center">
-            <li><a className="p-3" target="_blank" href="#"><i className="fa fa-facebook"></i></a></li>
-            <li><a className="p-3" target="_blank" href="#"><i className="fa fa-slack"></i></a></li>
-            <li><a className="p-3" target="_blank" href="#"><i className="fa fa-linkedin"></i></a></li>
-          </ul>
-          <button className="btn btn-default btn-sm">Follow</button>
-          <button className="btn btn-default btn-sm">Message</button>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-header">
-          <h3 className="card-title">Ticket Details</h3>
-          <div className="card-options">
-            <a href="javascript:void(0)" className="card-options-remove" data-toggle="card-remove"><i
-                className="fe fe-x"></i></a>
-            <div className="item-action dropdown ml-2">
-              <a href="javascript:void(0)" data-toggle="dropdown"><i className="fe fe-more-vertical"></i></a>
-              <div className="dropdown-menu dropdown-menu-right">
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-eye"></i> View
-                  Details </a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-share-alt"></i>
-                  Share </a>
-                <a href="javascript:void(0)" className="dropdown-item"><i
-                    className="dropdown-icon fa fa-cloud-download"></i> Download</a>
-                <div className="dropdown-divider"></div>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-copy"></i> Copy
-                  to</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-folder"></i>
-                  Move to</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-edit"></i>
-                  Rename</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-trash"></i>
-                  Delete</a>
-              </div>
+<div className="page">
+<div className="section-light py-3 chat_app">
+    <div className="container-fluid">
+        <div className="row">
+            <div className="col-lg-8 col-md-12">
+                <div className="card bg-none b-none">
+                    <div className="card-header bline bg-none">
+                        <h3 className="card-title">Friends Group <small>Last seen: 2 hours ago</small></h3>
+                        <div className="card-options">
+                            <a href="javascript:void(0)" className="p-1"><i className="fa fa-plus"></i></a>
+                            <a href="javascript:void(0)" className="p-1"><i className="fa fa-cog"></i></a>
+                            <a href="javascript:void(0)" className="p-1"><i className="fa fa-refresh"></i></a>
+                            <a href="javascript:void(0)" className="p-1 chat_list_btn"><i
+                                    className="fa fa-align-right"></i></a>
+                        </div>
+                    </div>
+                    <div className="chat_windows">
+                        <ul className="mb-0">
+                            <li className="other-message">
+                                <img className="avatar mr-3" src="../assets/images/xs/avatar2.jpg" alt="avatar"/>
+                                <div className="message">
+                                    <p className="bg-light-blue">Are we meeting today?</p>
+                                    <span className="time">10:10 AM, Today</span>
+                                </div>
+                            </li>
+                            <li className="other-message">
+                                <img className="avatar mr-3" src="../assets/images/xs/avatar3.jpg" alt="avatar"/>
+                                <div className="message">
+                                    <p className="bg-light-cyan">Hi Aiden, how are you? How is the project
+                                        coming along?</p>
+                                    <p className="bg-light-cyan">Are we meeting today?</p>
+                                    <span className="time">10:15 AM, Today</span>
+                                </div>
+                            </li>
+                            <li className="my-message">
+                                <div className="message">
+                                    <p className="bg-light-gray">Project has been already finished and I have
+                                        results to show you.</p>
+                                    <div className="file_folder">
+                                        <a href="javascript:void(0);">
+                                            <div className="icon">
+                                                <i className="fa fa-file-excel-o text-success"></i>
+                                            </div>
+                                            <div className="file-name">
+                                                <p className="mb-0 text-muted">Report2017.xls</p>
+                                                <small>Size: 68KB</small>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0);">
+                                            <div className="icon">
+                                                <i className="fa fa-file-word-o text-primary"></i>
+                                            </div>
+                                            <div className="file-name">
+                                                <p className="mb-0 text-muted">Report2017.doc</p>
+                                                <small>Size: 68KB</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <span className="time">10:17 AM, Today</span>
+                                </div>
+                            </li>
+                            <li className="other-message">
+                                <img className="avatar mr-3" src="../assets/images/xs/avatar4.jpg" alt="avatar"/>
+                                <div className="message">
+                                    <div className="media_img">
+                                        <img src="../assets/images/gallery/1.jpg"
+                                            className="w150 img-thumbnail mb-1" />
+                                        <img src="../assets/images/gallery/2.jpg"
+                                            className="w150 img-thumbnail mb-1" />
+                                    </div>
+                                    <span className="time">10:15 AM, Today</span>
+                                </div>
+                            </li>
+                            <li className="other-message">
+                                <span className="avatar avatar-blue mr-3">NG</span>
+                                <div className="message">
+                                    <p className="bg-light-pink">Are we meeting today I have results?</p>
+                                    <p className="bg-light-pink">Project has been already finished and to show
+                                        you.</p>
+                                    <span className="time">10:18 AM, Today</span>
+                                </div>
+                            </li>
+                            <li className="my-message">
+                                <div className="message">
+                                    <p className="bg-light-gray">Well we have good budget for the project</p>
+                                    <span className="time">10:25 AM, Today</span>
+                                </div>
+                            </li>
+                            <li className="my-message">
+                                <div className="message">
+                                    <div className="media_img">
+                                        <img src="../assets/images/gallery/3.jpg"
+                                            className="w100 img-thumbnail mb-1" />
+                                        <img src="../assets/images/gallery/4.jpg"
+                                            className="w100 img-thumbnail mb-1" />
+                                        <img src="../assets/images/gallery/5.jpg"
+                                            className="w100 img-thumbnail mb-1" />
+                                        <img src="../assets/images/gallery/6.jpg"
+                                            className="w100 img-thumbnail mb-1" />
+                                    </div>
+                                    <span className="time">10:25 AM, Today</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div className="chat-message clearfix">
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#addtask"><i
+                                    className="icon-camera"></i></a>
+                            <a href="javascript:void(0);"><i className="icon-camcorder"></i></a>
+                            <a href="javascript:void(0);"><i className="icon-paper-plane"></i></a>
+                            <div className="input-group mb-0">
+                                <input type="text" className="form-control" placeholder="Enter text here..."/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div className="card-body">
-          <span>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-            classNameical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-            professor at Hampden-Sydney College in Virginia</span>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-header">
-          <h3 className="card-title">Ticket Info</h3>
-          <div className="card-options">
-            <a href="javascript:void(0)" className="card-options-remove" data-toggle="card-remove"><i
-                className="fe fe-x"></i></a>
-            <div className="item-action dropdown ml-2">
-              <a href="javascript:void(0)" data-toggle="dropdown"><i className="fe fe-more-vertical"></i></a>
-              <div className="dropdown-menu dropdown-menu-right">
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-eye"></i> View
-                  Details </a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-share-alt"></i>
-                  Share </a>
-                <a href="javascript:void(0)" className="dropdown-item"><i
-                    className="dropdown-icon fa fa-cloud-download"></i> Download</a>
-                <div className="dropdown-divider"></div>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-copy"></i> Copy
-                  to</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-folder"></i>
-                  Move to</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-edit"></i>
-                  Rename</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-trash"></i>
-                  Delete</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="card-body">
-          <ul className="list-group">
-            <li className="list-group-item">
-              <small className="text-muted">Title: </small>
-              <p className="mb-0">SoccerAdmin Template</p>
-            </li>
-            <li className="list-group-item">
-              <small className="text-muted">Department: </small>
-              <p className="mb-0">Pre-Sales</p>
-            </li>
-            <li className="list-group-item">
-              <small className="text-muted">Product: </small>
-              <p className="mb-0">SoccerSide Menu Open OnClick</p>
-            </li>
-            <li className="list-group-item">
-              <small className="text-muted">Date: </small>
-              <p className="mb-0">07 Feb 2019</p>
-            </li>
-            <li className="list-group-item">
-              <div>In Progress</div>
-              <div className="progress progress-xs mb-0">
-                <div className="progress-bar bg-info" style="width: 58%"></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-    <div className="col-lg-8 col-md-12">
-      <div className="card">
-        <div className="card-body">
-          <div className="summernote">
-            Hi there,
-            <br />
-            <p>The toolbar can be customized and it also supports various callbacks such as <code>oninit</code>,
-              <code>onfocus</code>, <code>onpaste</code> and many more.</p>
-            <br />
-            <p>Thank you!</p>
-            <h6>Summer Note</h6>
-          </div>
-          <div className="mt-4 text-right">
-            <button className="btn btn-warning"><i className="icon-link"></i></button>
-            <button className="btn btn-warning"><i className="icon-camera"></i></button>
-            <button className="btn btn-primary">Post</button>
-          </div>
+    <div className="chat_list section-white" id="users">
+        <a href="javascript:void(0)" className="chat_list_btn float-right"><i
+                className="fa  fa-window-close"></i></a>
+        <ul className="nav nav-tabs" role="tablist">
+            <li className="nav-item">
+                <a className="nav-link active" id="users-tab" data-toggle="tab" href="#users-list" role="tab"
+                    aria-controls="users-list" aria-selected="true">Users</a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link" id="groups-tab" data-toggle="tab" href="#groups" role="tab"
+                    aria-controls="groups" aria-selected="false">Groups</a>
+            </li>
+        </ul>
+        <div className="input-group mt-2 mb-2">
+            <input type="text" className="form-control search" placeholder="Search..."/>
         </div>
-      </div>
-      <div className="card">
-        <div className="card-header">
-          <h3 className="card-title">Ticket Replies</h3>
-          <div className="card-options">
-            <a href="javascript:void(0)" className="card-options-remove" data-toggle="card-remove"><i
-                className="fe fe-x"></i></a>
-            <div className="item-action dropdown ml-2">
-              <a href="javascript:void(0)" data-toggle="dropdown"><i className="fe fe-more-vertical"></i></a>
-              <div className="dropdown-menu dropdown-menu-right">
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-eye"></i> View
-                  Details </a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-share-alt"></i>
-                  Share </a>
-                <a href="javascript:void(0)" className="dropdown-item"><i
-                    className="dropdown-icon fa fa-cloud-download"></i> Download</a>
-                <div className="dropdown-divider"></div>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-copy"></i> Copy
-                  to</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-folder"></i>
-                  Move to</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-edit"></i>
-                  Rename</a>
-                <a href="javascript:void(0)" className="dropdown-item"><i className="dropdown-icon fa fa-trash"></i>
-                  Delete</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="card-body">
-          <div className="timeline_item ">
-            <img className="tl_avatar" src="../assets/images/xs/avatar1.jpg" alt=""/>
-            <span><a href="javascript:void(0);">Elisse Joson</a> San Francisco, CA <small
-                className="float-right text-right">20-April-2019 - Today</small></span>
-            <h6 className="font600">Hello, 'Im a single div responsive timeline without media Queries!</h6>
-            <div className="msg">
-              <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of
-                things. I write the best placeholder text, and I'm the biggest developer on the web card she has
-                is the Lorem card.</p>
-              <a href="javascript:void(0);" className="mr-20 text-muted"><i className="fa fa-heart text-pink"></i> 12
-                Love</a>
-              <a className="text-muted" role="button" data-toggle="collapse" href="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample"><i className="fa fa-comments"></i> 1
-                Comment</a>
-              <div className="collapse p-4 section-gray mt-2" id="collapseExample">
-                <form className="well">
-                  <div className="form-group">
-                    <textarea rows="2" className="form-control no-resize"
-                      placeholder="Enter here for tweet..."></textarea>
-                  </div>
-                  <button className="btn btn-primary">Submit</button>
-                </form>
-                <ul className="recent_comments list-unstyled mt-4 mb-0">
-                  <li>
-                    <div className="avatar_img">
-                      <img className="rounded img-fluid" src="../assets/images/xs/avatar4.jpg" alt=""/>
-                    </div>
-                    <div className="comment_body">
-                      <h6>Donald Gardner <small className="float-right font-14">Just now</small></h6>
-                      <p>Lorem ipsum Veniam aliquip culpa laboris minim tempor</p>
-                    </div>
-                  </li>
+        <div className="tab-content">
+            <div className="tab-pane fade show active" id="users-list" role="tabpanel"
+                aria-labelledby="users-tab">
+                <ul className="right_chat list-unstyled list">
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar4.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Ava Phillip Smith</span>
+                                    <span className="message">Are we meeting today?</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar5.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Debra Stewart</span>
+                                    <span className="message">Project has been already</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar2.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Harry McCall</span>
+                                    <span className="message">Well we have good budget</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar1.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Nancy Flanary</span>
+                                    <span className="message">i'm meeting today</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar3.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Marshall Nichols</span>
+                                    <span className="message">I have results to show you</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar5.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Debra Stewart</span>
+                                    <span className="message">How is the project coming</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar2.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Harry McCall</span>
+                                    <span className="message">Well we have good budget</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar2.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Harry McCall</span>
+                                    <span className="message">Are we meeting today?</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar1.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Nancy Flanary</span>
+                                    <span className="message">Hi Suse, how are you?</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar5.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Debra Stewart</span>
+                                    <span className="message">Hi Aiden, how are you?</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar1.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Nancy Flanary</span>
+                                    <span className="message">I have results to show you</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar3.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Marshall Nichols</span>
+                                    <span className="message">Well we have good budget</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar5.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Debra Stewart</span>
+                                    <span className="message">Hi Aiden, how are you?</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar2.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Harry McCall</span>
+                                    <span className="message">I have results to show you</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
-              </div>
             </div>
-          </div>
-          <div className="timeline_item ">
-            <img className="tl_avatar" src="../assets/images/xs/avatar4.jpg" alt=""/>
-            <span><a href="javascript:void(0);" title="">Dessie Parks</a> Oakland, CA <small
-                className="float-right text-right">19-April-2019 - Yesterday</small></span>
-            <h6 className="font600">Oeehhh, that's awesome.. Me too!</h6>
-            <div className="msg">
-              <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of
-                things. on the web by far... While that's mock-ups and this is politics, are they really so
-                different? I think the only card she has is the Lorem card.</p>
-              <div className="timeline_img mb-20">
-                <img className="width100" src="../assets/images/gallery/1.jpg" alt="Awesome Image"/>
-                <img className="width100" src="../assets/images/gallery/2.jpg" alt="Awesome Image"/>
-              </div>
-              <a href="javascript:void(0);" className="mr-20 text-muted"><i className="fa fa-heart text-pink"></i> 23
-                Love</a>
-              <a className="text-muted" role="button" data-toggle="collapse" href="#collapseExample1"
-                aria-expanded="false" aria-controls="collapseExample1"><i className="fa fa-comments"></i> 2
-                Comment</a>
-              <div className="collapse p-4 section-gray mt-2" id="collapseExample1">
-                <form className="well">
-                  <div className="form-group">
-                    <textarea rows="2" className="form-control no-resize"
-                      placeholder="Enter here for tweet..."></textarea>
-                  </div>
-                  <button className="btn btn-primary">Submit</button>
-                </form>
-                <ul className="recent_comments list-unstyled mt-4 mb-0">
-                  <li>
-                    <div className="avatar_img">
-                      <img className="rounded img-fluid" src="../assets/images/xs/avatar4.jpg" alt=""/>
-                    </div>
-                    <div className="comment_body">
-                      <h6>Donald Gardner <small className="float-right font-14">Just now</small></h6>
-                      <p>Lorem ipsum Veniam aliquip culpa laboris minim tempor</p>
-                      <div className="timeline_img mb-20">
-                        <img className="width150" src="../assets/images/gallery/7.jpg" alt="Awesome Image"/>
-                        <img className="width150" src="../assets/images/gallery/8.jpg" alt="Awesome Image"/>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="avatar_img">
-                      <img className="rounded img-fluid" src="../assets/images/xs/avatar3.jpg" alt=""/>
-                    </div>
-                    <div className="comment_body">
-                      <h5>Dessie Parks <small className="float-right font-14">1min ago</small></h5>
-                      <p>It is a long established fact that a reader will be distracted by the readable content
-                        of a page when looking</p>
-                    </div>
-                  </li>
+            <div className="tab-pane" id="groups" role="tabpanel" aria-labelledby="groups-tab">
+                <ul className="right_chat list-unstyled list">
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar1.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">PHP Groups</span>
+                                    <span className="message">How is the project coming</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar2.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Family Groups</span>
+                                    <span className="message">Update Code</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar3.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Harry McCall</span>
+                                    <span className="message">3 New design bug</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="offline">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar4.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">Friends holic</span>
+                                    <span className="message">Hello All!</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li className="online">
+                        <a href="javascript:void(0);">
+                            <div className="media">
+                                <img className="media-object" src="../assets/images/xs/avatar5.jpg" alt=""/>
+                                <div className="media-body">
+                                    <span className="name">CL City 2</span>
+                                    <span className="message">Add new contact</span>
+                                    <span className="badge badge-outline status"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
-              </div>
             </div>
-          </div>
-          <div className="timeline_item ">
-            <img className="tl_avatar" src="../assets/images/xs/avatar7.jpg" alt=""/>
-            <span><a href="javascript:void(0);" title="">Rochelle Barton</a> San Francisco, CA <small
-                className="float-right text-right">12-April-2019</small></span>
-            <h6 className="font600">An Engineer Explains Why You Should Always Order the Larger Pizza</h6>
-            <div className="msg">
-              <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of
-                things. I write the best placeholder text, and I'm the biggest developer on the web by far...
-                While that's mock-ups and this is politics, is the Lorem card.</p>
-              <a href="javascript:void(0);" className="mr-20 text-muted"><i className="fa fa-heart text-pink"></i> 7
-                Love</a>
-              <a className="text-muted" role="button" data-toggle="collapse" href="#collapseExample2"
-                aria-expanded="false" aria-controls="collapseExample2"><i className="fa fa-comments"></i> 1
-                Comment</a>
-              <div className="collapse p-4 section-gray mt-2" id="collapseExample2">
-                <form className="well">
-                  <div className="form-group">
-                    <textarea rows="2" className="form-control no-resize"
-                      placeholder="Enter here for tweet..."></textarea>
-                  </div>
-                  <button className="btn btn-primary">Submit</button>
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 </div>
