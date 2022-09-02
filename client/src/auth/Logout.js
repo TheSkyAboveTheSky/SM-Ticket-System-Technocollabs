@@ -1,5 +1,5 @@
 const Logout = () => {
   localStorage.removeItem('x-auth-token');
-  window.location.ref("/login");
+  window.location.reload();
 }
 export default Logout;
