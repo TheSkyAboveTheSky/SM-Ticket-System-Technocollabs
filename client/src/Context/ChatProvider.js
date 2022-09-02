@@ -1,6 +1,6 @@
 import React , { createContext , useContext , useEffect , useState} from 'react';
 import { useNavigate} from 'react-router-dom';
-import Axios from '../components/Axios/Axios';
+import Axios from '../components/SharedComponents/Axios/Axios';
 
 const ChatContext = createContext();
 
@@ -13,10 +13,12 @@ const ChatProvider = ({ children }) => {
   const history = useNavigate();
 
   useEffect(() => {
-    const userInfo = window.localStorage.getItem('user-id');
-    setUser(userInfo);
-    if (!userInfo) history.push("/");
-    getChats();
+    if(window.localStorage.getItem('user-id')){
+      const userInfo = window.localStorage.getItem('user-id');
+      setUser(userInfo);
+      if (!userInfo) history.push("/");
+      getChats()
+    }
   },[history]);
   const getChats = async () => {
     try {
