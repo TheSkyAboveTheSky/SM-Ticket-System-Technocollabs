@@ -73,6 +73,7 @@ function Chat() {
                           style={{ textDecoration: "none" }}
                         >
                           {chats.map((chat, index) => {
+                            let style;
                             let chatName;
                             if (!chat.isGroupChat) {
                               if (
@@ -93,7 +94,7 @@ function Chat() {
                             return (
                               <li
                                 className="online"
-                                style={{ cursor: "pointer" }}
+                                style={ selectedChat === chat ? { backgroundColor : 'green', cursor: 'pointer' } : {ursor: 'pointer' } }
                                 onClick={() => {setSelectedChat(chat)}}
                               >
                                 <div className="media">
@@ -104,7 +105,7 @@ function Chat() {
                                   />
                                   <div className="media-body">
                                     <span className="name">{chatName}</span>
-                                    <span className="message">
+                                    <span className="message" style={{color: "black"}}>
                                       {sender}
                                       {" : "}
                                       {chat.latestMessage.text}
