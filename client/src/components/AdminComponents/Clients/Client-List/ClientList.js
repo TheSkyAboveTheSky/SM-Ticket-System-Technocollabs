@@ -3,6 +3,11 @@ import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
 import Header from "../../../SharedComponents/Header/Header";
 import axios from "../../../SharedComponents/Axios/Axios";
 import user from "../../../../assets/images/user.png";
+import Notification from "../../../SharedComponents/Notification/Notification";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 function ClientList() {
   const [clients, setClients] = useState([]);
@@ -10,8 +15,23 @@ function ClientList() {
     getClients();
   }, []);
   const getClients = async () => {
-    const response = await axios.get("/client",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+    const response = await axios.get("/client", {
+      headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
+    });
     setClients(response.data);
+  };
+  const deleteClient = async (id) => {
+    try {
+      const response = await axios.delete(`/client/${id}`, {
+        headers: {
+          "x-auth-token": window.localStorage.getItem("x-auth-token"),
+        },
+      });
+      await Notification("success", "Successufly Deleting the Client");
+      window.location.reload();
+    } catch (err) {
+      Notification("error", "Something went wrong when deleting the client");
+    }
   };
   return (
     <div>
@@ -22,6 +42,7 @@ function ClientList() {
         <div className="cont">
           <Header title={"Client List"} />
           <div>
+                <NotificationContainer />
             <ul className="nav nav-tabs page-header-tab ">
               <li className="nav-item">
                 <a
@@ -225,10 +246,12 @@ function ClientList() {
                                   ""
                                 )}
                               </ul>
-                              <button className="btn btn-default btn-sm">
-                                View Profile
-                              </button>
-                              <button className="btn btn-default btn-sm">
+                              <a className="btn btn-sm" style={{color: "red"}} onClick={() => {
+                                deleteClient(client._id);
+                              }}>
+                                Delete
+                              </a>
+                              <button className="btn btn-sm" style={{color: "green"}}>
                                 Message
                               </button>
                               <div className="row text-center mt-4">
