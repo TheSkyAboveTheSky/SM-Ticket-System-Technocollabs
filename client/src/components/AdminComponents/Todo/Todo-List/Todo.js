@@ -4,6 +4,11 @@ import Header from "../../../SharedComponents/Header/Header";
 import user from "../../../../assets/images/user.png";
 import Axios from "../../../SharedComponents/Axios/Axios";
 import dateFormat from "dateformat";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from '../../../SharedComponents/Notification/Notification';
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -11,11 +16,20 @@ function Todo() {
     getTodos();
   }, []);
   const getTodos = async () => {
-    const response = await Axios.get("todo", {
+    const response = await Axios.get("/todo", {
       headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
     });
     setTodos(response.data);
   };
+  const deleteTodo = async (id) => {
+    try{
+      const response = await Axios.delete(`/todo/${id}`,{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+      Notification("success","Successufly deleting the todo");
+      window.location.reload();
+    }catch(err){
+      Notification("error",err.message);
+    }
+  }
   return (
     <div>
       <>
@@ -64,6 +78,7 @@ function Todo() {
               </li>
             </ul>
           </div>
+          <NotificationContainer />
           <div className="section-body mt-3">
             <div className="container-fluid">
               <div className="tab-content">
@@ -85,6 +100,7 @@ function Todo() {
                               <th className="w80">
                                 <i className="fa fa-user"></i>
                               </th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -128,6 +144,12 @@ function Todo() {
                                       alt="Avatar"
                                       className="avatar"
                                     />
+                                  </td>
+                                  <td>
+                                    <a className="btn btn-sm" style={{color: "red"}} onClick={() => { deleteTodo(todo._id)}}
+                                    >
+                                      <i className="fa fa-trash"></i>
+                                    </a>
                                   </td>
                                 </tr>
                               );

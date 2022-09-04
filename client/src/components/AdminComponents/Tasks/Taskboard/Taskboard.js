@@ -6,6 +6,11 @@ import axios from "../../../SharedComponents/Axios/Axios";
 import dateFormat from "dateformat";
 import taskImg from '../../../../assets/images/Task.jpg';
 import './Taskboard.css';
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from '../../../SharedComponents/Notification/Notification';
 
 function Taskboard() {
   const [tasks, setTasks] = useState([]);
@@ -16,6 +21,15 @@ function Taskboard() {
     const response = await axios.get("/task",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     setTasks(response.data);
   };
+  const deleteTask = async (id) => {
+    try{
+      const response = await axios.delete(`/task/${id}`,{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+      await Notification("success","Successufly deleted the Task");
+      window.location.reload();
+    }catch(err){
+      Notification("error", err);
+    }
+  }
   return (
     <div>
       <>
@@ -67,6 +81,7 @@ function Taskboard() {
           <div style={{ backgroundColor : 'white' }}>
             <img src={taskImg} alt="Taskboard" className="taskbg"/>
           </div>
+          <NotificationContainer />
           <div className="section-body">
             <div className="container-fluid">
               <div className="tab-content taskboard">
@@ -85,8 +100,9 @@ function Taskboard() {
                               <th>Task</th>
                               <th>Team</th>
                               <th>Duration</th>
+                              <th>Status</th>
+                              <th className="w200">Progress</th>
                               <th>Action</th>
-                              <th className="w200"></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -149,6 +165,13 @@ function Taskboard() {
                                         aria-valuemax="100"
                                       ></div>
                                     </div>
+                                  </td>
+                                  <td>
+                                    <a className="btn btn-sm" style={{color:"red"}} onClick={() => {
+                                      deleteTask(task._id);
+                                    }}>
+                                      <i className="fa fa-trash"></i>
+                                    </a>
                                   </td>
                                 </tr>
                               );

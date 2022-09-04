@@ -3,6 +3,11 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import axios from "../../Axios/Axios";
 import dateFormat from "dateformat";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from "../../Notification/Notification";
 
 function CompletedProject() {
   const [projects, setProjects] = useState([]);
@@ -10,8 +15,23 @@ function CompletedProject() {
     getProjects();
   }, []);
   const getProjects = async () => {
-    const response = await axios.get("/project/completed",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+    const response = await axios.get("/project/completed", {
+      headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
+    });
     setProjects(response.data);
+  };
+  const deleteProject = async (id) => {
+    try {
+      const response = await axios.delete(`/project/${id}`, {
+        headers: {
+          "x-auth-token": window.localStorage.getItem("x-auth-token"),
+        },
+      });
+      await Notification("success", "Successufly deleting the project");
+      window.location.reload();
+    } catch (err) {
+      await Notification("error", err.message);
+    }
   };
   return (
     <div>
@@ -21,6 +41,7 @@ function CompletedProject() {
         </div>
         <div className="cont">
           <Header title={"Completed Projects"} />
+          <NotificationContainer />
           <div>
             <ul className="nav nav-tabs page-header-tab ">
               <li className="nav-item">
@@ -149,8 +170,12 @@ function CompletedProject() {
                                   href="#"
                                   className="card-options-collapse"
                                   data-toggle="card-collapse"
+                                  onClick={() => { deleteProject(project._id)}}
                                 >
-                                  <i className="fe fe-chevron-up"></i>
+                                  <i
+                                    className="fa fa-trash"
+                                    style={{ color: "red" }}
+                                  ></i>
                                 </a>
                               </div>
                             </div>

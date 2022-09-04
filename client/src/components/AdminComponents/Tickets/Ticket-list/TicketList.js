@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
 import Header from "../../../SharedComponents/Header/Header";
 import Axios from "../../../SharedComponents/Axios/Axios";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from '../../../SharedComponents/Notification/Notification';
 
 function TicketList() {
   const [ticketList, setTicketList] = useState([]);
@@ -13,6 +18,15 @@ function TicketList() {
     const ticketList = response.data;
     setTicketList(ticketList);
   };
+  const deleteTicket = async (id) => {
+    try{
+      const response = await Axios.delete(`/ticket/${id}`,{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+      Notification("success","Successufly deleting the ticket");
+      window.location.reload();
+    }catch(err){
+      Notification("error",err.message);
+    }
+  }
   return (
     <div>
       <>
@@ -61,6 +75,7 @@ function TicketList() {
               </li>
             </ul>
           </div>
+          <NotificationContainer />
           <div className="section-body mt-3">
             <div className="container-fluid">
               <div className="row clearfix">
@@ -145,6 +160,7 @@ function TicketList() {
                             <th>Agent</th>
                             <th>Date</th>
                             <th>Activity</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -200,6 +216,13 @@ function TicketList() {
                                   <span>{ticket.date}</span>
                                 </td>
                                 <td>{ticket.numberOfReplies ? `${ticket.numberOfReplies} reply` :  "No reply yet"}</td>
+                                <td>
+                                  <a className="btn btn-sm" style={{color:'red'}} onClick={() => {
+                                    deleteTicket(ticket._id);
+                                  }}>
+                                    <i className="fa fa-trash"></i>
+                                  </a>
+                                </td>
                               </tr>
                             );
                           })}

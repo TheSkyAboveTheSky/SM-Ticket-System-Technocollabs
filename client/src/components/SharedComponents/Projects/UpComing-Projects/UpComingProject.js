@@ -3,6 +3,11 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import axios from "../../Axios/Axios";
 import dateFormat from "dateformat";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import Notification from "../../Notification/Notification";
 
 function UpComingProject() {
   const [projects, setProjects] = useState([]);
@@ -12,6 +17,19 @@ function UpComingProject() {
   const getProjects = async () => {
     const response = await axios.get("/project/upcoming",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
     setProjects(response.data);
+  };
+  const deleteProject = async (id) => {
+    try {
+      const response = await axios.delete(`/project/${id}`, {
+        headers: {
+          "x-auth-token": window.localStorage.getItem("x-auth-token"),
+        },
+      });
+      await Notification("success", "Successufly deleting the project");
+      window.location.reload();
+    } catch (err) {
+      await Notification("error", err.message);
+    }
   };
   return (
     <div>
@@ -149,8 +167,12 @@ function UpComingProject() {
                                   href="#"
                                   className="card-options-collapse"
                                   data-toggle="card-collapse"
+                                  onClick={() => { deleteProject(project._id)}}
                                 >
-                                  <i className="fe fe-chevron-up"></i>
+                                  <i
+                                    className="fa fa-trash"
+                                    style={{ color: "red" }}
+                                  ></i>
                                 </a>
                               </div>
                             </div>
