@@ -6,10 +6,7 @@ import dateFormat from "dateformat";
 import taskImg from "../../../../assets/images/Task.jpg";
 import banner from "../../../../assets/images/addTask.jpg";
 import "./Taskboard.css";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
+import { NotificationContainer } from "react-notifications";
 import Notification from "../../../SharedComponents/Notification/Notification";
 import Modal from "react-modal";
 
@@ -26,6 +23,8 @@ function Taskboard() {
   const [progress, setProgress] = useState(0);
   const [startTime, setStartTime] = useState();
   const [dueTime, setDueTime] = useState();
+  //
+  const [id, setId] = useState("");
 
   useEffect(() => {
     getTasks();
@@ -49,7 +48,7 @@ function Taskboard() {
       Notification("error", err);
     }
   };
-  const updateTask = async (id) => {
+  const updateTask = async () => {
     try {
       const response = await axios.put(
         `/task/${id}`,
@@ -120,6 +119,21 @@ function Taskboard() {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
     },
+  };
+  const getTask = async (id) => {
+    const response = await axios.get(`/task/${id}`, {
+      headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
+    });
+    setId(id);
+    setDescriptions(response.data.description);
+    setDueTime(response.data.due);
+    setFullName(response.data.name);
+    setPriority(response.data.priority);
+    setProgress(response.data.progress);
+    setStartTime(response.data.start);
+    setTeam(response.data.team);
+    setStatus(response.data.status);
+    openModal();
   };
   return (
     <div>
@@ -197,7 +211,7 @@ function Taskboard() {
                             </tr>
                           </thead>
                           <tbody>
-                            {tasks.map((task) => {
+                            {tasks.map((task, index) => {
                               let color;
                               switch (task.status) {
                                 case "UpComing": {
@@ -216,213 +230,7 @@ function Taskboard() {
                               console.log(task);
                               return (
                                 <tr>
-                                  <Modal
-                                    isOpen={isOpen}
-                                    onRequestClose={closeModal}
-                                    style={customStyles}
-                                    contentLabel="Update Modal"
-                                  >
-                                    <div
-                                      className="vh-600"
-                                      style={{ backgroundColor: "white" }}
-                                    >
-                                      <div className="container-fluid ">
-                                        <div className="row d-flex justify-content-center align-items-center h-100">
-                                          <div className="col-md-9 col-lg-6 col-xl-5">
-                                            <img
-                                              src={banner}
-                                              alt="login form"
-                                              className="img-fluid"
-                                            />
-                                          </div>
-                                          <div className="col-md-8 col-lg-6 col-xl-4">
-                                            <form
-                                              onSubmit={() =>
-                                                updateTask(task._id)
-                                              }
-                                            >
-                                              <div className="text-center mb-3">
-                                                <h3 className="text-info">
-                                                  Update Tasks
-                                                </h3>
-                                              </div>
-                                              <div className="row g-3">
-                                                <div className="col-md-6 form-floating mb-3">
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Name"
-                                                    onChange={(e) =>
-                                                      setFullName(
-                                                        e.target.value
-                                                      )
-                                                    }
-                                                  />
-                                                  <label>
-                                                    Name : {task.name}
-                                                  </label>
-                                                </div>
-                                                <div className="col-md-6 form-floating mb-3">
-                                                  <select
-                                                    className="form-select"
-                                                    onChange={(e) =>
-                                                      setPriority(
-                                                        e.target.value
-                                                      )
-                                                    }
-                                                  >
-                                                    <option defaultValue>
-                                                      choose...
-                                                    </option>
-                                                    <option value="Low">
-                                                      Low
-                                                    </option>
-                                                    <option value="Medium">
-                                                      Medium
-                                                    </option>
-                                                    <option value="High">
-                                                      High
-                                                    </option>
-                                                  </select>
-                                                  <label>
-                                                    Priority : {task.priority}
-                                                  </label>
-                                                </div>
-                                              </div>
-
-                                              <div className="form-floating mb-3">
-                                                <textarea
-                                                  className="form-control"
-                                                  placeholder="Description"
-                                                  onChange={(e) =>
-                                                    setDescriptions(
-                                                      e.target.value
-                                                    )
-                                                  }
-                                                ></textarea>
-                                                <label>
-                                                  Description :{" "}
-                                                  {task.description}
-                                                </label>
-                                              </div>
-                                              <div className="form-floating mb-3">
-                                                <input
-                                                  className="form-control"
-                                                  placeholder="Start Date"
-                                                  type="date"
-                                                  onChange={(e) =>
-                                                    setStartTime(e.target.value)
-                                                  }
-                                                />
-                                                <label>
-                                                  Start Time :{" "}
-                                                  {dateFormat(
-                                                    task.due,
-                                                    "yyyy-mm-dd"
-                                                  )}
-                                                </label>
-                                              </div>
-                                              <div className="form-floating mb-3">
-                                                <input
-                                                  className="form-control"
-                                                  placeholder="Due Date"
-                                                  type="date"
-                                                  onChange={(e) =>
-                                                    setDueTime(e.target.value)
-                                                  }
-                                                />
-                                                <label>
-                                                  Due Time :{" "}
-                                                  {dateFormat(
-                                                    task.due,
-                                                    "yyyy-mm-dd"
-                                                  )}
-                                                </label>
-                                              </div>
-                                              <div className="row g-3">
-                                                <div className="col-md-6 form-floating mb-3">
-                                                  <select
-                                                    className="form-select"
-                                                    onChange={(e) =>
-                                                      setTeam(e.target.value)
-                                                    }
-                                                  >
-                                                    <option selected>
-                                                      Choose...
-                                                    </option>
-                                                    <option value="Team One">
-                                                      Team One
-                                                    </option>
-                                                    <option value="Team Two">
-                                                      Team Two
-                                                    </option>
-                                                    <option value="Team Three">
-                                                      Team Three
-                                                    </option>
-                                                  </select>
-                                                  <label>
-                                                    Team : {task.team}
-                                                  </label>
-                                                </div>
-                                                <div className="col-md-6 form-floating mb-3">
-                                                  <select
-                                                    className="form-select"
-                                                    onChange={(e) =>
-                                                      setStatus(e.target.value)
-                                                    }
-                                                  >
-                                                    <option selected>
-                                                      Choose...
-                                                    </option>
-                                                    <option value="UpComing">
-                                                      UpComing
-                                                    </option>
-                                                    <option value="OnGoing">
-                                                      OnGoing
-                                                    </option>
-                                                    <option value="Completed">
-                                                      Completed
-                                                    </option>
-                                                  </select>
-                                                  <label>
-                                                    Status : {task.status}
-                                                  </label>
-                                                </div>
-                                              </div>
-                                              <div className="form-floating mb-3">
-                                                <input
-                                                  className="form-control"
-                                                  type="Number"
-                                                  step="1"
-                                                  min="0"
-                                                  onChange={(e) =>
-                                                    setProgress(e.target.value)
-                                                  }
-                                                />
-                                                <label>
-                                                  Progress : {task.progress}
-                                                </label>
-                                              </div>
-
-                                              <button
-                                                type="submit"
-                                                className="btn btn-primary w-100 my-3"
-                                              >
-                                                Update Task
-                                              </button>
-                                              <button
-                                                className="btn btn-primary w-100 my-3"
-                                                onClick={closeModal}
-                                              >
-                                                Close
-                                              </button>
-                                            </form>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </Modal>
-                                  <td>{1}</td>
+                                  <td>{++index}</td>
                                   <td>
                                     <h6 className="mb-0">{task.name}</h6>
                                     <span>{task.description}</span>
@@ -480,12 +288,202 @@ function Taskboard() {
                                       className="btn btn-sm"
                                       style={{ color: "blue" }}
                                       onClick={() => {
-                                        openModal();
+                                        getTask(task._id);
                                       }}
                                     >
                                       <i className="fa fa-pen-to-square"></i>
                                     </a>
                                   </td>
+                                  <Modal
+                                    isOpen={isOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    contentLabel="Update Modal"
+                                  >
+                                    <div
+                                      className="vh-600"
+                                      style={{ backgroundColor: "white" }}
+                                    >
+                                      <div className="container-fluid ">
+                                        <div className="row d-flex justify-content-center align-items-center h-100">
+                                          <div className="col-md-9 col-lg-6 col-xl-5">
+                                            <img
+                                              src={banner}
+                                              alt="login form"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                          <div className="col-md-8 col-lg-6 col-xl-4">
+                                            <form onSubmit={() => updateTask()}>
+                                              <div className="text-center mb-3">
+                                                <h3 className="text-info">
+                                                  Update Tasks
+                                                </h3>
+                                              </div>
+                                              <div className="row g-3">
+                                                <div className="col-md-6 mb-3">
+                                                  <label>Name :</label>
+                                                  <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={fullName}
+                                                    placeholder="Name"
+                                                    onChange={(e) =>
+                                                      setFullName(
+                                                        e.target.value
+                                                      )
+                                                    }
+                                                  />
+                                                </div>
+                                                <div className="col-md-6 mb-3">
+                                                  <label>Priority :</label>
+                                                  <select
+                                                    className="form-select"
+                                                    value={priority}
+                                                    onChange={(e) =>
+                                                      setPriority(
+                                                        e.target.value
+                                                      )
+                                                    }
+                                                  >
+                                                    <option defaultValue>
+                                                      choose...
+                                                    </option>
+                                                    <option value="Low">
+                                                      Low
+                                                    </option>
+                                                    <option value="Medium">
+                                                      Medium
+                                                    </option>
+                                                    <option value="High">
+                                                      High
+                                                    </option>
+                                                  </select>
+                                                </div>
+                                              </div>
+
+                                              <div className="mb-3">
+                                                <label>Description :</label>
+                                                <textarea
+                                                  className="form-control"
+                                                  placeholder="Description"
+                                                  value={description}
+                                                  onChange={(e) =>
+                                                    setDescriptions(
+                                                      e.target.value
+                                                    )
+                                                  }
+                                                ></textarea>
+                                              </div>
+                                              <div className="mb-3">
+                                                <label>
+                                                  Start Time :
+                                                  {" Format : YYYY-MM-DD "}
+                                                </label>
+                                                <input
+                                                  className="form-control"
+                                                  value={startTime}
+                                                  placeholder="Start Date"
+                                                  type="date"
+                                                  onChange={(e) =>
+                                                    setStartTime(e.target.value)
+                                                  }
+                                                />
+                                              </div>
+                                              <div className="mb-3">
+                                                <label>
+                                                  Due Time :
+                                                  {" Format : YYYY-MM-DD "}
+                                                </label>
+                                                <input
+                                                  className="form-control"
+                                                  placeholder="Due Date"
+                                                  value={dueTime}
+                                                  type="date"
+                                                  onChange={(e) =>
+                                                    setDueTime(e.target.value)
+                                                  }
+                                                />
+                                              </div>
+                                              <div className="row g-3">
+                                                <div className="col-md-6 mb-3">
+                                                  <label>Team :</label>
+                                                  <select
+                                                    className="form-select"
+                                                    value={team}
+                                                    onChange={(e) =>
+                                                      setTeam(e.target.value)
+                                                    }
+                                                  >
+                                                    <option selected>
+                                                      Choose...
+                                                    </option>
+                                                    <option value="Team One">
+                                                      Team One
+                                                    </option>
+                                                    <option value="Team Two">
+                                                      Team Two
+                                                    </option>
+                                                    <option value="Team Three">
+                                                      Team Three
+                                                    </option>
+                                                  </select>
+                                                </div>
+                                                <div className="col-md-6 mb-3">
+                                                  <label>Status :</label>
+                                                  <select
+                                                    className="form-select"
+                                                    onChange={(e) =>
+                                                      setStatus(e.target.value)
+                                                    }
+                                                  >
+                                                    <option selected>
+                                                      Choose...
+                                                    </option>
+                                                    <option value="UpComing">
+                                                      UpComing
+                                                    </option>
+                                                    <option value="OnGoing">
+                                                      OnGoing
+                                                    </option>
+                                                    <option value="Completed">
+                                                      Completed
+                                                    </option>
+                                                  </select>
+                                                </div>
+                                              </div>
+                                              <div className="mb-3">
+                                                <label>Progress :</label>
+                                                <input
+                                                  className="form-control"
+                                                  type="Number"
+                                                  step="1"
+                                                  min="0"
+                                                  value={progress}
+                                                  onChange={(e) =>
+                                                    setProgress(e.target.value)
+                                                  }
+                                                />
+                                              </div>
+
+                                              <button
+                                                type="submit"
+                                                className="btn btn-primary w-50 my-3"
+                                              >
+                                                Update Task
+                                              </button>
+                                              <button
+                                                className="btn btn-primary w-50 my-3"
+                                                onClick={closeModal}
+                                              >
+                                                Close
+                                              </button>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </Modal>
                                 </tr>
                               );
                             })}
