@@ -166,17 +166,6 @@ function CompletedProject() {
                                   />
                                   <span className="custom-switch-indicator"></span>
                                 </label>
-                                <a
-                                  href="#"
-                                  className="card-options-collapse"
-                                  data-toggle="card-collapse"
-                                  onClick={() => { deleteProject(project._id)}}
-                                >
-                                  <i
-                                    className="fa fa-trash"
-                                    style={{ color: "red" }}
-                                  ></i>
-                                </a>
                               </div>
                             </div>
                             <div className="card-body">
