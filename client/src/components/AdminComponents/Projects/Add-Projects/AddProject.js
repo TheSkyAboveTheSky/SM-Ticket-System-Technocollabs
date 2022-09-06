@@ -5,7 +5,6 @@ import register from "../../../../assets/images/register.webp";
 import Axios from "../../Axios/Axios";
 import {
   NotificationContainer,
-  NotificationManager,
 } from "react-notifications";
 import Notification from "../../Notification/Notification";
 

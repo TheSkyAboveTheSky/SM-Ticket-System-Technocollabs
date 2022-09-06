@@ -1,6 +1,6 @@
 import React from "react";
 import {Routes, Route } from "react-router-dom";
-//
+// Protected Routes
 import IsAuthentificated from "../../auth/IsAuthentificated";
 import NotAuthentificated from "../../auth/NotAuthentificated";
 import IsAdmin from "../../auth/Roles/IsAdmin";
@@ -11,6 +11,10 @@ import IsAddTicket from "../../auth/Roles/IsAddTicket";
 import IsTicketDetails from "../../auth/Roles/IsTicketDetails";
 import IsTodo from '../../auth/Roles/IsTodo';
 import IsAddTodo from '../../auth/Roles/IsAddTodo';
+import IsAddProject from '../../auth/Roles/Project/IsAddProject';
+import IsCompletedProject from '../../auth/Roles/Project/IsCompletedProject';
+import IsOnGoingProject from '../../auth/Roles/Project/IsOnGoingProject';
+import IsUpComingProject from '../../auth/Roles/Project/IsUpComingProject';
 // Shared Components
 import Chat from "../SharedComponents/Chat/Chat/Chat";
 import Login from "../SharedComponents/Login/Login";
@@ -20,10 +24,6 @@ import TimelineTasks from "../SharedComponents/Timelines/TimelineTasks/TimelineT
 import UnAuthorized from "../SharedComponents/UnAuthorized/UnAuthorized";
 import NotFound from "../SharedComponents/NotFound/NotFound";
 import Home from "../SharedComponents/Home/Home";
-import AddProject from "../SharedComponents/Projects/Add-Projects/AddProject";
-import OnGoingProject from "../SharedComponents/Projects/OnGoing-Projects/OnGoingProject";
-import UpComingProject from "../SharedComponents/Projects/UpComing-Projects/UpComingProject";
-import CompletedProject from "../SharedComponents/Projects/Completed-Projects/CompletedProject";
 import Test from "../TestComponents/Test/Test";
 // Only Admin Components
 import ClientList from "../AdminComponents/Clients/Client-List/ClientList";
@@ -36,7 +36,10 @@ import AddTicket from "../AdminComponents/Tickets/AddTickets/AddTicket";
 import TicketDetails from "../AdminComponents/Tickets/Ticket-details/TicketDetails";
 import AddTodo from "../AdminComponents/Todo/addTodo/AddTodo";
 import Todo from "../AdminComponents/Todo/Todo-List/Todo";
-
+import AddProject from "../AdminComponents/Projects/Add-Projects/AddProject";
+import OnGoingProject from "../AdminComponents/Projects/OnGoing-Projects/OnGoingProject";
+import UpComingProject from "../AdminComponents/Projects/UpComing-Projects/UpComingProject";
+import CompletedProject from "../AdminComponents/Projects/Completed-Projects/CompletedProject";
 function App() {
   return (
     <Routes>
@@ -155,33 +158,33 @@ function App() {
       <Route
         path="/add-Project"
         element={
-          <IsAuthentificated>
+          <IsAddProject>
             <AddProject />
-          </IsAuthentificated>
+          </IsAddProject>
         }
       />
       <Route
         path="/completed-Project"
         element={
-          <IsAuthentificated>
+          <IsCompletedProject>
             <CompletedProject />
-          </IsAuthentificated>
+          </IsCompletedProject>
         }
       />
       <Route
         path="/ongoing-Project"
         element={
-          <IsAuthentificated>
+          <IsOnGoingProject>
             <OnGoingProject />
-          </IsAuthentificated>
+          </IsOnGoingProject>
         }
       />
       <Route
         path="/upcoming-Project"
         element={
-          <IsAuthentificated>
+          <IsUpComingProject>
             <UpComingProject />
-          </IsAuthentificated>
+          </IsUpComingProject>
         }
       />
       <Route
