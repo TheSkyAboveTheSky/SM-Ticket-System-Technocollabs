@@ -5,10 +5,7 @@ import axios from "../../../SharedComponents/Axios/Axios";
 import user from "../../../../assets/images/user.png";
 import banner from "../../../../assets/images/banner.jpg";
 import Notification from "../../../SharedComponents/Notification/Notification";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
+import { NotificationContainer } from "react-notifications";
 import Modal from "react-modal";
 
 function ClientList() {
@@ -29,6 +26,8 @@ function ClientList() {
   const [slack, setSlack] = useState("");
   const [github, setGithub] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
+  //
+  const [id, setId] = useState("");
 
   useEffect(() => {
     getClients();
@@ -39,7 +38,7 @@ function ClientList() {
     });
     setClients(response.data);
   };
-  const updateClient = async (id) => {
+  const updateClient = async () => {
     try {
       const response = await axios.put(
         `/client/${id}`,
@@ -83,6 +82,27 @@ function ClientList() {
     } catch (err) {
       Notification("error", "Something went wrong when deleting the client");
     }
+  };
+  const getClient = async (id) => {
+    const response = await axios.get(`/client/${id}`, {
+      headers: {
+        "x-auth-token": window.localStorage.getItem("x-auth-token"),
+      },
+    });
+    setId(id);
+    setAddress(response.data.address);
+    setCountry(response.data.country);
+    setDeal(response.data.deal);
+    setEmail(response.data.email);
+    setFacebook(response.data.facebook);
+    setFullName(response.data.fullName);
+    setGithub(response.data.github);
+    setInstagram(response.data.instagram);
+    setTwitter(response.data.twitter);
+    setSlack(response.data.slack);
+    setLinkedIn(response.data.linkedin);
+    setProject(response.data.projects);
+    openModal();
   };
   function openModal() {
     setIsOpen(true);
@@ -324,9 +344,9 @@ function ClientList() {
                               </a>
                               <button
                                 className="btn btn-sm"
-                                style={{ color: "green" }}
+                                style={{ color: "blue" }}
                                 onClick={() => {
-                                  openModal();
+                                  getClient(client._id);
                                 }}
                               >
                                 <i className="fa fa-pen-to-square"></i>Update
@@ -361,161 +381,178 @@ function ClientList() {
                                         />
                                       </div>
                                       <div className="col-md-8 col-lg-6 col-xl-4">
-                                        <form onSubmit={() => updateClient(client._id)}>
+                                        <form onSubmit={() => updateClient()}>
                                           <div className="text-center mb-3">
                                             <h3 className="text-info">
                                               Update Clients
                                             </h3>
                                           </div>
                                           <div className="row g-3">
-                                            <div className="col-md-6 form-floating mb-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>Full Name : </label>
                                               <input
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="FullName"
+                                                value={fullName}
                                                 onChange={(e) =>
                                                   setFullName(e.target.value)
                                                 }
                                               />
-                                              <label>Full Name : {client.fullName}</label>
                                             </div>
-                                            <div className="col-md-6 form-floating mb-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>
+                                                Country : {client.country}
+                                              </label>
                                               <input
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="Country"
+                                                value={country}
                                                 onChange={(e) =>
                                                   setCountry(e.target.value)
                                                 }
                                               />
-                                              <label>Country : {client.country}</label>
                                             </div>
                                           </div>
                                           <div className="row g-3">
-                                            <div className="col-md-6 form-floating mb-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>Address : </label>
                                               <input
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="Address"
+                                                value={address}
                                                 onChange={(e) =>
                                                   setAddress(e.target.value)
                                                 }
                                               />
-                                              <label>Address : {client.address}</label>
                                             </div>
-                                            <div className="col-md-6 form-floating mb-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>Email : </label>
                                               <input
                                                 type="email"
                                                 className="form-control"
                                                 placeholder="Email"
+                                                value={email}
                                                 onChange={(e) =>
                                                   setEmail(e.target.value)
                                                 }
                                               />
-                                              <label>Email : {client.email}</label>
                                             </div>
                                           </div>
                                           <div className="row g-3">
-                                            <div className="col-md-6 form-floating mb-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>Project : </label>
                                               <input
                                                 type="Number"
                                                 className="form-control"
                                                 placeholder="Projects"
                                                 min="0"
                                                 step="1"
+                                                value={project}
                                                 onChange={(e) =>
                                                   setProject(e.target.value)
                                                 }
                                               />
-                                              <label>Project : {client.projects}</label>
                                             </div>
-                                            <div className="col-md-6 form-floating mb-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>Deal : </label>
                                               <input
                                                 type="Number"
                                                 className="form-control"
                                                 placeholder="Deal"
                                                 min="0"
                                                 step="1"
+                                                value={deal}
                                                 onChange={(e) =>
                                                   setDeal(e.target.value)
                                                 }
                                               />
-                                              <label>Deal : {client.deal}</label>
                                             </div>
                                           </div>
-                                          <div className="form-floating mb-3">
+                                          <div className="mb-3">
+                                            <label>Facebook</label>
                                             <input
                                               type="text"
                                               className="form-control"
                                               placeholder="Facebook"
+                                              value={facebook}
                                               onChange={(e) =>
                                                 setFacebook(e.target.value)
                                               }
                                             />
-                                            <label>Facebook</label>
                                           </div>
-                                          <div className="form-floating mb-3">
+                                          <div className="mb-3">
+                                            <label>Instagram</label>
                                             <input
                                               type="text"
                                               className="form-control"
                                               placeholder="Instagram"
+                                              value={instagram}
                                               onChange={(e) =>
                                                 setInstagram(e.target.value)
                                               }
                                             />
-                                            <label>Instagram</label>
                                           </div>
-                                          <div className="form-floating mb-3">
+                                          <div className="mb-3">
+                                            <label>Twitter</label>
                                             <input
                                               type="text"
                                               className="form-control"
                                               placeholder="Twitter"
+                                              value={twitter}
                                               onChange={(e) =>
                                                 setTwitter(e.target.value)
                                               }
                                             />
-                                            <label>Twitter</label>
                                           </div>
-                                          <div className="form-floating mb-3">
+                                          <div className="mb-3">
+                                            <label>Slack</label>
                                             <input
                                               type="text"
                                               className="form-control"
                                               placeholder="Slack"
+                                              value={slack}
                                               onChange={(e) =>
                                                 setSlack(e.target.value)
                                               }
                                             />
-                                            <label>Slack</label>
                                           </div>
-                                          <div className="form-floating mb-3">
+                                          <div className="mb-3">
+                                            <label>Github</label>
                                             <input
                                               type="text"
                                               className="form-control"
                                               placeholder="Github"
+                                              value={github}
                                               onChange={(e) =>
                                                 setGithub(e.target.value)
                                               }
                                             />
-                                            <label>Github</label>
                                           </div>
-                                          <div className="form-floating mb-3">
+                                          <div className="mb-3">
+                                            <label>LinkedIn</label>
                                             <input
                                               type="text"
                                               className="form-control"
                                               placeholder="LinkedIn"
+                                              value={linkedIn}
                                               onChange={(e) =>
                                                 setLinkedIn(e.target.value)
                                               }
                                             />
-                                            <label>LinkedIn</label>
                                           </div>
                                           <button
                                             type="submit"
-                                            className="btn btn-primary w-40 my-3" style={{marginRight:'1rem'}}
+                                            className="btn btn-primary w-40 my-3 mx-1"
                                           >
                                             Create Client
                                           </button>
-                                          <button className="btn btn-danger w-40 my-3" onClick={() => closeModal()}>
+                                          <button
+                                            className="btn btn-danger w-40 my-3"
+                                            onClick={() => closeModal()}
+                                          >
                                             Close
                                           </button>
                                         </form>
