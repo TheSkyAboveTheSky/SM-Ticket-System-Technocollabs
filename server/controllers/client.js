@@ -1,6 +1,8 @@
 const Client = require('../models/Client');
 const mongoose = require("mongoose");
 
+// Controller : GetAllClients
+// @URL : http://localhost:3001/client  || @Function : Get all the clients || @Method : GET || @Middlewares : need to be authentificated and have the admin Role
 const getAllClients = async (req,res) => {
   try{
     const clients = await Client.find();
@@ -9,6 +11,7 @@ const getAllClients = async (req,res) => {
     console.log(err);
   }
 }
+// Controller : GetClientByID
 const getClient = async (req, res) => {
   const id = req.params.id;
   const isValide = mongoose.isValidObjectId(id);
@@ -23,6 +26,7 @@ const getClient = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
+// Controller : DeleteClientNByID
 const deleteClient = async (req,res) => {
   try{
     const client = await Client.findByIdAndDelete(req.params.id);
@@ -32,6 +36,7 @@ const deleteClient = async (req,res) => {
     res.status(500).json({ message: err.message });
   }
 }
+// Controller : UpdateClientByID
 const updateClient = async (req,res) => {
   const id = req.params.id;
   const isValide = mongoose.isValidObjectId(id);
@@ -49,6 +54,7 @@ const updateClient = async (req,res) => {
     res.status(500).json({ message: err.message });
   }
 }
+// Controller : CreateClient
 const createClient = async (req,res) => {
   try{
     const client = await Client.create(req.body);

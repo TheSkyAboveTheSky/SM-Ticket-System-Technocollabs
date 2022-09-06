@@ -30,7 +30,7 @@ function AddClient() {
         country : country,
         address : address,
         email : email,
-        project : project,
+        projects : project,
         deal : deal,
         twitter : twitter,
         slack : slack,

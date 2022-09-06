@@ -3,15 +3,23 @@ import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
 import Header from "../../../SharedComponents/Header/Header";
 import user from "../../../../assets/images/user.png";
 import Axios from "../../../SharedComponents/Axios/Axios";
+import banner from "../../../../assets/images/banner.jpg";
 import dateFormat from "dateformat";
 import {
   NotificationContainer,
-  NotificationManager,
 } from "react-notifications";
-import Notification from '../../../SharedComponents/Notification/Notification';
+import Notification from "../../../SharedComponents/Notification/Notification";
+import Modal from "react-modal";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [due, setDue] = useState();
+  const [team, setTeam] = useState("");
+  const [priority, setPriority] = useState("");
+  const [id,setId] = useState("");
+
   useEffect(() => {
     getTodos();
   }, []);
@@ -22,14 +30,69 @@ function Todo() {
     setTodos(response.data);
   };
   const deleteTodo = async (id) => {
-    try{
-      const response = await Axios.delete(`/todo/${id}`,{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
-      Notification("success","Successufly deleting the todo");
+    try {
+      const response = await Axios.delete(`/todo/${id}`, {
+        headers: {
+          "x-auth-token": window.localStorage.getItem("x-auth-token"),
+        },
+      });
+      Notification("success", "Successufly deleting the todo");
       window.location.reload();
-    }catch(err){
-      Notification("error",err.message);
+    } catch (err) {
+      Notification("error", err.message);
     }
+  };
+  const updateTodo = async () => {
+    try {
+      const response = await Axios.put(
+        `/todo/${id}`,
+        {
+          title: title,
+          due: due,
+          team: team,
+          priority: priority,
+        },
+        {
+          headers: {
+            "x-auth-token": window.localStorage.getItem("x-auth-token"),
+          },
+        }
+      );
+      Notification("success", "Successufly updating the todo");
+      closeModal();
+      window.location.reload();
+    } catch (err) {
+      Notification("error", err.message);
+    }
+  };
+  function openModal() {
+    setIsOpen(true);
   }
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+  const getTodo = async (id) => {
+    const response = await Axios.get(`/todo/${id}`, {
+      headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
+    });
+    console.log(response.data);
+    setDue(response.data.due);
+    setPriority(response.data.priority);
+    setTeam(response.data.team);
+    setTitle(response.data.title);
+    setId(id);
+    openModal();
+  };
   return (
     <div>
       <>
@@ -126,12 +189,20 @@ function Todo() {
                                         className="custom-control-input"
                                         style={{ width: "2rem" }}
                                       />
-                                      <span className="custom-control-label" style={{ fontSize:'1rem' , color: 'black'}}>
+                                      <span
+                                        className="custom-control-label"
+                                        style={{
+                                          fontSize: "1rem",
+                                          color: "black",
+                                        }}
+                                      >
                                         {todo.title}
                                       </span>
                                     </label>
                                   </td>
-                                  <td className="text-right">{dateFormat(todo.due,'dd-mm-yyyy')}</td>
+                                  <td className="text-right">
+                                    {dateFormat(todo.due, "dd-mm-yyyy")}
+                                  </td>
                                   <td className="text-right">{todo.team}</td>
                                   <td>
                                     <span className={styleTag}>
@@ -146,11 +217,146 @@ function Todo() {
                                     />
                                   </td>
                                   <td>
-                                    <a className="btn btn-sm" style={{color: "red"}} onClick={() => { deleteTodo(todo._id)}}
+                                    <a
+                                      className="btn btn-sm"
+                                      style={{ color: "red", margin: "1rem" }}
+                                      onClick={() => {
+                                        deleteTodo(todo._id);
+                                      }}
                                     >
                                       <i className="fa fa-trash"></i>
                                     </a>
+                                    <a
+                                      className="btn btn-sm"
+                                      style={{ color: "blue" }}
+                                      onClick={() => {
+                                        getTodo(todo._id);
+                                      }}
+                                    >
+                                      <i className="fa fa-pen-to-square"></i>
+                                    </a>
                                   </td>
+                                  <Modal
+                                    isOpen={isOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    contentLabel="Update Modal"
+                                  >
+                                    <div
+                                      className="vh-600"
+                                      style={{ backgroundColor: "white" }}
+                                    >
+                                      <div className="container-fluid ">
+                                        <div className="row d-flex justify-content-center align-items-center h-100">
+                                          <div className="col-md-9 col-lg-6 col-xl-5">
+                                            <img
+                                              src={banner}
+                                              alt="login form"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                          <div className="col-md-8 col-lg-6 col-xl-4">
+                                            <form
+                                              onSubmit={() =>
+                                                updateTodo()
+                                              }
+                                            >
+                                              <div className="text-center mb-3">
+                                                <h3 className="text-info">
+                                                  Todos
+                                                </h3>
+                                              </div>
+
+                                              <div className="mb-3">
+                                                <label>Title :</label>
+                                                <input
+                                                  type="text"
+                                                  className="form-control"
+                                                  value={title}
+                                                  onChange={(e) =>
+                                                    setTitle(e.target.value)
+                                                  }
+                                                />
+                                              </div>
+                                              <div className="mb-3">
+                                                <label>
+                                                  Due : Format (DD-MM-YYYY)
+                                                </label>
+                                                <input
+                                                  type="date"
+                                                  className="form-control"
+                                                  value={due}
+                                                  onChange={(e) =>
+                                                    setDue(e.target.value)
+                                                  }
+                                                />
+                                              </div>
+
+                                              <div className="row g-3">
+                                                <div className="col-md-6 mb-3">
+                                                  <label>Team :</label>
+
+                                                  <select
+                                                    className="form-select"
+                                                    value={team}
+                                                    onChange={(e) =>
+                                                      setTeam(e.target.value)
+                                                    }
+                                                  >
+                                                    <option selected>
+                                                      Choose...
+                                                    </option>
+                                                    <option value="Team One">
+                                                      Team One
+                                                    </option>
+                                                    <option value="Team Two">
+                                                      Team Two
+                                                    </option>
+                                                    <option value="Team Three">
+                                                      Team Three
+                                                    </option>
+                                                  </select>
+                                                </div>
+                                                <div className="col-md-6 mb-3">
+                                                  <label>Priority :</label>
+
+                                                  <select
+                                                    className="form-select"
+                                                    value={priority}
+                                                    onChange={(e) =>
+                                                      setPriority(
+                                                        e.target.value
+                                                      )
+                                                    }
+                                                  >
+                                                    <option selected>
+                                                      Choose...
+                                                    </option>
+                                                    <option value="Low">
+                                                      Low
+                                                    </option>
+                                                    <option value="Medium">
+                                                      Medium
+                                                    </option>
+                                                    <option value="High">
+                                                      High
+                                                    </option>
+                                                  </select>
+                                                </div>
+                                              </div>
+
+                                              <button
+                                                type="submit"
+                                                className="btn btn-primary w-100 my-3"
+                                              >
+                                                Update Todo
+                                              </button>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </Modal>
                                 </tr>
                               );
                             })}

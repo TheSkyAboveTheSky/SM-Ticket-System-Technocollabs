@@ -1,6 +1,7 @@
 const Project = require('../models/Project');
 const mongoose = require("mongoose");
 
+// Controller : GetAllProjects
 const getAllProjects = async (req,res) => {
   try{
     const projects = await Project.find();
@@ -9,6 +10,7 @@ const getAllProjects = async (req,res) => {
     console.log(err);
   }
 }
+// Controller : GetProjectByID
 const getProject = async (req, res) => {
   const id = req.params.id;
   const isValide = mongoose.isValidObjectId(id);
@@ -23,6 +25,7 @@ const getProject = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
+// Controller : DeleteProjectByID
 const deleteProject = async (req,res) => {
   try{
     const project = await Project.findByIdAndDelete(req.params.id);
@@ -32,6 +35,7 @@ const deleteProject = async (req,res) => {
     res.status(500).json({ message: err.message });
   }
 }
+// Controller : UpdateProjectByID
 const updateProject = async (req,res) => {
   const id = req.params.id;
   const isValide = mongoose.isValidObjectId(id);
@@ -49,6 +53,7 @@ const updateProject = async (req,res) => {
     res.status(500).json({ message: err.message });
   }
 }
+// Controller : CreateProject
 const createProject = async (req,res) => {
   try{
     const project = await Project.create(req.body);
@@ -58,6 +63,7 @@ const createProject = async (req,res) => {
     res.status(500).json({ message: err.message });
   }
 }
+// Controller : GetOnGoingProjects
 const getOnGoingProjects = async (req,res) => {
   try{
     const projects = await Project.find({ status : {$eq :"OnGoing" }});
@@ -66,6 +72,7 @@ const getOnGoingProjects = async (req,res) => {
     console.log(err);
   }
 }
+// Controller : GetUpComingProjects
 const getUpComingProjects = async (req,res) => {
   try{
     const projects = await Project.find({status : {$eq : "UpComing" }});
@@ -74,6 +81,7 @@ const getUpComingProjects = async (req,res) => {
     console.log(err);
   }
 }
+// Controller : GetCompletedProjects
 const getCompletedProjects = async (req,res) => {
   try{
     const projects = await Project.find({status : {$eq : "Completed" }});

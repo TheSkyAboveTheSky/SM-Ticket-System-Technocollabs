@@ -4,7 +4,7 @@ const {getAllClients,createClient,getClient,updateClient,deleteClient,} = requir
 const auth = require("../middlewares/auth");
 const verifyRoles = require("../middlewares/verifyRoles");
 
-// @URL : http://localhost:3001/client  || @Function : Get all the clients || @Method : GET || @Middlewares : need to be authentificated
+// @URL : http://localhost:3001/client  || @Function : Get all the clients || @Method : GET || @Middlewares : need to be authentificated and have the admin Role
 clientRouter.get("/", auth, verifyRoles("4040"), getAllClients);
 // @URL : http://localhost:3001/client:id  || @Function : Get Client By ID|| @Method : GET || @Middlewares : need to be authentificated
 clientRouter.get("/:id", auth, verifyRoles("4040"), getClient);
