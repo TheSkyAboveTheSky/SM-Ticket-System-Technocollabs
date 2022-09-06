@@ -468,12 +468,12 @@ function Taskboard() {
 
                                               <button
                                                 type="submit"
-                                                className="btn btn-primary w-50 my-3"
+                                                className="btn btn-primary w-40 my-3 mx-1"
                                               >
                                                 Update Task
                                               </button>
                                               <button
-                                                className="btn btn-primary w-50 my-3"
+                                                className="btn btn-primary w-40 my-3"
                                                 onClick={closeModal}
                                               >
                                                 Close

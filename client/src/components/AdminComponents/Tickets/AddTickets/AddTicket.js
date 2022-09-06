@@ -5,7 +5,6 @@ import Axios from "../../../SharedComponents/Axios/Axios";
 import banner from "../../../../assets/images/banner.jpg";
 import {
   NotificationContainer,
-  NotificationManager,
 } from "react-notifications";
 import Notification from '../../../SharedComponents/Notification/Notification';
 

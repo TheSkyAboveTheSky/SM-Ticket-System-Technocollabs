@@ -347,9 +347,15 @@ function Todo() {
 
                                               <button
                                                 type="submit"
-                                                className="btn btn-primary w-100 my-3"
+                                                className="btn btn-primary w-40 my-3 mx-1"
                                               >
                                                 Update Todo
+                                              </button>
+                                              <button
+                                                className="btn btn-danger w-40 my-3"
+                                                onClick={() => closeModal()}
+                                              >
+                                                Close
                                               </button>
                                             </form>
                                           </div>
