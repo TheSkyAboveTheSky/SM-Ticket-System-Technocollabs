@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../Sidebar/Sidebar";
-import Header from "../../Header/Header";
-import axios from "../../Axios/Axios";
+import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
+import Header from "../../../SharedComponents/Header/Header";
+import axios from "../../../SharedComponents/Axios/Axios";
 import dateFormat from "dateformat";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
-import Notification from "../../Notification/Notification";
+import { NotificationContainer } from "react-notifications";
+import Modal from "react-modal";
+import register from "../../../../assets/images/register.webp";
+import Notification from "../../../SharedComponents/Notification/Notification";
 
 function CompletedProject() {
+  //
   const [projects, setProjects] = useState([]);
+  //Modal
+  const [isOpen, setIsOpen] = useState(false);
+  //
+  const [title, setTitle] = useState("");
+  const [type, setType] = useState("");
+  const [description, setDescription] = useState("");
+  const [creator, setCreator] = useState("");
+  const [team, setTeam] = useState("");
+  const [status, setStatus] = useState("");
+  const [progress, setProgress] = useState("");
+  // ID
+  const [id, setId] = useState("");
   useEffect(() => {
     getProjects();
   }, []);
@@ -19,6 +31,39 @@ function CompletedProject() {
       headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
     });
     setProjects(response.data);
+  };
+  const getProject = async (id) => {
+    const response = await axios.get(`/project/${id}`, {
+      headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
+    });
+    setTitle(response.data.title);
+    setType(response.data.type);
+    setDescription(response.data.description);
+    setCreator(response.data.creator);
+    setTeam(response.data.team);
+    setStatus(response.data.status);
+    setProgress(response.data.progress);
+    setId(id);
+    openModal();
+  };
+  const updateProject = async () => {
+    const response = await axios.put(
+      `/project/${id}`,
+      {
+        title: title,
+        type: type,
+        description: description,
+        creator: creator,
+        team: team,
+        status: status,
+        progress: progress,
+      },
+      {
+        headers: {
+          "x-auth-token": window.localStorage.getItem("x-auth-token"),
+        },
+      }
+    );
   };
   const deleteProject = async (id) => {
     try {
@@ -32,6 +77,22 @@ function CompletedProject() {
     } catch (err) {
       await Notification("error", err.message);
     }
+  };
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
   };
   return (
     <div>
@@ -167,14 +228,23 @@ function CompletedProject() {
                                   <span className="custom-switch-indicator"></span>
                                 </label>
                                 <a
-                                  href="#"
                                   className="card-options-collapse"
-                                  data-toggle="card-collapse"
-                                  onClick={() => { deleteProject(project._id)}}
+                                  onClick={() => {
+                                    deleteProject(project._id);
+                                  }}
                                 >
                                   <i
                                     className="fa fa-trash"
-                                    style={{ color: "red" }}
+                                    style={{ color: "red", cursor: "pointer" }}
+                                  ></i>
+                                </a>
+                                <a
+                                  className="card-options-collapse"
+                                  onClick={() => getProject(project._id)}
+                                >
+                                  <i
+                                    className="fa fa-pen-to-square"
+                                    style={{ color: "blue", cursor: "pointer" }}
                                   ></i>
                                 </a>
                               </div>
@@ -241,6 +311,182 @@ function CompletedProject() {
                                   aria-valuemax="100"
                                 ></div>
                               </div>
+                              <Modal
+                                isOpen={isOpen}
+                                onRequestClose={closeModal}
+                                style={customStyles}
+                                contentLabel="Update Modal"
+                              >
+                                <div
+                                  className="vh-600"
+                                  style={{ backgroundColor: "white" }}
+                                >
+                                  <div className="container-fluid ">
+                                    <div className="row d-flex justify-content-center align-items-center h-100">
+                                      <div className="col-md-9 col-lg-6 col-xl-5">
+                                        <img
+                                          src={register}
+                                          alt="login form"
+                                          className="img-fluid"
+                                        />
+                                      </div>
+                                      <div className="col-md-8 col-lg-6 col-xl-4">
+                                        <form onSubmit={updateProject}>
+                                          <div className="text-center mb-3">
+                                            <h3 className="text-info">
+                                              Add Projects
+                                            </h3>
+                                          </div>
+                                          <div className="row g-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>Title</label>
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                placeholder="Title"
+                                                value={title}
+                                                onChange={(e) =>
+                                                  setTitle(e.target.value)
+                                                }
+                                              />
+                                            </div>
+                                            <div className="col-md-6 mb-3">
+                                              <label>Type</label>
+                                              <select
+                                                className="form-select"
+                                                value={type}
+                                                onChange={(e) =>
+                                                  setType(e.target.value)
+                                                }
+                                              >
+                                                <option selected>
+                                                  Choose...
+                                                </option>
+                                                <option value="Angular">
+                                                  Angular
+                                                </option>
+                                                <option value="React">
+                                                  React
+                                                </option>
+                                                <option value="Web Design">
+                                                  Web Design
+                                                </option>
+                                                <option value="Mobile Development">
+                                                  Mobile Development
+                                                </option>
+                                                <option value="IOS App">
+                                                  IOS App
+                                                </option>
+                                                <option value="Android">
+                                                  Android
+                                                </option>
+                                                <option value="Wordpress">
+                                                  Wordpress
+                                                </option>
+                                              </select>
+                                            </div>
+                                          </div>
+
+                                          <div className="mb-3">
+                                            <label>Description</label>
+                                            <textarea
+                                              className="form-control"
+                                              placeholder="Description"
+                                              value={description}
+                                              onChange={(e) =>
+                                                setDescription(e.target.value)
+                                              }
+                                            ></textarea>
+                                          </div>
+                                          <div className="mb-3">
+                                            <label>Creator</label>
+                                            <input
+                                              className="form-control"
+                                              placeholder="Creator"
+                                              value={creator}
+                                              type="text"
+                                              onChange={(e) =>
+                                                setCreator(e.target.value)
+                                              }
+                                            />
+                                          </div>
+                                          <div className="row g-3">
+                                            <div className="col-md-6 mb-3">
+                                              <label>Team</label>
+                                              <select
+                                                className="form-select"
+                                                value={team}
+                                                onChange={(e) =>
+                                                  setTeam(e.target.value)
+                                                }
+                                              >
+                                                <option selected>
+                                                  Choose...
+                                                </option>
+                                                <option value="Team One">
+                                                  Team One
+                                                </option>
+                                                <option value="Team Two">
+                                                  Team Two
+                                                </option>
+                                                <option value="Team Three">
+                                                  Team Three
+                                                </option>
+                                              </select>
+                                            </div>
+                                            <div className="col-md-6 mb-3">
+                                              <label>Status</label>
+                                              <select
+                                                className="form-select"
+                                                value={status}
+                                                onChange={(e) =>
+                                                  setStatus(e.target.value)
+                                                }
+                                              >
+                                                <option selected>
+                                                  Choose...
+                                                </option>
+                                                <option value="UpComing">
+                                                  UpComing
+                                                </option>
+                                                <option value="OnGoing">
+                                                  OnGoing
+                                                </option>
+                                                <option value="Completed">
+                                                  Completed
+                                                </option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <div className="mb-3">
+                                            <label>Progress</label>
+                                            <input
+                                              className="form-control"
+                                              type="Number"
+                                              step="1"
+                                              min="0"
+                                              value={progress}
+                                              onChange={(e) =>
+                                                setProgress(e.target.value)
+                                              }
+                                            />
+                                          </div>
+
+                                          <button
+                                            type="submit"
+                                            className="btn btn-primary w-40 my-3 mx-1"
+                                          >
+                                            Update Project
+                                          </button>
+                                          <button className="btn btn-danger w-40 my-3">
+                                            Close
+                                          </button>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </Modal>
                             </div>
                           </div>
                         </div>

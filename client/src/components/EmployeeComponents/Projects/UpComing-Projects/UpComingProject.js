@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../Sidebar/Sidebar";
-import Header from "../../Header/Header";
-import axios from "../../Axios/Axios";
+import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
+import Header from "../../../SharedComponents/Header/Header";
+import axios from "../../../SharedComponents/Axios/Axios";
 import dateFormat from "dateformat";
 import {
   NotificationContainer,
-  NotificationManager,
 } from "react-notifications";
-import Notification from "../../Notification/Notification";
+import Notification from "../../../SharedComponents/Notification/Notification";
 
 function UpComingProject() {
   const [projects, setProjects] = useState([]);
@@ -38,6 +37,7 @@ function UpComingProject() {
           <Sidebar />
         </div>
         <div className="cont">
+          <NotificationContainer />
           <Header title={"UpComing Projects"} />
           <div>
             <ul className="nav nav-tabs page-header-tab ">

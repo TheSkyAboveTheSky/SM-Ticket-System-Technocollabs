@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../Sidebar/Sidebar";
-import Header from "../../Header/Header";
-import axios from "../../Axios/Axios";
+import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
+import Header from "../../../SharedComponents/Header/Header";
+import register from "../../../../assets/images/register.webp";
+import axios from "../../../SharedComponents/Axios/Axios";
 import dateFormat from 'dateformat';
 import {
   NotificationContainer,
-  NotificationManager,
 } from "react-notifications";
-import Notification from "../../Notification/Notification";
+import Notification from "../../../SharedComponents/Notification/Notification";
 
 function OnGoingProject() {
   const [projects, setProjects] = useState([]);
@@ -38,6 +38,7 @@ function OnGoingProject() {
           <Sidebar />
         </div>
         <div className="cont">
+          <NotificationContainer />
           <Header title={"OnGoing Projects"} />
           <div>
             <ul className="nav nav-tabs page-header-tab ">

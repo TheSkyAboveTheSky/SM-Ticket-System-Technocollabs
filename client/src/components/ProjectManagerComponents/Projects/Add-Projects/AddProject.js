@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import Sidebar from "../../Sidebar/Sidebar";
-import Header from "../../Header/Header";
+import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
+import Header from "../../../SharedComponents/Header/Header";
 import register from "../../../../assets/images/register.webp";
-import Axios from "../../Axios/Axios";
+import Axios from "../../../SharedComponents/Axios/Axios";
 import {
   NotificationContainer,
 } from "react-notifications";
-import Notification from "../../Notification/Notification";
+import Notification from "../../../SharedComponents/Notification/Notification";
+
 
 function AddProject() {
   const [title, setTitle] = useState("");
