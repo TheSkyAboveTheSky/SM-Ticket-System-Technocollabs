@@ -44,24 +44,6 @@ function Todo() {
                   Todo List
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  className={
-                    window.location.pathname === "/add-Todo"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  style={
-                    window.location.pathname === "/add-Todo"
-                      ? { borderTop: "3px solid blue" }
-                      : { color: "grey" }
-                  }
-                  data-toggle="tab"
-                  href="/add-Todo"
-                >
-                  Add Todos
-                </a>
-              </li>
             </ul>
           </div>
           <div className="section-body mt-3">

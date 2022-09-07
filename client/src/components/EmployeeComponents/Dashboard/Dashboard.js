@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
-import Header from "../../../SharedComponents/Header/Header";
-import user from "../../../../assets/images/user.png";
-import axios from "../../../SharedComponents/Axios/Axios";
+import React,{ useEffect,useState} from "react";
+import Header from "../../SharedComponents/Header/Header";
+import Sidebar from "../../SharedComponents/Sidebar/Sidebar";
+import axios from "../../SharedComponents/Axios/Axios";
 import dateFormat from "dateformat";
-import taskImg from '../../../../assets/images/Task.jpg';
-import './Taskboard.css';
+import taskImg from "../../../assets/images/Task.jpg";
+import "./Dashboard.css";
 
-function Taskboard() {
+function Dashboard() {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
     getTasks();
   }, []);
   const getTasks = async () => {
-    const response = await axios.get("/task",{headers : {'x-auth-token' : window.localStorage.getItem('x-auth-token')}});
+    const response = await axios.get("/task", {
+      headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
+    });
     setTasks(response.data);
   };
   return (
@@ -23,31 +24,9 @@ function Taskboard() {
           <Sidebar />
         </div>
         <div className="cont">
-          <Header title={"Taskboard"} />
-          <div>
-            <ul className="nav nav-tabs page-header-tab ">
-              <li className="nav-item">
-                <a
-                  style={
-                    window.location.pathname === "/Taskboard"
-                      ? { borderTop: "3px solid red" }
-                      : { color: "grey" }
-                  }
-                  className={
-                    window.location.pathname === "/Taskboard"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  data-toggle="tab"
-                  href="/Taskboard"
-                >
-                  Taskboard
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div style={{ backgroundColor : 'white' }}>
-            <img src={taskImg} alt="Taskboard" className="taskbg"/>
+          <Header title={"Dashboard"} />
+          <div style={{ backgroundColor: "white" }}>
+            <img src={taskImg} alt="Taskboard" className="taskbg" />
           </div>
           <div className="section-body">
             <div className="container-fluid">
@@ -150,4 +129,4 @@ function Taskboard() {
   );
 }
 
-export default Taskboard;
+export default Dashboard;

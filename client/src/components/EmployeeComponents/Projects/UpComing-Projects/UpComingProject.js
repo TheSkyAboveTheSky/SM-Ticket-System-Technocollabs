@@ -95,24 +95,6 @@ function UpComingProject() {
                   Completed Project
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  style={
-                    window.location.pathname === "/add-Project"
-                      ? { borderTop: "3px solid red" }
-                      : { color: "grey" }
-                  }
-                  className={
-                    window.location.pathname === "/add-Project"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  data-toggle="tab"
-                  href="/add-Project"
-                >
-                  Add Project
-                </a>
-              </li>
             </ul>
           </div>
           <div className="section-body mt-3">

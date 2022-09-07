@@ -15,6 +15,7 @@ import IsAddProject from '../../auth/Roles/Project/IsAddProject';
 import IsCompletedProject from '../../auth/Roles/Project/IsCompletedProject';
 import IsOnGoingProject from '../../auth/Roles/Project/IsOnGoingProject';
 import IsUpComingProject from '../../auth/Roles/Project/IsUpComingProject';
+import IsDashboard from '../../auth/Roles/IsDashboard';
 // Shared Components
 import Chat from "../SharedComponents/Chat/Chat/Chat";
 import Login from "../SharedComponents/Login/Login";
@@ -40,15 +41,16 @@ import AddProject from "../AdminComponents/Projects/Add-Projects/AddProject";
 import OnGoingProject from "../AdminComponents/Projects/OnGoing-Projects/OnGoingProject";
 import UpComingProject from "../AdminComponents/Projects/UpComing-Projects/UpComingProject";
 import CompletedProject from "../AdminComponents/Projects/Completed-Projects/CompletedProject";
+import Dashboard from '../AdminComponents/Dashboard/Dashboard';
 function App() {
   return (
     <Routes>
       <Route
         path="/"
         element={
-          <IsAuthentificated>
-            <Home />
-          </IsAuthentificated>
+          <IsDashboard>
+            <Dashboard />
+          </IsDashboard>
         }
       />
       <Route

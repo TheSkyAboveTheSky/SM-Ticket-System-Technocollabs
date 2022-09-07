@@ -41,24 +41,6 @@ function TicketList() {
                   Ticket List
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  className={
-                    window.location.pathname === "/add-Ticket"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  style={
-                    window.location.pathname === "/add-Ticket"
-                      ? { borderTop: "3px solid red" }
-                      : { color: "grey" }
-                  }
-                  data-toggle="tab"
-                  href="/add-Ticket"
-                >
-                  Add Ticket
-                </a>
-              </li>
             </ul>
           </div>
           <div className="section-body mt-3">
