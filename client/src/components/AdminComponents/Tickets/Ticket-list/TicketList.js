@@ -346,7 +346,7 @@ function TicketList() {
                                           <form onSubmit={updateTicket}>
                                             <div className="text-center mb-3">
                                               <h3 className="text-info">
-                                                Add Tickets
+                                                Update Ticket
                                               </h3>
                                             </div>
                                             <div className="row g-3">
@@ -492,7 +492,7 @@ function TicketList() {
                                               type="submit"
                                               className="btn btn-primary w-40 my-3 mx-1"
                                             >
-                                              Create Ticket
+                                              Update Ticket
                                             </button>
                                             <button
                                               className="btn btn-danger w-40 my-3"

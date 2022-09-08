@@ -4,6 +4,7 @@ import Header from "../../../SharedComponents/Header/Header";
 import Axios from "../../../SharedComponents/Axios/Axios";
 import user from "../../../../assets/images/user.png";
 import { useParams } from "react-router-dom";
+import dateFormat from "dateformat";
 
 function TicketDetails() {
   const [ticket, setTicket] = useState("");
@@ -178,7 +179,7 @@ function TicketDetails() {
                               </a>{" "}
                               {reply.user.team}{" "}
                               <small className="float-right text-right">
-                                {reply.createdAt}
+                                {dateFormat(reply.createdAt,"dddd  mm  yyyy")}
                               </small>
                             </span>
                             <h6 className="font600">{reply.title}</h6>

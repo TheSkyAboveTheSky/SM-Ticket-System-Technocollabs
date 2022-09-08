@@ -547,7 +547,7 @@ function ClientList() {
                                             type="submit"
                                             className="btn btn-primary w-40 my-3 mx-1"
                                           >
-                                            Create Client
+                                            Update Client
                                           </button>
                                           <button
                                             className="btn btn-danger w-40 my-3"

@@ -43,7 +43,7 @@ function Login() {
     }
   };
   return (
-    <div className="vh-100" style={{ backgroundColor: "white" }}>
+    <div className="vh-100" style={{ backgroundColor: "white"}}>
       <NotificationContainer />
       <div className="container-fluid ">
         <div className="row d-flex justify-content-center align-items-center h-100">

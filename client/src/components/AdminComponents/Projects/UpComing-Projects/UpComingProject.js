@@ -334,7 +334,7 @@ function UpComingProject() {
                                         <form onSubmit={updateProject}>
                                           <div className="text-center mb-3">
                                             <h3 className="text-info">
-                                              Add Projects
+                                              Update Project
                                             </h3>
                                           </div>
                                           <div className="row g-3">
