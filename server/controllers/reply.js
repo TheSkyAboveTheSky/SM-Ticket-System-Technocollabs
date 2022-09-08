@@ -20,6 +20,7 @@ const createReply = async (req, res) => {
         { _id: reply.ticket }
       );
       ticket.replyIdList = [...ticket.replyIdList,reply.ticket];
+      ticket.numberOfReplies = ticket.numberOfReplies + 1;
       ticket.save();
     } catch (err) {
       res.status(500).json({ message: err.message });
