@@ -31,6 +31,7 @@ function Login() {
           body: "You have been logged in successfully to your Account",
         });
       } catch (err) {
+        alert("Error :"+err);
         console.log(err);
       }
       await Notification(

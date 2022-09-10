@@ -6,6 +6,7 @@ import Axios from "../../Axios/Axios";
 import banner from "../../../../assets/images/TimelineLogs.jpg";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import dateFormat from 'dateformat'
 
 function TimelineLogs() {
   const [timelines, setTimelines] = useState([]);
@@ -109,7 +110,7 @@ function TimelineLogs() {
                                     <div className="text-info">
                                       {timeAgo.format(
                                         new Date(timeline.createdAt)
-                                      )}
+                                      )}{" || "} {dateFormat(timeline.createdAt,"dddd mm yyyy")}
                                     </div>
                                   </td>
                                 </tr>
