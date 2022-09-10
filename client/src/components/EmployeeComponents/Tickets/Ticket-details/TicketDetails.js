@@ -50,7 +50,7 @@ function TicketDetails() {
           title: title,
           ticket: id,
           user: window.localStorage.getItem("user-id"),
-          loves : 0,
+          loves: 0,
         },
         {
           headers: {
@@ -79,40 +79,15 @@ function TicketDetails() {
                       <div className="circle">
                         <img className="rounded-circle" src={user} alt="" />
                       </div>
-                      <h6 className="mt-3 mb-0">{ticket.id}</h6>
-                      <span>{ticket.departement}</span>
-                      <ul className="mt-3 list-unstyled d-flex justify-content-center">
-                        <li>
-                          <a className="p-3" target="_blank" href="#">
-                            <i className="fa fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a className="p-3" target="_blank" href="#">
-                            <i className="fa fa-slack"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a className="p-3" target="_blank" href="#">
-                            <i className="fa fa-linkedin"></i>
-                          </a>
-                        </li>
-                      </ul>
-                      <button className="btn btn-default btn-sm">Follow</button>
-                      <button className="btn btn-default btn-sm">
-                        Message
-                      </button>
+                      <h6 className="tag tag-warning">{ticket.id}</h6>
+                      <span className="tag tag-primary">
+                        {ticket.departement}
+                      </span>
                     </div>
                   </div>
                   <div className="card">
                     <div className="card-header">
                       <h3 className="card-title">Ticket Details</h3>
-                      <div className="card-options">
-                        <a
-                          href="javascript:void(0)"
-                          className="card-options-remove"
-                        ></a>
-                      </div>
                     </div>
                     <div className="card-body">
                       <span>{ticket.details}</span>
@@ -134,11 +109,13 @@ function TicketDetails() {
                         </li>
                         <li className="list-group-item">
                           <small className="text-muted">Product: </small>
-                          <p className="mb-0">{ticket.product}</p>
+                          <p className="mb-0">{ticket.Product}</p>
                         </li>
                         <li className="list-group-item">
                           <small className="text-muted">Date: </small>
-                          <p className="mb-0">{ticket.date}</p>
+                          <p className="mb-0">
+                            {dateFormat(ticket.date, "dddd mm yyyy")}
+                          </p>
                         </li>
                         <li className="list-group-item">
                           <div>In Progress : {ticket.progress}%</div>
@@ -177,18 +154,21 @@ function TicketDetails() {
                               <a href="javascript:void(0);">
                                 {reply.user.username}
                               </a>{" "}
-                              {reply.user.team}{" "}
+                              {reply.user.team}
+                              {" | "}
                               <small className="float-right text-right">
-                              {dateFormat(reply.createdAt,"dddd  mm  yyyy")}
+                                {dateFormat(reply.createdAt, "dddd  mm  yyyy")}
                               </small>
                             </span>
                             <h6 className="font600">{reply.title}</h6>
-                            <div className="msg">
+                            <div
+                              className="msg"
+                              style={{ backgroundColor: "aliceblue" }}
+                            >
                               <p>{reply.content}</p>
                               <p className="mr-20 text-muted">
                                 <i className="fa fa-heart text-pink"></i>{" "}
-                                {reply.loves}
-                                Love
+                                {reply.loves} Love
                               </p>
                             </div>
                           </div>
@@ -219,12 +199,12 @@ function TicketDetails() {
                           ></textarea>
                           <label>Content</label>
                         </div>
-                          <button
-                            type="submit"
-                            className="btn btn-primary w-100 my-3"
-                          >
-                            Submit The Reply
-                          </button>
+                        <button
+                          type="submit"
+                          className="btn btn-primary w-100 my-3"
+                        >
+                          Submit The Reply
+                        </button>
                       </form>
                     </div>
                   </div>

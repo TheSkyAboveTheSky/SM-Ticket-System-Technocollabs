@@ -38,7 +38,7 @@ function Registre() {
 
   }
   return (
-    <div className="vh-600" style={{ backgroundColor: "white" }}>
+    <div className="vh-600 banner" >
       <NotificationContainer />
       <div className="container-fluid ">
         <div className="row d-flex justify-content-center align-items-center h-100">

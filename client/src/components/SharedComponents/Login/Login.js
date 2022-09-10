@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import login from "../../../assets/images/login.svg";
 import Axios from "../Axios/Axios";
+import './Login.css';
 import {
   NotificationContainer,
   NotificationManager,
@@ -43,7 +44,7 @@ function Login() {
     }
   };
   return (
-    <div className="vh-100" style={{ backgroundColor: "white"}}>
+    <div className="vh-100 banner">
       <NotificationContainer />
       <div className="container-fluid ">
         <div className="row d-flex justify-content-center align-items-center h-100">
