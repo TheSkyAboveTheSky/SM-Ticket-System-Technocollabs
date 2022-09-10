@@ -102,16 +102,16 @@ function AddTicket() {
                       <h3 className="text-info">Add Tickets</h3>
                     </div>
                     <div className="row g-3">
-                      <div className="col-md-6 form-floating mb-3">
+                      <div className="mb-3 input-group">
+                      <span className="input-group-text" style={{backgroundColor:"aliceblue"}}>ASD-</span>
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="ID"
-                          onChange={(e) => setID(e.target.value)}
+                          placeholder="XXX"
+                          onChange={(e) => setID("ASD-"+e.target.value)}
                         />
-                        <label>ID</label>
                       </div>
-                      <div className="col-md-6 form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="text"
                           className="form-control"
