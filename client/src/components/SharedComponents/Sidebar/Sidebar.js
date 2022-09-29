@@ -46,12 +46,12 @@ function Sidebar() {
                 <a
                   href="/ongoing-Project"
                   style={
-                    window.location.pathname === "/ongoing-Project"
+                    window.location.pathname === "/ongoing-Project" || window.location.pathname === "/upcoming-Project" || window.location.pathname === "/completed-Project"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/ongoing-Project"
+                    window.location.pathname === "/ongoing-Project" || window.location.pathname === "/upcoming-Project" || window.location.pathname === "/completed-Project"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -91,12 +91,12 @@ function Sidebar() {
                 <a
                   href="/Timeline-Task"
                   style={
-                    window.location.pathname === "/Timeline-Task"
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname ==="/Timeline-Logs"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/Timeline-Task"
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname ==="/Timeline-Logs"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -344,12 +344,12 @@ function Sidebar() {
                 <a
                   href="/ongoing-Project"
                   style={
-                    window.location.pathname === "/ongoing-Project"
+                    window.location.pathname === "/ongoing-Project" || window.location.pathname === "/upcoming-Project" || window.location.pathname === "/completed-Project" || window.location.pathname === "/add-Project"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/ongoing-Project"
+                    window.location.pathname === "/ongoing-Project" || window.location.pathname === "/upcoming-Project" || window.location.pathname === "/completed-Project" || window.location.pathname === "/add-Project"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -359,12 +359,12 @@ function Sidebar() {
                 <a
                   href="/Taskboard"
                   style={
-                    window.location.pathname === "/Taskboard"
+                    window.location.pathname === "/Taskboard" || window.location.pathname === "/add-Task"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/Taskboard"
+                    window.location.pathname === "/Taskboard" || window.location.pathname === "/add-Task"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -389,12 +389,12 @@ function Sidebar() {
                 <a
                   href="/Timeline-Task"
                   style={
-                    window.location.pathname === "/Timeline-Task"
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname ==="/Timeline-Logs"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/Timeline-Task"
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname ==="/Timeline-Logs"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -714,12 +714,12 @@ function Sidebar() {
                 <a
                   href="/Client-List"
                   style={
-                    window.location.pathname === "/Client-List"
+                    window.location.pathname === "/Client-List" || window.location.pathname === "/add-Client"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/Client-List"
+                    window.location.pathname === "/Client-List" || window.location.pathname === "/add-Client"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -729,12 +729,12 @@ function Sidebar() {
                 <a
                   href="/ongoing-Project"
                   style={
-                    window.location.pathname === "/ongoing-Project"
+                    window.location.pathname === "/ongoing-Project" || window.location.pathname === "/upcoming-Project" || window.location.pathname === "/completed-Project" || window.location.pathname === "/add-Project"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/ongoing-Project"
+                    window.location.pathname === "/ongoing-Project" || window.location.pathname === "/upcoming-Project" || window.location.pathname === "/completed-Project" || window.location.pathname === "/add-Project"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -744,12 +744,12 @@ function Sidebar() {
                 <a
                   href="/Taskboard"
                   style={
-                    window.location.pathname === "/Taskboard"
+                    window.location.pathname === "/Taskboard" || window.location.pathname === "/add-Task"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/Taskboard"
+                    window.location.pathname === "/Taskboard" || window.location.pathname === "/add-Task"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -774,12 +774,12 @@ function Sidebar() {
                 <a
                   href="/Timeline-Task"
                   style={
-                    window.location.pathname === "/Timeline-Task"
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname ==="/Timeline-Logs"
                       ? { color: "red" }
                       : { color: "black" }
                   }
                   className={
-                    window.location.pathname === "/Timeline-Task"
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname === "/Timeline-Logs"
                       ? "nav-link icon xs-hide active"
                       : "nav-link icon xs-hide"
                   }
@@ -1131,6 +1131,21 @@ function Sidebar() {
                   }
                 >
                   <img className="avatar" src={user} alt="" />
+                </a>
+                <a
+                  href="/Timeline-Task"
+                  style={
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname === "/Timeline-Logs"
+                      ? { color: "red" }
+                      : { color: "black" }
+                  }
+                  className={
+                    window.location.pathname === "/Timeline-Task" || window.location.pathname === "/Timeline-Logs"
+                      ? "nav-link icon xs-hide active"
+                      : "nav-link icon xs-hide"
+                  }
+                >
+                  <i className="fa-solid fa-timeline"></i>
                 </a>
               </div>
               <div className="hright">
