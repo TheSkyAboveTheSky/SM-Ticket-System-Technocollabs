@@ -1,5 +1,5 @@
 import React from "react";
-import {Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // Protected Routes
 import IsAuthentificated from "../../auth/IsAuthentificated";
 import NotAuthentificated from "../../auth/NotAuthentificated";
@@ -9,13 +9,13 @@ import IsAddTask from "../../auth/Roles/IsAddTask";
 import IsTicketList from "../../auth/Roles/IsTicketList";
 import IsAddTicket from "../../auth/Roles/IsAddTicket";
 import IsTicketDetails from "../../auth/Roles/IsTicketDetails";
-import IsTodo from '../../auth/Roles/IsTodo';
-import IsAddTodo from '../../auth/Roles/IsAddTodo';
-import IsAddProject from '../../auth/Roles/Project/IsAddProject';
-import IsCompletedProject from '../../auth/Roles/Project/IsCompletedProject';
-import IsOnGoingProject from '../../auth/Roles/Project/IsOnGoingProject';
-import IsUpComingProject from '../../auth/Roles/Project/IsUpComingProject';
-import IsDashboard from '../../auth/Roles/IsDashboard';
+import IsTodo from "../../auth/Roles/IsTodo";
+import IsAddTodo from "../../auth/Roles/IsAddTodo";
+import IsAddProject from "../../auth/Roles/Project/IsAddProject";
+import IsCompletedProject from "../../auth/Roles/Project/IsCompletedProject";
+import IsOnGoingProject from "../../auth/Roles/Project/IsOnGoingProject";
+import IsUpComingProject from "../../auth/Roles/Project/IsUpComingProject";
+import IsDashboard from "../../auth/Roles/IsDashboard";
 // Shared Components
 import Chat from "../SharedComponents/Chat/Chat/Chat";
 import Login from "../SharedComponents/Login/Login";
@@ -26,6 +26,7 @@ import UnAuthorized from "../SharedComponents/UnAuthorized/UnAuthorized";
 import NotFound from "../SharedComponents/NotFound/NotFound";
 import Home from "../SharedComponents/Home/Home";
 import Test from "../TestComponents/Test/Test";
+import Profile from "../SharedComponents/Profile/Profile";
 // Only Admin Components
 import ClientList from "../AdminComponents/Clients/Client-List/ClientList";
 import AddClient from "../AdminComponents/Clients/AddClient/AddClient";
@@ -41,7 +42,7 @@ import AddProject from "../AdminComponents/Projects/Add-Projects/AddProject";
 import OnGoingProject from "../AdminComponents/Projects/OnGoing-Projects/OnGoingProject";
 import UpComingProject from "../AdminComponents/Projects/UpComing-Projects/UpComingProject";
 import CompletedProject from "../AdminComponents/Projects/Completed-Projects/CompletedProject";
-import Dashboard from '../AdminComponents/Dashboard/Dashboard';
+import Dashboard from "../AdminComponents/Dashboard/Dashboard";
 function App() {
   return (
     <Routes>
@@ -154,6 +155,14 @@ function App() {
         element={
           <IsAuthentificated>
             <TimelineTasks />
+          </IsAuthentificated>
+        }
+      />
+      <Route
+        path="/me"
+        element={
+          <IsAuthentificated>
+            <Profile />
           </IsAuthentificated>
         }
       />
