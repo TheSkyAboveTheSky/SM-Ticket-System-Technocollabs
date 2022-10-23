@@ -4,6 +4,7 @@ import Sidebar from "../../SharedComponents/Sidebar/Sidebar";
 import Axios from "../../SharedComponents/Axios/Axios";
 import userImg from "../../../assets/images/user.png";
 import Notification from "../../SharedComponents/Notification/Notification";
+import User from "./Users";
 import { NotificationContainer } from "react-notifications";
 
 function Dashboard() {
@@ -20,27 +21,46 @@ function Dashboard() {
     setUsers(response.data);
   };
   const getUser = async (id) => {
-    const response = await Axios.get(`/user/${id}`,{
-      headers : { "x-auth-token": window.localStorage.getItem("x-auth-token")},
-    })
+    const response = await Axios.get(`/user/${id}`, {
+      headers: { "x-auth-token": window.localStorage.getItem("x-auth-token") },
+    });
     setId(id);
     console.log(response.data);
   };
   const updateUser = async (e) => {
     e.preventDefault();
-    alert(id);
-    alert(role);
-    try{
-      const response = await Axios.put(`/user/${id}`,{
-        roles : role,
-      }, {
-        headers : {"x-auth-token": window.localStorage.getItem("x-auth-token")},
-      })
-      await Notification("success","Successufly Updating the User Roles");
+    try {
+      const response = await Axios.put(
+        `/user/${id}`,
+        {
+          roles: role,
+        },
+        {
+          headers: {
+            "x-auth-token": window.localStorage.getItem("x-auth-token"),
+          },
+        }
+      );
+      await Notification("success", "Successufly Updating the User Roles");
       window.location.reload();
-    }catch(err){
-      Notification("error",err);
+    } catch (err) {
+      Notification("error", err);
     }
+  };
+  const deleteUser = async (e) => {
+    e.preventDefault();
+    alert(id);
+    try {
+      const response = await Axios.delete(`/user/${id}`, {
+        headers: {
+          "x-auth-token": window.localStorage.getItem("x-auth-token"),
+        },
+      });
+      await Notification("success", "Successufly deleted the User");
+    } catch (err) {
+      Notification("error", err);
+    }
+    window.location.reload();
   };
   return (
     <>
@@ -50,7 +70,7 @@ function Dashboard() {
       <div className="cont">
         <Header title={"Dashboard"} />
         <>
-        <NotificationContainer />
+          <NotificationContainer />
           <div className="section-body mt-3">
             <div className="container-fluid">
               <div className="row clearfix">
@@ -82,66 +102,25 @@ function Dashboard() {
                 <div className="row clearfix">
                   {users.map((user) => {
                     let userRole = "";
-                    switch(user.roles) {
-                      case "0000" :
+                    switch (user.roles) {
+                      case "0000":
                         userRole = "UnAuthorized";
                         break;
-                      case "1010" :
+                      case "1010":
                         userRole = "Client";
                         break;
-                      case "2020" :
+                      case "2020":
                         userRole = "Employee";
                         break;
-                      case "3030" :
+                      case "3030":
                         userRole = "Project Manager";
                         break;
-                      case "4040" :
+                      case "4040":
                         userRole = "Admin";
                         break;
                     }
                     return (
-                      <div className="col-xl-4 col-lg-4 col-md-6">
-                        <div className="card">
-                          <div className="card-body text-center ribbon">
-                            <div className="ribbon-box green">{userRole}</div>
-                            <img
-                              className="rounded-circle img-thumbnail w100"
-                              src={userImg}
-                              alt=""
-                            />
-                            <h6 className="mt-3 mb-0">{user.username}</h6>
-                            <span>
-                              <a className="__cf_email__">{user.email}</a>
-                            </span>
-                            <div className="row text-center mt-4">
-                              <form onSubmit={updateUser} >
-                                <div className="form-group">
-                                  <label>Role :</label>
-                                  <select 
-                                    className="form-select" 
-                                    onChange={ (e) => setRole(e.target.value) }
-                                    onClick={ () => getUser(user._id) }
-                                  >
-                                    <option defaultValue>Select a Role</option>
-                                    <option value="0000">UnAuthorized</option>
-                                    <option value="1010">Client</option>
-                                    <option value="2020">Employee</option>
-                                    <option value="3030">Project Manager</option>
-                                    <option value="4040">Admin</option>
-                                  </select>
-                                </div>
-                                <button type="submit" className="btn btn-sm w-100" style={{color:'darkblue'}}><i className="fa fa-pen-to-square"></i> Assign Role</button>
-                              </form>
-                              <a
-                                className="btn btn-sm"
-                                style={{ color: "red" }}
-                              >
-                                <i className="fa fa-trash"></i> Delete
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <User userRole={userRole} userImg={userImg} email={user.email} username={user.username} updateUser={updateUser} id={user._id} deleteUser={deleteUser} getUser={getUser} setRole={setRole}/>
                     );
                   })}
                 </div>

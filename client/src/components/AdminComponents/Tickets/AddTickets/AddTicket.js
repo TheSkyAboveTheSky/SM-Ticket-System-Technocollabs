@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from '../../../SharedComponents/Sidebar/Sidebar';
 import Header from "../../../SharedComponents/Header/Header";
 import Axios from "../../../SharedComponents/Axios/Axios";
-import banner from "../../../../assets/images/banner.jpg";
+import banner from "../../../../assets/images/ticket.png";
 import {
   NotificationContainer,
 } from "react-notifications";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
-import banner from "../../../../assets/images/banner.jpg";
+import banner from "../../../../assets/images/ticket.png";
 import Header from "../../../SharedComponents/Header/Header";
 import Axios from "../../../SharedComponents/Axios/Axios";
 import { NotificationContainer } from "react-notifications";

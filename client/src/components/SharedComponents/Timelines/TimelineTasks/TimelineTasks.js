@@ -3,7 +3,7 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import "./TimelineTasks.css";
 import Axios from "../../Axios/Axios";
-import banner from "../../../../assets/images/TimelineTask.jpg";
+import banner from "../../../../assets/images/TimelineTask.png";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 

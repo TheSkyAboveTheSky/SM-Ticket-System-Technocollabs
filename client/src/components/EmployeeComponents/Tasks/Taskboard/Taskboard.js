@@ -4,7 +4,7 @@ import Header from "../../../SharedComponents/Header/Header";
 import user from "../../../../assets/images/user.png";
 import axios from "../../../SharedComponents/Axios/Axios";
 import dateFormat from "dateformat";
-import taskImg from '../../../../assets/images/Task.jpg';
+import taskImg from '../../../../assets/images/Task.png';
 import './Taskboard.css';
 
 function Taskboard() {

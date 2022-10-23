@@ -3,7 +3,7 @@ import Sidebar from "../../../SharedComponents/Sidebar/Sidebar";
 import Header from "../../../SharedComponents/Header/Header";
 import axios from "../../../SharedComponents/Axios/Axios";
 import dateFormat from "dateformat";
-import taskImg from "../../../../assets/images/Task.jpg";
+import taskImg from "../../../../assets/images/Task.png";
 import banner from "../../../../assets/images/addTask.jpg";
 import "./Taskboard.css";
 import { NotificationContainer } from "react-notifications";

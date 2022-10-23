@@ -3,7 +3,7 @@ import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
 import "./TimelineLogs.css";
 import Axios from "../../Axios/Axios";
-import banner from "../../../../assets/images/TimelineLogs.jpg";
+import banner from "../../../../assets/images/TimelineLogs.png";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import dateFormat from 'dateformat'
