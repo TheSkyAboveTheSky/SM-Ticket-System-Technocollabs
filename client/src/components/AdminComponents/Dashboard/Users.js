@@ -16,6 +16,7 @@ function Users(props) {
         <div className="card">
           <div className="card-body text-center ribbon">
             <div className="ribbon-box green">{userRole}</div>
+
             <img
               className="rounded-circle img-thumbnail w100"
               src={userImg}
@@ -34,7 +35,7 @@ function Users(props) {
                     onChange={(e) => setRole(e.target.value)}
                     onClick={() => getUser(id)}
                   >
-                    <option defaultValue>Select a Role</option>
+                    <option defaultValue>{userRole}</option>
                     <option value="0000">UnAuthorized</option>
                     <option value="1010">Client</option>
                     <option value="2020">Employee</option>
@@ -51,19 +52,11 @@ function Users(props) {
                 </button>
               </form>
               <form onSubmit={deleteUser}>
-                <div className="form-group">
-                  <label>Delete :</label>
-                  <select
-                    className="form-select hidden"
-                    onClick={() => getUser(id)}
-                  >
-                    <option defaultValue>Delete The User</option>
-                  </select>
-                </div>
                 <button
                   type="submit"
-                  className="btn btn-sm"
+                  className="btn btn-sm w-100"
                   style={{ color: "red" }}
+                  onClick={getUser(id)}
                 >
                   <i className="fa fa-trash"></i> Delete
                 </button>
