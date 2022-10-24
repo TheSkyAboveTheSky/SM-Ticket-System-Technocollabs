@@ -23,8 +23,8 @@ function Registre() {
       try{
         const mail = await Axios.post('/send-mail',{
           to : email,
-          subject : "Welcome to Our Application",
-          text : "Welcome to our application : you can log in now to your Account!"
+          subject : "Welcome to Our Application!",
+          text : "Welcome to our application : you can Sign in now to your Account!"
         })
       }catch(err){
         console.error(err);
