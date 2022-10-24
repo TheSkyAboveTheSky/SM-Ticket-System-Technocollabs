@@ -26,7 +26,7 @@ function Sidebar() {
                   }
                   href="/"
                 >
-                  <i className="fa fa-soccer-ball-o brand-logo"></i>
+                  <i className="fa fa-house brand-logo"></i>
                 </a>
                 <a
                   href="/"
@@ -324,7 +324,7 @@ function Sidebar() {
                   }
                   href="/"
                 >
-                  <i className="fa fa-soccer-ball-o brand-logo"></i>
+                  <i className="fa fa-house brand-logo"></i>
                 </a>
                 <a
                   href="/"
@@ -694,7 +694,7 @@ function Sidebar() {
                   }
                   href="/"
                 >
-                  <i className="fa fa-soccer-ball-o brand-logo"></i>
+                  <i className="fa fa-house brand-logo"></i>
                 </a>
                 <a
                   href="/"
@@ -1115,7 +1115,7 @@ function Sidebar() {
                   }
                   href="/"
                 >
-                  <i className="fa fa-soccer-ball-o brand-logo"></i>
+                  <i className="fa fa-house brand-logo"></i>
                 </a>
                 <a
                   href="/"
