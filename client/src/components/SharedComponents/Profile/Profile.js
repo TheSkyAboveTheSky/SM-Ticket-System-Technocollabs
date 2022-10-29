@@ -196,7 +196,7 @@ function Profile() {
                   </div>
                 </div>
                 <div className="row g-3">
-                  <div className="col-xl-8 col-lg-12 col-md-12">
+                  <div className="col-xl-12 col-lg-12 col-md-12">
                     <div className="card teacher-card  mb-3">
                       <div className="card-body  d-flex teacher-fulldeatil">
                         <div className="profile-teacher pe-xl-4 pe-md-2 pe-sm-4 pe-0 text-center w220 mx-sm-0 mx-auto">
@@ -204,7 +204,7 @@ function Profile() {
                             <img
                               src={user}
                               alt=""
-                              className="avatar xl rounded-circle img-thumbnail shadow-sm"
+                              className="avatar rounded-circle"
                             />
                           </a>
                           <div className="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
