@@ -346,7 +346,7 @@ function TicketList() {
                                           <form onSubmit={updateTicket}>
                                             <div className="text-center mb-3">
                                               <h3 className="text-info">
-                                                Add Tickets
+                                                Update Tickets
                                               </h3>
                                             </div>
                                             <div className="row g-3">
