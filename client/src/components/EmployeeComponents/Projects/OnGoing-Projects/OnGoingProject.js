@@ -163,7 +163,7 @@ function OnGoingProject() {
                                   <strong>Created:</strong>
                                 </div>
                                 <div className="col-7 py-1">
-                                  {dateFormat(project.createdAt,"dddd MM yyyy")}
+                                  {dateFormat(project.createdAt,"mmmm dd-yyyy | HH:mm:ss")}
                                 </div>
                                 <div className="col-5 py-1">
                                   <strong>Creator:</strong>

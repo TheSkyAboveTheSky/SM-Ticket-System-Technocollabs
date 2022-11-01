@@ -160,7 +160,7 @@ function CompletedProject() {
                                 <div className="col-7 py-1">
                                   {dateFormat(
                                     project.createdAt,
-                                    "dddd MM yyyy"
+                                    "mmmm dd-yyyy | HH:mm:ss"
                                   )}
                                 </div>
                                 <div className="col-5 py-1">

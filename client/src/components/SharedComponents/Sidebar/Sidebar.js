@@ -3,6 +3,7 @@ import "./Sidebar.css";
 import "../../../assets/css/main.min.css";
 import user from "../../../assets/images/user.png";
 import Logout from "../../../auth/Logout";
+import logo from "../../../assets/images/logo.png";
 
 function Sidebar() {
   const role = window.localStorage.getItem("user-roles");
@@ -166,7 +167,7 @@ function Sidebar() {
           </div>
           <div id="left-sidebar" className="sidebar">
             <h5 className="brand-name">
-              SM <a href="/" className="menu_option float-right"></a>
+              <img src={logo}/> <a href="/" className="menu_option float-right"></a>
             </h5>
             <nav id="left-sidebar-nav" className="sidebar-nav">
               <ul className="metismenu">
@@ -474,7 +475,7 @@ function Sidebar() {
           </div>
           <div id="left-sidebar" className="sidebar">
             <h5 className="brand-name">
-              SM <a href="/" className="menu_option float-right"></a>
+              <img src={logo} /> <a href="/" className="menu_option float-right"></a>
             </h5>
             <nav id="left-sidebar-nav" className="sidebar-nav">
               <ul className="metismenu">
@@ -871,7 +872,7 @@ function Sidebar() {
           </div>
           <div id="left-sidebar" className="sidebar">
             <h5 className="brand-name">
-              SM <a href="/" className="menu_option float-right"></a>
+              <img src={logo}/> <a href="/" className="menu_option float-right"></a>
             </h5>
             <nav id="left-sidebar-nav" className="sidebar-nav">
               <ul className="metismenu">
@@ -1204,7 +1205,7 @@ function Sidebar() {
           </div>
           <div id="left-sidebar" className="sidebar">
             <h5 className="brand-name">
-              SM <a href="/" className="menu_option float-right"></a>
+              <img src={logo}/> <a href="/" className="menu_option float-right"></a>
             </h5>
             <nav id="left-sidebar-nav" className="sidebar-nav">
               <ul className="metismenu">
