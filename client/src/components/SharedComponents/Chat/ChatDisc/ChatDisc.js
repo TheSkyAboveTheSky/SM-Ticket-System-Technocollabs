@@ -5,8 +5,15 @@ import { ChatState } from "../../../../Context/ChatProvider";
 import dateFormat from "dateformat";
 
 function ChatDisc() {
-  const { selectedChat, setSelectedChat, user, chats, setChats, id, setId } =
-    ChatState();
+  const {
+    selectedChat,
+    setSelectedChat,
+    user,
+    chats,
+    setChats,
+    id,
+    setId,
+  } = ChatState();
   const [messages, setMessages] = useState([]);
   const [sendMsg, setSendMsg] = useState("");
   let chatName = "";
@@ -46,8 +53,8 @@ function ChatDisc() {
       const response = await Axios.post(
         "/message",
         {
-          chatId : selectedChat._id,
-          text : sendMsg
+          chatId: selectedChat._id,
+          text: sendMsg,
         },
         {
           headers: {
@@ -69,7 +76,9 @@ function ChatDisc() {
               <div className="card-header bline bg-none">
                 <h3 className="card-title">
                   {chats && messages && chatName}
-                  <small>Last seen: 2 hours ago</small>
+                  {chats && messages && chatName && (
+                    <small>Last seen: 2 hours ago</small>
+                  )}
                 </h3>
                 <div className="card-options">
                   <a href="javascript:void(0)" className="p-1">

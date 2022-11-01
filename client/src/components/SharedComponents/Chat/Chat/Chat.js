@@ -17,7 +17,7 @@ function Chat() {
           <Sidebar />
         </div>
         <div className="cont">
-          <Header title={"Test"} />
+          <Header title={"Chat"} />
           <div className="section-body mt-3">
             <div className="page">
               <div className="section-light py-3 chat_app">
