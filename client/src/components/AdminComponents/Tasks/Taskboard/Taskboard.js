@@ -116,7 +116,6 @@ function Taskboard() {
       left: "50%",
       right: "auto",
       bottom: "auto",
-      marginRight: "-50%",
       transform: "translate(-50%, -50%)",
     },
   };
@@ -239,11 +238,11 @@ function Taskboard() {
                                   <td>
                                     <div className="text-info">
                                       Start:{" "}
-                                      {dateFormat(task.start, "dddd mm yyyy")}
+                                      {dateFormat(task.start,                                    "mmmm dd-yyyy")}
                                     </div>
                                     <div className="text-pink">
                                       End:{" "}
-                                      {dateFormat(task.due, "dddd  mm  yyyy")}
+                                      {dateFormat(task.due,                                     "mmmm dd-yyyy")}
                                     </div>
                                   </td>
                                   <td>
@@ -378,7 +377,6 @@ function Taskboard() {
                                               <div className="mb-3">
                                                 <label>
                                                   Start Time :
-                                                  {" Format : YYYY-MM-DD "}
                                                 </label>
                                                 <input
                                                   className="form-control"
@@ -393,7 +391,6 @@ function Taskboard() {
                                               <div className="mb-3">
                                                 <label>
                                                   Due Time :
-                                                  {" Format : YYYY-MM-DD "}
                                                 </label>
                                                 <input
                                                   className="form-control"
